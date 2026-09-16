@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+  <title>Pointage - École de danse</title>
+
+  <script src="https://unpkg.com/html5-qrcode"
+          type="text/javascript"></script>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background: #f5f5f5;
+      text-align: center;
+    }
+
+    h1 {
+      margin-bottom: 25px;
+    }
+
+    select,
+    button {
+      width: 100%;
+      max-width: 500px;
+      box-sizing: border-box;
+      padding: 15px;
+      margin: 8px auto;
+      font-size: 18px;
+      border-radius: 10px;
+    }
+
+    select {
+      border: 1px solid #ccc;
+      background: white;
+    }
+
+    button {
+      border: none;
+      background: #222;
+      color: white;
+    }
+
+    button:disabled {
+      background: #aaa;
+    }
+
+    #stop {
+      display: none;
+      background: #777;
+    }
+
+    #reader {
+      width: 100%;
+      max-width: 500px;
+      margin: 20px auto;
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    #message {
+      max-width: 500px;
+      margin: 20px auto;
+      padding: 18px;
+      border-radius: 10px;
+      background: white;
+      line-height: 1.5;
+    }
+
+    .info {
+      background: #e5efff !important;
+    }
+
+    .success {
+      background: #dff5df !important;
+      color: #145214;
+    }
+
+    .error {
+      background: #ffe0e0 !important;
+      color: #8b0000;
+    }
+
+    .warning {
+      background: #fff2cc !important;
+      color: #765600;
+    }
+
+    .nom {
+      font-size: 25px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .credits {
+      font-size: 22px;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>💃 Pointage</h1>
+
+  <p><strong>Choisissez le cours :</strong></p>
+
+  <select id="cours">
+    <option value="">Choisir un cours</option>
+
+    <option value="C1">
+      Bachata débutant 0 — Lundi 19h
+    </option>
+
+    <option value="C2">
+      Bachata débutant confirmé — Lundi 20h
+    </option>
+
+    <option value="C3">
+      Bachata intermédiaire — Lundi 21h
+    </option>
+  </select>
+
+  <button id="start" onclick="demarrer()">
+    📷 Autoriser la caméra
+  </button>
+
+  <button id="stop" onclick="arreter()">
+    ⛔ Arrêter le scanner
+  </button>
+
+  <div id="reader"></div>
+
+  <div id="message" class="info">
+    Sélectionnez un cours puis appuyez sur
+    <strong>« 📷 Autoriser la caméra »</strong>.
+  </div>
+
+
+<script>
+
+let scanner = null;
+let scannerActif = false;
+let traitement = false;
+
+
+/* --------------------------------------------------
+   AFFICHAGE DES MESSAGES
+-------------------------------------------------- */
+
+function message(texte, type) {
+
+  const element = document.getElementById("message");
+
+  element.className = "";
+
+  if (type) {
+    element.classList.add(type);
+  }
+
+  element.innerHTML = texte;
+}
+
+
+/* --------------------------------------------------
+   DEMARRAGE
+-------------------------------------------------- */
+
+function demarrer() {
+
+  const cours = document.getElementById("cours").value;
+
+  if (!cours) {
+
+    message(
+      "⚠️ Veuillez d'abord choisir un cours.",
+      "warning"
+    );
+
+    return;
+  }
+
+
+  message(
+    "📷 Demande d'autorisation de la caméra...<br><br>" +
+    "Si Android affiche une demande, choisissez " +
+    "<strong>Autoriser</strong>.",
+    "info"
+  );
+
+
+  if (!navigator.mediaDevices ||
+      !navigator.mediaDevices.getUserMedia) {
+
+    message(
+      "❌ Votre navigateur ne permet pas l'accès à la caméra.",
+      "error"
+    );
+
+    return;
+  }
+
+
+  navigator.mediaDevices.getUserMedia({
+    video: {
+      facingMode: {
+        ideal: "environment"
+      }
+    },
+    audio: false
+  })
+
+  .then(function(stream) {
+
+    /*
+     * Android a autorisé la caméra.
+     * On ferme ce premier flux.
+     * html5-qrcode va ensuite ouvrir la caméra.
+     */
+
+    stream.getTracks().forEach(function(track) {
+      track.stop();
+    });
+
+
+    message(
+      "✅ Caméra autorisée.<br><br>" +
+      "Démarrage du scanner...",
+      "success"
+    );
+
+
+    setTimeout(function() {
+      lancerScanner();
+    }, 500);
+
+  })
+
+  .catch(function(error) {
+
+    console.error(error);
+
+    let texte =
+      "❌ <strong>Accès à la caméra refusé.</strong><br><br>";
+
+
+    if (error.name === "NotAllowedError") {
+
+      texte +=
+        "Android ou Chrome refuse actuellement l'accès à la caméra." +
+        "<br><br>" +
+        "Vérifiez que la caméra est autorisée pour ce site.";
+
+    }
+
+    else if (error.name === "NotFoundError") {
+
+      texte +=
+        "Aucune caméra n'a été trouvée sur cet appareil.";
+
+    }
+
+    else if (error.name === "NotReadableError") {
+
+      texte +=
+        "La caméra est déjà utilisée par une autre application.";
+
+    }
+
+    else if (error.name === "SecurityError") {
+
+      texte +=
+        "Le navigateur bloque l'accès à la caméra.";
+
+    }
+
+    else {
+
+      texte +=
+        "Erreur : " +
+        error.name +
+        "<br>" +
+        error.message;
+    }
+
+
+    message(
+      texte +
+      "<br><br>" +
+      "<strong>Conseil :</strong><br>" +
+      "Ouvrez cette page directement dans Google Chrome.",
+      "error"
+    );
+
+  });
+}
+
+
+/* --------------------------------------------------
+   SCANNER QR
+-------------------------------------------------- */
+
+function lancerScanner() {
+
+  if (scannerActif) {
+    return;
+  }
+
+
+  scanner = new Html5Qrcode("reader");
+
+
+  const configuration = {
+
+    fps: 10,
+
+    qrbox: function(width, height) {
+
+      const taille =
+        Math.min(width, height) * 0.75;
+
+      return {
+        width: Math.floor(taille),
+        height: Math.floor(taille)
+      };
+    }
+
+  };
+
+
+  scanner.start(
+
+    {
+      facingMode: "environment"
+    },
+
+    configuration,
+
+    function(qrCode) {
+
+      if (traitement) {
+        return;
+      }
+
+      traitement = true;
+
+      traiterQR(qrCode);
+
+    },
+
+    function() {
+      /*
+       * Pas de message ici :
+       * html5-qrcode appelle cette fonction
+       * en permanence lorsqu'il ne trouve pas de QR.
+       */
+    }
+
+  )
+
+  .then(function() {
+
+    scannerActif = true;
+
+    document.getElementById("start").style.display =
+      "none";
+
+    document.getElementById("stop").style.display =
+      "block";
+
+
+    message(
+      "📷 <strong>Scanner actif</strong><br><br>" +
+      "Présentez le QR code devant la caméra.",
+      "info"
+    );
+
+  })
+
+  .catch(function(error) {
+
+    console.error(error);
+
+    message(
+      "❌ Impossible de démarrer le scanner.<br><br>" +
+      error,
+      "error"
+    );
+
+  });
+}
+
+
+/* --------------------------------------------------
+   TRAITEMENT DU QR
+-------------------------------------------------- */
+
+function traiterQR(token) {
+
+  const idCours =
+    document.getElementById("cours").value;
+
+
+  message(
+    "⏳ Vérification du QR code...",
+    "info"
+  );
+
+
+  /*
+   * IMPORTANT :
+   *
+   * Cette partie sera reliée à ton Apps Script
+   * dans l'étape suivante.
+   */
+
+  console.log("QR détecté :", token);
+  console.log("Cours :", idCours);
+
+
+  /*
+   * Pour le moment, on affiche simplement
+   * le QR détecté.
+   */
+
+  message(
+    "✅ QR code détecté !<br><br>" +
+    "<strong>Token :</strong><br>" +
+    token +
+    "<br><br>" +
+    "<strong>Cours :</strong> " +
+    idCours +
+    "<br><br>" +
+    "Le raccordement à Google Sheets sera fait " +
+    "à l'étape suivante.",
+    "success"
+  );
+
+
+  setTimeout(function() {
+
+    traitement = false;
+
+    if (scannerActif) {
+
+      message(
+        "📷 Prêt pour le prochain élève.<br><br>" +
+        "Présentez un QR code.",
+        "info"
+      );
+    }
+
+  }, 3000);
+}
+
+
+/* --------------------------------------------------
+   ARRET
+-------------------------------------------------- */
+
+function arreter() {
+
+  if (!scanner || !scannerActif) {
+    return;
+  }
+
+
+  scanner.stop()
+
+  .then(function() {
+
+    scanner.clear();
+
+    scanner = null;
+    scannerActif = false;
+    traitement = false;
+
+
+    document.getElementById("start").style.display =
+      "block";
+
+    document.getElementById("stop").style.display =
+      "none";
+
+
+    message(
+      "Scanner arrêté.<br><br>" +
+      "Vous pouvez redémarrer la caméra.",
+      "info"
+    );
+
+  })
+
+  .catch(function(error) {
+
+    console.error(error);
+
+  });
+}
+
+</script>
+
+</body>
+</html>
