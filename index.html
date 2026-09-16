@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
+
   <meta charset="UTF-8">
 
   <meta name="viewport"
@@ -11,7 +13,9 @@
   <script src="https://unpkg.com/html5-qrcode"
           type="text/javascript"></script>
 
+
   <style>
+
     body {
       font-family: Arial, sans-serif;
       margin: 0;
@@ -44,10 +48,6 @@
       border: none;
       background: #222;
       color: white;
-    }
-
-    button:disabled {
-      background: #aaa;
     }
 
     #stop {
@@ -103,17 +103,27 @@
       font-weight: bold;
       margin-top: 10px;
     }
+
   </style>
+
 </head>
+
 
 <body>
 
   <h1>💃 Pointage</h1>
 
-  <p><strong>Choisissez le cours :</strong></p>
+
+  <p>
+    <strong>Choisissez le cours :</strong>
+  </p>
+
 
   <select id="cours">
-    <option value="">Choisir un cours</option>
+
+    <option value="">
+      Choisir un cours
+    </option>
 
     <option value="C1">
       Bachata débutant 0 — Lundi 19h
@@ -126,38 +136,66 @@
     <option value="C3">
       Bachata intermédiaire — Lundi 21h
     </option>
+
   </select>
 
-  <button id="start" onclick="demarrer()">
+
+  <button id="start"
+          onclick="demarrer()">
+
     📷 Autoriser la caméra
+
   </button>
 
-  <button id="stop" onclick="arreter()">
+
+  <button id="stop"
+          onclick="arreter()">
+
     ⛔ Arrêter le scanner
+
   </button>
+
 
   <div id="reader"></div>
 
-  <div id="message" class="info">
+
+  <div id="message"
+       class="info">
+
     Sélectionnez un cours puis appuyez sur
     <strong>« 📷 Autoriser la caméra »</strong>.
+
   </div>
 
 
 <script>
+
+
+/* ==================================================
+   CONFIGURATION
+================================================== */
+
+
+/*
+ * Adresse de ton Apps Script.
+ */
+const API_URL =
+  "https://script.google.com/macros/s/AKfycbz-tig9GMgWGbCq7iuiiM_d68Z4z9GxPtbOinDMYksWhqR4-VCOb23UmrmT3mjeKHZm/exec";
+
 
 let scanner = null;
 let scannerActif = false;
 let traitement = false;
 
 
-/* --------------------------------------------------
+/* ==================================================
    AFFICHAGE DES MESSAGES
--------------------------------------------------- */
+================================================== */
 
 function message(texte, type) {
 
-  const element = document.getElementById("message");
+  const element =
+    document.getElementById("message");
 
   element.className = "";
 
@@ -169,13 +207,15 @@ function message(texte, type) {
 }
 
 
-/* --------------------------------------------------
-   DEMARRAGE
--------------------------------------------------- */
+/* ==================================================
+   DEMARRAGE DE LA CAMERA
+================================================== */
 
 function demarrer() {
 
-  const cours = document.getElementById("cours").value;
+  const cours =
+    document.getElementById("cours").value;
+
 
   if (!cours) {
 
@@ -209,20 +249,22 @@ function demarrer() {
 
 
   navigator.mediaDevices.getUserMedia({
+
     video: {
       facingMode: {
         ideal: "environment"
       }
     },
+
     audio: false
+
   })
+
 
   .then(function(stream) {
 
     /*
      * Android a autorisé la caméra.
-     * On ferme ce premier flux.
-     * html5-qrcode va ensuite ouvrir la caméra.
      */
 
     stream.getTracks().forEach(function(track) {
@@ -243,9 +285,11 @@ function demarrer() {
 
   })
 
+
   .catch(function(error) {
 
     console.error(error);
+
 
     let texte =
       "❌ <strong>Accès à la caméra refusé.</strong><br><br>";
@@ -254,16 +298,14 @@ function demarrer() {
     if (error.name === "NotAllowedError") {
 
       texte +=
-        "Android ou Chrome refuse actuellement l'accès à la caméra." +
-        "<br><br>" +
-        "Vérifiez que la caméra est autorisée pour ce site.";
+        "L'accès à la caméra est refusé.";
 
     }
 
     else if (error.name === "NotFoundError") {
 
       texte +=
-        "Aucune caméra n'a été trouvée sur cet appareil.";
+        "Aucune caméra n'a été trouvée.";
 
     }
 
@@ -292,10 +334,7 @@ function demarrer() {
 
 
     message(
-      texte +
-      "<br><br>" +
-      "<strong>Conseil :</strong><br>" +
-      "Ouvrez cette page directement dans Google Chrome.",
+      texte,
       "error"
     );
 
@@ -303,9 +342,9 @@ function demarrer() {
 }
 
 
-/* --------------------------------------------------
-   SCANNER QR
--------------------------------------------------- */
+/* ==================================================
+   LANCEMENT DU SCANNER QR
+================================================== */
 
 function lancerScanner() {
 
@@ -314,7 +353,8 @@ function lancerScanner() {
   }
 
 
-  scanner = new Html5Qrcode("reader");
+  scanner =
+    new Html5Qrcode("reader");
 
 
   const configuration = {
@@ -327,9 +367,13 @@ function lancerScanner() {
         Math.min(width, height) * 0.75;
 
       return {
+
         width: Math.floor(taille),
+
         height: Math.floor(taille)
+
       };
+
     }
 
   };
@@ -343,69 +387,101 @@ function lancerScanner() {
 
     configuration,
 
+
     function(qrCode) {
 
       if (traitement) {
         return;
       }
 
+
       traitement = true;
+
 
       traiterQR(qrCode);
 
     },
 
+
     function() {
+
       /*
-       * Pas de message ici :
-       * html5-qrcode appelle cette fonction
-       * en permanence lorsqu'il ne trouve pas de QR.
+       * Rien à afficher ici.
+       *
+       * Cette fonction est appelée en permanence
+       * pendant la recherche d'un QR.
        */
+
     }
 
   )
+
 
   .then(function() {
 
     scannerActif = true;
 
-    document.getElementById("start").style.display =
-      "none";
 
-    document.getElementById("stop").style.display =
-      "block";
+    document.getElementById("start")
+      .style.display = "none";
+
+
+    document.getElementById("stop")
+      .style.display = "block";
 
 
     message(
+
       "📷 <strong>Scanner actif</strong><br><br>" +
       "Présentez le QR code devant la caméra.",
+
       "info"
+
     );
 
   })
+
 
   .catch(function(error) {
 
     console.error(error);
 
+
     message(
+
       "❌ Impossible de démarrer le scanner.<br><br>" +
       error,
+
       "error"
+
     );
 
   });
+
 }
 
 
-/* --------------------------------------------------
+/* ==================================================
    TRAITEMENT DU QR
--------------------------------------------------- */
+================================================== */
 
 function traiterQR(token) {
 
   const idCours =
     document.getElementById("cours").value;
+
+
+  if (!idCours) {
+
+    message(
+      "⚠️ Aucun cours sélectionné.",
+      "warning"
+    );
+
+    traitement = false;
+
+    return;
+  }
 
 
   message(
@@ -415,55 +491,281 @@ function traiterQR(token) {
 
 
   /*
-   * IMPORTANT :
+   * On utilise JSONP.
    *
-   * Cette partie sera reliée à ton Apps Script
-   * dans l'étape suivante.
+   * Cela permet à notre page GitHub
+   * de communiquer avec Apps Script.
    */
 
-  console.log("QR détecté :", token);
-  console.log("Cours :", idCours);
+
+  const callbackName =
+    "reponsePointage_" +
+    Date.now();
 
 
-  /*
-   * Pour le moment, on affiche simplement
-   * le QR détecté.
-   */
+  window[callbackName] =
+    function(resultat) {
 
-  message(
-    "✅ QR code détecté !<br><br>" +
-    "<strong>Token :</strong><br>" +
-    token +
-    "<br><br>" +
-    "<strong>Cours :</strong> " +
-    idCours +
-    "<br><br>" +
-    "Le raccordement à Google Sheets sera fait " +
-    "à l'étape suivante.",
-    "success"
-  );
+      console.log(
+        "Réponse Apps Script :",
+        resultat
+      );
 
 
-  setTimeout(function() {
+      afficherResultat(resultat);
 
-    traitement = false;
 
-    if (scannerActif) {
+      traitement = false;
+
+
+      /*
+       * Nettoyage.
+       */
+
+      try {
+        delete window[callbackName];
+      } catch (e) {}
+
+
+      if (script.parentNode) {
+        script.parentNode.removeChild(script);
+      }
+
+    };
+
+
+  const url =
+    API_URL +
+    "?token=" +
+    encodeURIComponent(token) +
+    "&idCours=" +
+    encodeURIComponent(idCours) +
+    "&callback=" +
+    encodeURIComponent(callbackName);
+
+
+  const script =
+    document.createElement("script");
+
+
+  script.src = url;
+
+
+  script.onerror =
+    function() {
+
+      console.error(
+        "Erreur de communication avec Apps Script."
+      );
+
+
+      traitement = false;
+
 
       message(
-        "📷 Prêt pour le prochain élève.<br><br>" +
-        "Présentez un QR code.",
-        "info"
-      );
-    }
 
-  }, 3000);
+        "❌ <strong>Impossible de contacter Google Sheets.</strong><br><br>" +
+        "Vérifiez la connexion Internet.",
+
+        "error"
+
+      );
+
+
+      try {
+        delete window[callbackName];
+      } catch (e) {}
+
+    };
+
+
+  document.body.appendChild(script);
+
 }
 
 
-/* --------------------------------------------------
-   ARRET
--------------------------------------------------- */
+/* ==================================================
+   AFFICHAGE DU RESULTAT
+================================================== */
+
+function afficherResultat(resultat) {
+
+
+  if (!resultat) {
+
+    message(
+      "❌ Réponse vide du serveur.",
+      "error"
+    );
+
+    return;
+  }
+
+
+  console.log(
+    "Résultat :",
+    resultat
+  );
+
+
+  /* -----------------------------------------------
+     SCAN VALIDE
+  ------------------------------------------------ */
+
+  if (resultat.success) {
+
+    message(
+
+      "<div class='nom'>" +
+      "✅ " +
+      resultat.eleve +
+      "</div>" +
+
+      "<strong>" +
+      resultat.message +
+      "</strong>" +
+
+      "<br><br>" +
+
+      "Cours : <strong>" +
+      resultat.cours +
+      "</strong>" +
+
+      "<div class='credits'>" +
+      "Crédits restants : " +
+      resultat.creditsApres +
+      "</div>" +
+
+      "<br>" +
+
+      "Carte valable jusqu'au " +
+      "<strong>" +
+      resultat.dateFin +
+      "</strong>",
+
+      "success"
+
+    );
+
+
+    /*
+     * On attend avant de permettre
+     * le scan suivant.
+     */
+
+    setTimeout(function() {
+
+      if (scannerActif) {
+
+        message(
+
+          "📷 <strong>Prêt pour le prochain élève.</strong><br><br>" +
+          "Présentez le QR code devant la caméra.",
+
+          "info"
+
+        );
+
+      }
+
+    }, 2500);
+
+
+    return;
+  }
+
+
+  /* -----------------------------------------------
+     DOUBLE SCAN
+  ------------------------------------------------ */
+
+  if (resultat.type === "duplicate") {
+
+    message(
+
+      "⚠️ <strong>" +
+      (resultat.eleve || "") +
+      "</strong><br><br>" +
+
+      resultat.message +
+
+      "<br><br>" +
+
+      "Crédits restants : " +
+      (resultat.credits || ""),
+
+      "warning"
+
+    );
+
+    return;
+  }
+
+
+  /* -----------------------------------------------
+     CARTE EPUISEE
+  ------------------------------------------------ */
+
+  if (resultat.type === "empty") {
+
+    message(
+
+      "❌ <strong>" +
+      (resultat.eleve || "") +
+      "</strong><br><br>" +
+
+      resultat.message,
+
+      "error"
+
+    );
+
+    return;
+  }
+
+
+  /* -----------------------------------------------
+     CARTE EXPIREE
+  ------------------------------------------------ */
+
+  if (resultat.type === "expired") {
+
+    message(
+
+      "❌ <strong>" +
+      (resultat.eleve || "") +
+      "</strong><br><br>" +
+
+      resultat.message,
+
+      "error"
+
+    );
+
+    return;
+  }
+
+
+  /* -----------------------------------------------
+     AUTRE ERREUR
+  ------------------------------------------------ */
+
+  message(
+
+    "❌ " +
+    (resultat.message ||
+     "QR code refusé."),
+
+    "error"
+
+  );
+
+}
+
+
+/* ==================================================
+   ARRET DU SCANNER
+================================================== */
 
 function arreter() {
 
@@ -474,36 +776,47 @@ function arreter() {
 
   scanner.stop()
 
+
   .then(function() {
 
     scanner.clear();
 
+
     scanner = null;
+
     scannerActif = false;
+
     traitement = false;
 
 
-    document.getElementById("start").style.display =
-      "block";
+    document.getElementById("start")
+      .style.display = "block";
 
-    document.getElementById("stop").style.display =
-      "none";
+
+    document.getElementById("stop")
+      .style.display = "none";
 
 
     message(
+
       "Scanner arrêté.<br><br>" +
       "Vous pouvez redémarrer la caméra.",
+
       "info"
+
     );
 
   })
+
 
   .catch(function(error) {
 
     console.error(error);
 
   });
+
 }
+
 
 </script>
 
