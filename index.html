@@ -172,7 +172,7 @@
 
 
 /* ==================================================
-   CONFIGURATION
+1.   CONFIGURATION
 ================================================== */
 
 
@@ -189,7 +189,7 @@ let traitement = false;
 
 
 /* ==================================================
-   AFFICHAGE DES MESSAGES
+2.   AFFICHAGE DES MESSAGES
 ================================================== */
 
 function message(texte, type) {
@@ -208,7 +208,7 @@ function message(texte, type) {
 
 
 /* ==================================================
-   DEMARRAGE DE LA CAMERA
+3.   DEMARRAGE DE LA CAMERA
 ================================================== */
 
 function demarrer() {
@@ -339,7 +339,7 @@ function demarrer() {
   });
 }
 /* ==================================================
-   LANCEMENT DU SCANNER QR
+4.   LANCEMENT DU SCANNER QR
 ================================================== */
 
 function lancerScanner() {
@@ -467,7 +467,7 @@ function lancerScanner() {
   });
 }
 /* ==================================================
-   TRAITEMENT DU QR
+5.   TRAITEMENT DU QR
 ================================================== */
 
 function traiterQR(token) {
@@ -616,7 +616,7 @@ function traiterQR(token) {
 }
 
   /* ==================================================
-   DEVERROUILLAGE APRES 6 SECONDES
+6.   DEVERROUILLAGE APRES 6 SECONDES
 ================================================== */
 
 function libererScannerDans6Secondes() {
@@ -655,7 +655,7 @@ function libererScannerDans6Secondes() {
 
   
 /* ==================================================
-   AFFICHAGE DU RESULTAT
+7.   AFFICHAGE DU RESULTAT
 ================================================== */
 
 function afficherResultat(resultat) {
@@ -679,7 +679,7 @@ function afficherResultat(resultat) {
 
 
   /* -----------------------------------------------
-     SCAN VALIDE
+ 7.1.    SCAN VALIDE
   ------------------------------------------------ */
 
   if (resultat.success) {
@@ -722,7 +722,7 @@ function afficherResultat(resultat) {
 
 
   /* -----------------------------------------------
-     DOUBLE SCAN
+  7.2.   DOUBLE SCAN
   ------------------------------------------------ */
 
   if (resultat.type === "duplicate") {
@@ -749,7 +749,7 @@ function afficherResultat(resultat) {
 
 
   /* -----------------------------------------------
-     CARTE EPUISEE
+  7.3.   CARTE EPUISEE
   ------------------------------------------------ */
 
   if (resultat.type === "empty") {
@@ -771,7 +771,7 @@ function afficherResultat(resultat) {
 
 
   /* -----------------------------------------------
-     CARTE INEXISTANTE / HORS PERIODE
+  7.4.   CARTE INEXISTANTE / HORS PERIODE
   ------------------------------------------------ */
 
   if (resultat.type === "expired") {
@@ -793,7 +793,7 @@ function afficherResultat(resultat) {
 
 
   /* -----------------------------------------------
-     AUTRE ERREUR
+  7.5.   AUTRE ERREUR
   ------------------------------------------------ */
 
   message(
@@ -811,7 +811,7 @@ function afficherResultat(resultat) {
 
 
 /* ==================================================
-   ARRET DU SCANNER
+8.   ARRET DU SCANNER
 ================================================== */
 
 function arreter() {
