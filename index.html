@@ -514,8 +514,10 @@ function traiterQR(token) {
 
       afficherResultat(resultat);
 
-
-      traitement = false;
+// On garde le résultat affiché pendant 6 secondes
+setTimeout(function() {
+  traitement = false;
+}, 6000);
 
 
       /*
