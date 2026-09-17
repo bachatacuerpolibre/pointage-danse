@@ -216,7 +216,6 @@ function demarrer() {
   const cours =
     document.getElementById("cours").value;
 
-
   if (!cours) {
 
     message(
@@ -227,6 +226,10 @@ function demarrer() {
     return;
   }
 
+  // Évite de lancer deux caméras
+  if (scannerActif) {
+    return;
+  }
 
   message(
     "📷 Demande d'autorisation de la caméra...<br><br>" +
@@ -234,7 +237,6 @@ function demarrer() {
     "<strong>Autoriser</strong>.",
     "info"
   );
-
 
   if (!navigator.mediaDevices ||
       !navigator.mediaDevices.getUserMedia) {
@@ -246,7 +248,6 @@ function demarrer() {
 
     return;
   }
-
 
   navigator.mediaDevices.getUserMedia({
 
@@ -260,17 +261,13 @@ function demarrer() {
 
   })
 
-
   .then(function(stream) {
 
-    /*
-     * Android a autorisé la caméra.
-     */
-
+    // On utilise uniquement cette demande pour obtenir
+    // l'autorisation. Html5Qrcode ouvrira ensuite sa caméra.
     stream.getTracks().forEach(function(track) {
       track.stop();
     });
-
 
     message(
       "✅ Caméra autorisée.<br><br>" +
@@ -278,27 +275,29 @@ function demarrer() {
       "success"
     );
 
-
     setTimeout(function() {
+
       lancerScanner();
-    }, 500);
+
+    }, 300);
 
   })
 
-
   .catch(function(error) {
 
-    console.error(error);
-
+    console.error(
+      "Erreur autorisation caméra :",
+      error
+    );
 
     let texte =
-      "❌ <strong>Accès à la caméra refusé.</strong><br><br>";
-
+      "❌ <strong>Impossible d'accéder à la caméra.</strong><br><br>";
 
     if (error.name === "NotAllowedError") {
 
       texte +=
-        "L'accès à la caméra est refusé.";
+        "L'accès à la caméra a été refusé. " +
+        "Vérifiez l'autorisation de la caméra dans les réglages du navigateur.";
 
     }
 
@@ -332,7 +331,6 @@ function demarrer() {
         error.message;
     }
 
-
     message(
       texte,
       "error"
@@ -340,8 +338,6 @@ function demarrer() {
 
   });
 }
-
-
 /* ==================================================
    LANCEMENT DU SCANNER QR
 ================================================== */
@@ -352,10 +348,17 @@ function lancerScanner() {
     return;
   }
 
+  // Si un ancien objet existe encore, on le supprime.
+  if (scanner) {
+    try {
+      scanner.clear();
+    } catch (e) {}
+
+    scanner = null;
+  }
 
   scanner =
     new Html5Qrcode("reader");
-
 
   const configuration = {
 
@@ -367,17 +370,12 @@ function lancerScanner() {
         Math.min(width, height) * 0.75;
 
       return {
-
         width: Math.floor(taille),
-
         height: Math.floor(taille)
-
       };
-
     }
 
   };
-
 
   scanner.start(
 
@@ -387,50 +385,47 @@ function lancerScanner() {
 
     configuration,
 
-
     function(qrCode) {
 
-  // Si un scan est déjà en cours ou si on est
-  // dans la période de blocage, on ignore le QR.
-  if (traitement) {
-    return;
-  }
+      /*
+       * IMPORTANT :
+       * Si un traitement est déjà en cours,
+       * on ignore complètement ce QR.
+       */
+      if (traitement) {
+        return;
+      }
 
-  // VERROUILLAGE IMMÉDIAT
-  traitement = true;
+      /*
+       * VERROUILLAGE IMMÉDIAT
+       */
+      traitement = true;
 
-  console.log("QR détecté : scanner verrouillé pendant 6 secondes.");
+      console.log(
+        "QR détecté : scanner verrouillé."
+      );
 
-  traiterQR(qrCode);
-},
-
+      traiterQR(qrCode);
+    },
 
     function() {
 
-      /*
-       * Rien à afficher ici.
-       *
-       * Cette fonction est appelée en permanence
-       * pendant la recherche d'un QR.
-       */
+      // Recherche permanente d'un QR.
+      // Rien à faire ici.
 
     }
 
   )
 
-
   .then(function() {
 
     scannerActif = true;
 
-
     document.getElementById("start")
       .style.display = "none";
 
-
     document.getElementById("stop")
       .style.display = "block";
-
 
     message(
 
@@ -443,26 +438,34 @@ function lancerScanner() {
 
   })
 
-
   .catch(function(error) {
 
-    console.error(error);
+    console.error(
+      "Erreur lancement scanner :",
+      error
+    );
 
+    scannerActif = false;
+    traitement = false;
+    scanner = null;
+
+    document.getElementById("start")
+      .style.display = "block";
+
+    document.getElementById("stop")
+      .style.display = "none";
 
     message(
 
-      "❌ Impossible de démarrer le scanner.<br><br>" +
-      error,
+      "❌ <strong>Impossible de démarrer le scanner.</strong><br><br>" +
+      String(error),
 
       "error"
 
     );
 
   });
-
 }
-
-
 /* ==================================================
    TRAITEMENT DU QR
 ================================================== */
@@ -473,6 +476,10 @@ function traiterQR(token) {
     document.getElementById("cours").value;
 
 
+  /*
+   * Sécurité : normalement impossible puisque
+   * le cours est contrôlé au démarrage.
+   */
   if (!idCours) {
 
     message(
@@ -480,32 +487,43 @@ function traiterQR(token) {
       "warning"
     );
 
-    // Déverrouillage après 6 secondes
-    setTimeout(function() {
-      traitement = false;
-    }, 6000);
+    libererScannerDans6Secondes();
 
     return;
   }
 
 
+  /*
+   * Le verrou est déjà actif AVANT d'arriver ici.
+   */
   message(
     "⏳ Vérification du QR code...",
     "info"
   );
 
 
-  /*
-   * On utilise JSONP.
-   */
-
   const callbackName =
     "reponsePointage_" +
     Date.now();
 
 
+  let termine = false;
+
+
   window[callbackName] =
     function(resultat) {
+
+      /*
+       * Protection supplémentaire :
+       * si Apps Script répond deux fois,
+       * on ne traite qu'une seule réponse.
+       */
+      if (termine) {
+        return;
+      }
+
+      termine = true;
+
 
       console.log(
         "Réponse Apps Script :",
@@ -513,55 +531,17 @@ function traiterQR(token) {
       );
 
 
-      // Affichage du résultat
       afficherResultat(resultat);
 
 
       /*
-       * IMPORTANT :
-       *
-       * NE PAS remettre traitement = false ici.
-       *
-       * Le scanner reste verrouillé pendant 6 secondes
-       * à partir de la détection du QR.
+       * Le scanner reste verrouillé.
+       * Le déverrouillage est géré par une seule fonction.
        */
-
-      setTimeout(function() {
-
-        traitement = false;
-
-        console.log(
-          "Scanner à nouveau disponible."
-        );
-
-        if (scannerActif) {
-
-          message(
-
-            "📷 <strong>Prêt pour le prochain élève.</strong><br><br>" +
-            "Présentez le QR code devant la caméra.",
-
-            "info"
-
-          );
-
-        }
-
-      }, 6000);
+      libererScannerDans6Secondes();
 
 
-      /*
-       * Nettoyage.
-       */
-
-      try {
-        delete window[callbackName];
-      } catch (e) {}
-
-
-      if (script.parentNode) {
-        script.parentNode.removeChild(script);
-      }
+      nettoyerJSONP();
 
     };
 
@@ -586,6 +566,13 @@ function traiterQR(token) {
   script.onerror =
     function() {
 
+      if (termine) {
+        return;
+      }
+
+      termine = true;
+
+
       console.error(
         "Erreur de communication avec Apps Script."
       );
@@ -601,47 +588,72 @@ function traiterQR(token) {
       );
 
 
-      /*
-       * Même en cas d'erreur,
-       * le scanner reste bloqué 6 secondes.
-       */
-
-      setTimeout(function() {
-
-        traitement = false;
-
-        if (scannerActif) {
-
-          message(
-
-            "📷 <strong>Prêt pour le prochain élève.</strong><br><br>" +
-            "Présentez le QR code devant la caméra.",
-
-            "info"
-
-          );
-
-        }
-
-      }, 6000);
+      libererScannerDans6Secondes();
 
 
-      try {
-        delete window[callbackName];
-      } catch (e) {}
-
-
-      if (script.parentNode) {
-        script.parentNode.removeChild(script);
-      }
+      nettoyerJSONP();
 
     };
+
+
+  /*
+   * Nettoyage commun.
+   */
+  function nettoyerJSONP() {
+
+    try {
+      delete window[callbackName];
+    } catch (e) {}
+
+    if (script.parentNode) {
+      script.parentNode.removeChild(script);
+    }
+  }
 
 
   document.body.appendChild(script);
 
 }
 
+  /* ==================================================
+   DEVERROUILLAGE APRES 6 SECONDES
+================================================== */
+
+function libererScannerDans6Secondes() {
+
+  console.log(
+    "Scanner verrouillé pendant 6 secondes."
+  );
+
+
+  setTimeout(function() {
+
+    traitement = false;
+
+
+    console.log(
+      "Scanner à nouveau disponible."
+    );
+
+
+    if (scannerActif) {
+
+      message(
+
+        "📷 <strong>Prêt pour le prochain élève.</strong><br><br>" +
+        "Présentez le QR code devant la caméra.",
+
+        "info"
+
+      );
+
+    }
+
+  }, 6000);
+
+}
+
+  
 /* ==================================================
    AFFICHAGE DU RESULTAT
 ================================================== */
