@@ -461,6 +461,7 @@ function lancerScanner() {
 }
 
 
+
 /* ==================================================
    TRAITEMENT DU QR
 ================================================== */
@@ -492,11 +493,9 @@ function traiterQR(token) {
 
   /*
    * On utilise JSONP.
-   *
-   * Cela permet à notre page GitHub
+   * Cela permet à la page GitHub
    * de communiquer avec Apps Script.
    */
-
 
   const callbackName =
     "reponsePointage_" +
@@ -512,12 +511,29 @@ function traiterQR(token) {
       );
 
 
+      /*
+       * Afficher le résultat.
+       */
       afficherResultat(resultat);
 
-// On garde le résultat affiché pendant 6 secondes
-setTimeout(function() {
-  traitement = false;
-}, 6000);
+
+      /*
+       * IMPORTANT :
+       * On garde le scanner BLOQUÉ pendant 6 secondes.
+       *
+       * Cela empêche la caméra de scanner
+       * plusieurs fois le même QR.
+       */
+
+      setTimeout(function() {
+
+        traitement = false;
+
+        console.log(
+          "Scanner à nouveau disponible."
+        );
+
+      }, 6000);
 
 
       /*
@@ -561,8 +577,10 @@ setTimeout(function() {
       );
 
 
-      traitement = false;
-
+      /*
+       * Même en cas d'erreur,
+       * on bloque le scanner 6 secondes.
+       */
 
       message(
 
@@ -574,9 +592,21 @@ setTimeout(function() {
       );
 
 
+      setTimeout(function() {
+
+        traitement = false;
+
+      }, 6000);
+
+
       try {
         delete window[callbackName];
       } catch (e) {}
+
+
+      if (script.parentNode) {
+        script.parentNode.removeChild(script);
+      }
 
     };
 
@@ -584,13 +614,16 @@ setTimeout(function() {
   document.body.appendChild(script);
 
 }
+```
 
 
+```javascript
 /* ==================================================
    AFFICHAGE DU RESULTAT
 ================================================== */
 
 function afficherResultat(resultat) {
+
 
   if (!resultat) {
 
@@ -648,6 +681,10 @@ function afficherResultat(resultat) {
 
     );
 
+
+    /*
+     * Résultat affiché pendant 6 secondes.
+     */
 
     setTimeout(function() {
 
@@ -759,7 +796,7 @@ function afficherResultat(resultat) {
 
 
   /* -----------------------------------------------
-     CARTE EXPIREE
+     CARTE EXPIREE / INEXISTANTE
   ------------------------------------------------ */
 
   if (resultat.type === "expired") {
@@ -832,6 +869,8 @@ function afficherResultat(resultat) {
   }, 6000);
 
 }
+```
+
 
 
 
