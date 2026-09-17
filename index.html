@@ -590,7 +590,6 @@ function traiterQR(token) {
 
 function afficherResultat(resultat) {
 
-
   if (!resultat) {
 
     message(
@@ -648,11 +647,6 @@ function afficherResultat(resultat) {
     );
 
 
-    /*
-     * On attend avant de permettre
-     * le scan suivant.
-     */
-
     setTimeout(function() {
 
       if (scannerActif) {
@@ -668,7 +662,7 @@ function afficherResultat(resultat) {
 
       }
 
-    }, 2500);
+    }, 6000);
 
 
     return;
@@ -698,6 +692,25 @@ function afficherResultat(resultat) {
 
     );
 
+
+    setTimeout(function() {
+
+      if (scannerActif) {
+
+        message(
+
+          "📷 <strong>Prêt pour le prochain élève.</strong><br><br>" +
+          "Présentez le QR code devant la caméra.",
+
+          "info"
+
+        );
+
+      }
+
+    }, 6000);
+
+
     return;
   }
 
@@ -719,6 +732,25 @@ function afficherResultat(resultat) {
       "error"
 
     );
+
+
+    setTimeout(function() {
+
+      if (scannerActif) {
+
+        message(
+
+          "📷 <strong>Prêt pour le prochain élève.</strong><br><br>" +
+          "Présentez le QR code devant la caméra.",
+
+          "info"
+
+        );
+
+      }
+
+    }, 6000);
+
 
     return;
   }
@@ -742,6 +774,25 @@ function afficherResultat(resultat) {
 
     );
 
+
+    setTimeout(function() {
+
+      if (scannerActif) {
+
+        message(
+
+          "📷 <strong>Prêt pour le prochain élève.</strong><br><br>" +
+          "Présentez le QR code devant la caméra.",
+
+          "info"
+
+        );
+
+      }
+
+    }, 6000);
+
+
     return;
   }
 
@@ -760,7 +811,27 @@ function afficherResultat(resultat) {
 
   );
 
+
+  setTimeout(function() {
+
+    if (scannerActif) {
+
+      message(
+
+        "📷 <strong>Prêt pour le prochain élève.</strong><br><br>" +
+        "Présentez le QR code devant la caméra.",
+
+        "info"
+
+      );
+
+    }
+
+  }, 6000);
+
 }
+
+
 
 
 /* ==================================================
