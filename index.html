@@ -7,15 +7,12 @@
 
   <meta
     name="viewport"
-    content="width=device-width, initial-scale=1.0">
+    content="width=device-width, initial-scale=1.0"
+  >
 
-  <title>Pointage - Abonnements</title>
+  <title>Cuerpo Libre — Pointage abonnement</title>
 
-  <script
-    src="https://unpkg.com/html5-qrcode"
-    type="text/javascript">
-  </script>
-
+  <script src="https://unpkg.com/html5-qrcode"></script>
 
   <style>
 
@@ -23,441 +20,232 @@
       box-sizing: border-box;
     }
 
-
     body {
-
-      font-family:
-        Arial,
-        sans-serif;
-
       margin: 0;
-
-      padding: 20px;
-
+      font-family: Arial, sans-serif;
       background: #f5f5f5;
-
-      text-align: center;
-
       color: #222;
     }
 
-
-    h1 {
-
-      margin-top: 5px;
-
-      margin-bottom: 25px;
+    .container {
+      width: min(100%, 700px);
+      margin: 0 auto;
+      padding: 20px;
     }
 
+    h1 {
+      text-align: center;
+      margin: 10px 0 25px;
+      font-size: 26px;
+    }
 
     h2 {
-
       margin-top: 0;
     }
 
-
-    button {
-
-      width: 100%;
-
-      max-width: 500px;
-
-      padding: 15px;
-
-      margin: 8px auto;
-
-      font-size: 18px;
-
-      border-radius: 10px;
-
-      border: none;
-
-      background: #222;
-
-      color: white;
-
-      cursor: pointer;
+    .card {
+      background: white;
+      border-radius: 16px;
+      padding: 20px;
+      margin-bottom: 18px;
+      box-shadow: 0 3px 12px rgba(0,0,0,.08);
     }
 
+    button {
+      width: 100%;
+      border: 0;
+      border-radius: 12px;
+      padding: 15px;
+      font-size: 17px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    .btn-primary {
+      background: #222;
+      color: white;
+    }
+
+    .btn-secondary {
+      background: #e9e9e9;
+      color: #222;
+    }
+
+    .btn-success {
+      background: #198754;
+      color: white;
+    }
+
+    .btn-danger {
+      background: #dc3545;
+      color: white;
+    }
 
     button:disabled {
-
-      opacity: 0.5;
-
+      opacity: .45;
       cursor: not-allowed;
     }
 
-
-    .btn-success {
-
-      background: #238636;
-    }
-
-
-    .btn-secondary {
-
-      background: #777;
-    }
-
-
-    .btn-primary {
-
-      background: #2563eb;
-    }
-
-
-    .btn-danger {
-
-      background: #b91c1c;
-    }
-
-
-    #stop {
-
-      display: none;
-
-      background: #777;
-    }
-
-
-    #reader {
-
+    input,
+    select {
       width: 100%;
-
-      max-width: 500px;
-
-      margin: 20px auto;
-
-      background: white;
-
-      border-radius: 12px;
-
-      overflow: hidden;
-    }
-
-
-    #message {
-
-      width: 100%;
-
-      max-width: 500px;
-
-      margin: 20px auto;
-
-      padding: 18px;
-
+      padding: 13px;
+      margin-top: 7px;
+      border: 1px solid #ccc;
       border-radius: 10px;
-
+      font-size: 16px;
       background: white;
-
-      line-height: 1.5;
     }
 
-
-    .info {
-
-      background: #e5efff !important;
-    }
-
-
-    .success {
-
-      background: #dff5df !important;
-
-      color: #145214;
-    }
-
-
-    .error {
-
-      background: #ffe0e0 !important;
-
-      color: #8b0000;
-    }
-
-
-    .warning {
-
-      background: #fff2cc !important;
-
-      color: #765600;
-    }
-
-
-    .selection-container {
-
-      width: 100%;
-
-      max-width: 500px;
-
-      margin: 20px auto;
-
-      padding: 18px;
-
-      background: white;
-
-      border-radius: 12px;
-
-      text-align: left;
-    }
-
-
-    .selection-container h2 {
-
-      text-align: center;
-    }
-
-
-    .choice-button {
-
+    label {
       display: block;
-
-      margin: 12px auto;
-
-      max-width: 500px;
+      margin-top: 15px;
+      font-weight: bold;
     }
-
 
     .hidden {
-
       display: none !important;
     }
 
-
-    .form-group {
-
-      margin-bottom: 16px;
-
-      text-align: left;
-    }
-
-
-    .form-group label {
-
-      display: block;
-
+    .message {
+      padding: 14px;
+      border-radius: 10px;
+      margin-bottom: 15px;
       font-weight: bold;
-
-      margin-bottom: 7px;
     }
 
-
-    input[type="text"],
-    input[type="email"],
-    input[type="number"] {
-
-      width: 100%;
-
-      padding: 13px;
-
-      font-size: 17px;
-
-      border: 1px solid #ccc;
-
-      border-radius: 8px;
+    .message.success {
+      background: #d1e7dd;
+      color: #0f5132;
     }
 
+    .message.error {
+      background: #f8d7da;
+      color: #842029;
+    }
 
-    .eleve-card {
+    .message.info {
+      background: #cff4fc;
+      color: #055160;
+    }
 
+    .student-card {
+      border: 1px solid #ddd;
+      border-radius: 14px;
+      padding: 15px;
       margin-top: 15px;
-
-      padding: 15px;
-
-      border: 1px solid #ddd;
-
-      border-radius: 10px;
-
-      background: #fafafa;
     }
 
-
-    .eleve-card h3 {
-
-      margin:
-        0 0 8px 0;
+    .student-name {
+      font-size: 19px;
+      font-weight: bold;
+      margin-bottom: 10px;
     }
 
-
-    .eleve-card p {
-
-      margin:
-        5px 0;
-    }
-
-
-    .eleve-selection {
-
-      margin-top: 18px;
-
-      padding: 15px;
-
-      border: 1px solid #ddd;
-
-      border-radius: 10px;
-
-      background: #fafafa;
-    }
-
-
-    .eleve-selection h3 {
-
-      margin:
-        0 0 12px 0;
-    }
-
-
-    .cours-eleve {
-
+    .course {
       display: flex;
-
-      flex-direction: column;
-
-      gap: 8px;
-    }
-
-
-    .cours-checkbox {
-
-      display: flex;
-
       align-items: center;
-
-      gap: 12px;
-
-      padding: 12px;
-
-      border: 1px solid #ddd;
-
-      border-radius: 8px;
-
-      background: white;
-
+      gap: 10px;
+      padding: 11px 5px;
+      border-bottom: 1px solid #eee;
+      font-weight: normal;
       cursor: pointer;
     }
 
+    .course:last-child {
+      border-bottom: 0;
+    }
 
-    .cours-checkbox input {
-
-      width: 22px;
-
-      height: 22px;
-
+    .course input {
+      width: 20px;
+      height: 20px;
+      margin: 0;
       flex-shrink: 0;
     }
 
-
-    .cours-info {
-
+    .course-info {
       flex: 1;
-
-      line-height: 1.35;
     }
 
-
-    .cours-nom {
-
+    .course-name {
       font-weight: bold;
     }
 
+    .course-time {
+      font-size: 13px;
+      color: #777;
+      margin-top: 3px;
+    }
 
-    .cours-horaire {
+    .credits {
+      font-size: 22px;
+      font-weight: bold;
+      text-align: center;
+      margin: 12px 0;
+    }
 
+    .card-id {
+      text-align: center;
       font-size: 14px;
-
-      color: #666;
+      color: #777;
     }
 
-
-    .info-carte {
-
-      padding: 14px;
-
-      border-radius: 8px;
-
-      background: #e5efff;
-
-      text-align: center;
-
-      line-height: 1.6;
-    }
-
-
-    .resume-selection {
-
-      margin-top: 20px;
-
+    .summary {
+      position: sticky;
+      bottom: 0;
+      background: white;
       padding: 15px;
-
-      border-radius: 8px;
-
-      background: #e9f7ef;
-
+      border-radius: 12px;
+      margin-top: 15px;
+      box-shadow: 0 -2px 10px rgba(0,0,0,.08);
       text-align: center;
-
-      line-height: 1.6;
-
-      font-size: 17px;
+      font-weight: bold;
     }
 
-
-    .email-info {
-
-      padding: 12px;
-
-      background: #f0f0f0;
-
-      border-radius: 8px;
-
-      margin-bottom: 12px;
+    #reader {
+      width: 100%;
+      margin-top: 15px;
     }
 
-
-    .token-box {
-
-      display: flex;
-
-      gap: 8px;
-    }
-
-
-    .token-box input {
-
-      flex: 1;
-    }
-
-
-    .carte-resume {
-
+    .choice-card {
+      border: 1px solid #ddd;
+      border-radius: 12px;
       padding: 15px;
-
-      margin-bottom: 15px;
-
-      border-radius: 10px;
-
-      background: #e5efff;
-
-      line-height: 1.6;
-    }
-
-
-    .titre-resultat {
-
-      font-size: 24px;
-
-      font-weight: bold;
-
-      margin-bottom: 12px;
-    }
-
-
-    .grand-total {
-
-      font-size: 23px;
-
-      font-weight: bold;
-
       margin-top: 10px;
+    }
+
+    .choice-card button {
+      margin-top: 8px;
+    }
+
+    .check-line {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 18px;
+      font-weight: bold;
+    }
+
+    .check-line input {
+      width: 20px;
+      height: 20px;
+      margin: 0;
+    }
+
+    .name-preview {
+      background: #f1f1f1;
+      padding: 12px;
+      border-radius: 10px;
+      margin-top: 10px;
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .loading {
+      text-align: center;
+      padding: 15px;
+      color: #666;
     }
 
   </style>
@@ -467,1161 +255,1805 @@
 
 <body>
 
+<div class="container">
 
-  <h1>
-    💃 Pointage des cartes d'abonnement
-  </h1>
+  <h1>💃 Cuerpo Libre<br>Pointage abonnement</h1>
 
 
-  <!-- ==================================================
-       ETAPE 1 : CHOIX INITIAL
-       ================================================== -->
-
-  <section
-    id="sectionAccueil"
-    class="selection-container">
-
-    <h2>
-      Que souhaitez-vous faire ?
-    </h2>
-
-
-    <button
-      class="btn-primary choice-button"
-      onclick="choisirCarteExistante()">
-
-      📷 Carte déjà enregistrée
-
-    </button>
-
-
-    <button
-      class="btn-success choice-button"
-      onclick="choisirNouvelleCarte()">
-
-      ➕ Nouvelle carte
-
-    </button>
-
-  </section>
-
-
-  <!-- ==================================================
-       NOUVELLE CARTE
-       ================================================== -->
-
-  <section
-    id="sectionNouvelleCarte"
-    class="selection-container hidden">
-
-    <h2>
-      ➕ Nouvelle carte
-    </h2>
-
-
-    <p>
-      Sélectionnez 1 ou 2 élèves déjà enregistrés
-      dans l'onglet <strong>Eleves</strong>.
-    </p>
-
-
-    <!-- PREMIER ELEVE -->
-
-    <div class="form-group">
-
-      <label for="idEleve1">
-        ID élève 1
-      </label>
-
-      <input
-        id="idEleve1"
-        type="text"
-        placeholder="Ex. A001"
-        autocomplete="off">
-
-    </div>
-
-
-    <button
-      class="btn-primary"
-      onclick="rechercherElevePourNouvelleCarte(1)">
-
-      🔎 Rechercher l'élève 1
-
-    </button>
-
-
-    <div
-      id="eleve1Resume"
-      class="eleve-card hidden">
-    </div>
-
-
-    <div
-      id="email1Container"
-      class="hidden">
-
-      <div class="form-group">
-
-        <label for="email1">
-          Adresse e-mail de l'élève 1
-        </label>
-
-        <input
-          id="email1"
-          type="email"
-          placeholder="adresse@email.com">
-
-      </div>
-
-    </div>
-
-
-    <!-- DEUXIEME ELEVE -->
-
-    <button
-      id="btnAjouterEleve2"
-      class="btn-secondary"
-      onclick="afficherEleve2()">
-
-      ➕ Ajouter un 2e élève
-
-    </button>
-
-
-    <div
-      id="eleve2Form"
-      class="hidden">
-
-      <div class="form-group">
-
-        <label for="idEleve2">
-          ID élève 2
-        </label>
-
-        <input
-          id="idEleve2"
-          type="text"
-          placeholder="Ex. A002"
-          autocomplete="off">
-
-      </div>
-
-
-      <button
-        class="btn-primary"
-        onclick="rechercherElevePourNouvelleCarte(2)">
-
-        🔎 Rechercher l'élève 2
-
-      </button>
-
-
-      <div
-        id="eleve2Resume"
-        class="eleve-card hidden">
-      </div>
-
-
-      <div
-        id="email2Container"
-        class="hidden">
-
-        <div class="form-group">
-
-          <label for="email2">
-            Adresse e-mail de l'élève 2
-          </label>
-
-          <input
-            id="email2"
-            type="email"
-            placeholder="adresse@email.com">
-
-        </div>
-
-      </div>
-
-    </div>
-
-
-    <!-- MONTANT -->
-
-    <div
-      id="montantCarteContainer"
-      class="hidden">
-
-      <div class="form-group">
-
-        <label for="montantPaye">
-          Montant payé pour la carte (€)
-        </label>
-
-        <input
-          id="montantPaye"
-          type="number"
-          min="0.01"
-          step="0.01"
-          placeholder="Ex. 100">
-
-      </div>
-
-
-      <div
-        id="tarifCalcule"
-        class="info-carte">
-
-        Tarif par cours :
-        <strong>—</strong>
-
-      </div>
-
-    </div>
-
-
-    <button
-      id="btnCreerCarte"
-      class="btn-success hidden"
-      onclick="creerCarte()">
-
-      💳 Créer la carte
-
-    </button>
-
-
-    <button
-      class="btn-secondary"
-      onclick="retourAccueil()">
-
-      ↩️ Retour
-
-    </button>
-
-  </section>
-
-
-  <!-- ==================================================
-       CARTE EXISTANTE
-       ================================================== -->
-
-  <section
-    id="sectionCarteExistante"
-    class="selection-container hidden">
-
-    <h2>
-      📷 Carte déjà enregistrée
-    </h2>
-
-
-    <p>
-      Scannez le QR code d'un élève associé
-      à la carte.
-    </p>
-
-
-    <button
-      id="start"
-      onclick="demarrerScanner()">
-
-      📷 Autoriser la caméra
-
-    </button>
-
-
-    <button
-      id="stop"
-      onclick="arreterScanner()">
-
-      ⛔ Arrêter le scanner
-
-    </button>
-
-
-    <div id="reader"></div>
-
-
-    <div class="form-group">
-
-      <label for="tokenManuel">
-        Ou saisir manuellement le QR Token
-      </label>
-
-
-      <div class="token-box">
-
-        <input
-          id="tokenManuel"
-          type="text"
-          maxlength="50"
-          placeholder="Ex. Sarah001"
-          autocomplete="off">
-
-        <button
-          style="width:auto; margin:0;"
-          class="btn-primary"
-          onclick="rechercherCarteManuellement()">
-
-          🔎
-
-        </button>
-
-      </div>
-
-    </div>
-
-
-    <button
-      class="btn-secondary"
-      onclick="retourAccueil()">
-
-      ↩️ Retour
-
-    </button>
-
-  </section>
-
-
-  <!-- ==================================================
-       SELECTION DES PRESENCES
-       ================================================== -->
-
-  <section
-    id="sectionSelection"
-    class="selection-container hidden">
-
-    <h2>
-      👥 Pointage
-    </h2>
-
-
-    <div
-      id="infoCarte"
-      class="carte-resume">
-    </div>
-
-
-    <div
-      id="elevesCoursContainer">
-    </div>
-
-
-    <div
-      id="resumeSelection"
-      class="resume-selection">
-
-      0 présence à enregistrer
-
-    </div>
-
-
-    <button
-      id="btnValiderSelection"
-      class="btn-success"
-      disabled
-      onclick="validerSelection()">
-
-      ✅ Valider les présences
-
-    </button>
-
-
-    <button
-      class="btn-secondary"
-      onclick="annulerPointage()">
-
-      ↩️ Annuler
-
-    </button>
-
-  </section>
-
-
-  <!-- ==================================================
-       MESSAGE GENERAL
-       ================================================== -->
+  <!-- =================================================
+       MESSAGE GLOBAL
+       ================================================= -->
 
   <div
     id="message"
-    class="info">
+    class="hidden"
+  ></div>
 
-    Choisissez une action pour commencer.
 
-  </div>
+  <!-- =================================================
+       ACCUEIL
+       ================================================= -->
+
+  <section
+    id="accueil"
+    class="card"
+  >
+
+    <h2>Que souhaitez-vous faire ?</h2>
+
+    <button
+      class="btn-primary"
+      onclick="ouvrirCarteExistante()"
+    >
+      💳 Carte déjà enregistrée
+    </button>
+
+    <button
+      class="btn-secondary"
+      onclick="ouvrirNouvelleCarte()"
+    >
+      ➕ Nouvelle carte
+    </button>
+
+  </section>
+
+
+  <!-- =================================================
+       RECHERCHE CARTE EXISTANTE
+       ================================================= -->
+
+  <section
+    id="rechercheCarte"
+    class="card hidden"
+  >
+
+    <h2>Carte déjà enregistrée</h2>
+
+    <p>
+      Scanne le QR code de l'élève
+      ou introduis manuellement son QR Token.
+    </p>
+
+
+    <button
+      id="btnScanner"
+      class="btn-primary"
+      onclick="demarrerScanner()"
+    >
+      📷 Scanner le QR code
+    </button>
+
+
+    <div
+      id="reader"
+      class="hidden"
+    ></div>
+
+
+    <label for="tokenManuel">
+      QR Token
+    </label>
+
+    <input
+      id="tokenManuel"
+      type="text"
+      autocomplete="off"
+      placeholder="Ex. Sarah001"
+    >
+
+
+    <button
+      class="btn-success"
+      onclick="rechercherCarteManuellement()"
+    >
+      Rechercher
+    </button>
+
+
+    <button
+      class="btn-secondary"
+      onclick="retourAccueil()"
+    >
+      ← Retour
+    </button>
+
+  </section>
+
+
+  <!-- =================================================
+       CHOIX ENTRE PLUSIEURS CARTES
+       ================================================= -->
+
+  <section
+    id="choixCarte"
+    class="card hidden"
+  >
+
+    <h2>Cartes disponibles</h2>
+
+    <p>
+      Plusieurs cartes valides sont associées à cet élève.
+      Sélectionne la carte à utiliser.
+    </p>
+
+    <div id="listeCartes"></div>
+
+    <button
+      class="btn-secondary"
+      onclick="retourAccueil()"
+    >
+      ← Retour
+    </button>
+
+  </section>
+
+
+  <!-- =================================================
+       NOUVELLE CARTE
+       ================================================= -->
+
+  <section
+    id="nouvelleCarte"
+    class="card hidden"
+  >
+
+    <h2>Créer une nouvelle carte</h2>
+
+
+    <div
+      id="chargementEleves"
+      class="loading"
+    >
+      Chargement des élèves...
+    </div>
+
+
+    <div id="formNouvelleCarte" class="hidden">
+
+      <!-- ÉLÈVE 1 -->
+
+      <label for="eleve1">
+        Élève 1
+      </label>
+
+      <select
+        id="eleve1"
+        onchange="selectionnerEleve(1)"
+      >
+        <option value="">
+          Sélectionner un élève
+        </option>
+      </select>
+
+
+      <div
+        id="nomEleve1"
+        class="name-preview hidden"
+      ></div>
+
+
+      <label for="email1">
+        Adresse e-mail de l'élève 1
+      </label>
+
+      <input
+        id="email1"
+        type="email"
+        placeholder="adresse@email.com"
+      >
+
+
+      <!-- ÉLÈVE 2 -->
+
+      <label class="check-line">
+
+        <input
+          id="activerEleve2"
+          type="checkbox"
+          onchange="gererEleve2()"
+        >
+
+        Ajouter un 2e élève à cette carte
+
+      </label>
+
+
+      <div
+        id="blocEleve2"
+        class="hidden"
+      >
+
+        <label for="eleve2">
+          Élève 2
+        </label>
+
+        <select
+          id="eleve2"
+          onchange="selectionnerEleve(2)"
+        >
+          <option value="">
+            Sélectionner un élève
+          </option>
+        </select>
+
+
+        <div
+          id="nomEleve2"
+          class="name-preview hidden"
+        ></div>
+
+
+        <label for="email2">
+          Adresse e-mail de l'élève 2
+        </label>
+
+        <input
+          id="email2"
+          type="email"
+          placeholder="adresse@email.com"
+        >
+
+      </div>
+
+
+      <!-- MONTANT -->
+
+      <label for="montantPaye">
+        Montant payé
+      </label>
+
+      <input
+        id="montantPaye"
+        type="number"
+        min="0"
+        step="0.01"
+        placeholder="Ex. 100"
+      >
+
+
+      <button
+        id="btnCreerCarte"
+        class="btn-success"
+        onclick="creerCarte()"
+      >
+        Créer la carte
+      </button>
+
+    </div>
+
+
+    <button
+      class="btn-secondary"
+      onclick="retourAccueil()"
+    >
+      ← Retour
+    </button>
+
+  </section>
+
+
+  <!-- =================================================
+       POINTAGE
+       ================================================= -->
+
+  <section
+    id="pointage"
+    class="hidden"
+  >
+
+    <div class="card">
+
+      <div
+        id="pointageCarteId"
+        class="card-id"
+      ></div>
+
+      <div
+        id="pointageCredits"
+        class="credits"
+      ></div>
+
+    </div>
+
+
+    <div id="elevesPointage"></div>
+
+
+    <div class="summary">
+
+      <div id="resumeSelection">
+        0 cours sélectionné
+      </div>
+
+      <button
+        id="btnValiderPointage"
+        class="btn-success"
+        onclick="validerPointage()"
+        disabled
+      >
+        Valider le pointage
+      </button>
+
+    </div>
+
+
+    <button
+      class="btn-secondary"
+      onclick="retourAccueil()"
+    >
+      ← Annuler
+    </button>
+
+  </section>
+
+
+  <!-- =================================================
+       CONFIRMATION
+       ================================================= -->
+
+  <section
+    id="confirmation"
+    class="card hidden"
+  >
+
+    <h2>✅ Pointage enregistré</h2>
+
+    <div id="detailsConfirmation"></div>
+
+    <button
+      class="btn-primary"
+      onclick="retourAccueil()"
+    >
+      Nouveau pointage
+    </button>
+
+  </section>
+
+</div>
 
 
 <script>
 
-
-/* ==================================================
-   CONFIGURATION
-   ================================================== */
+/* =====================================================
+ * CONFIGURATION
+ * ===================================================== */
 
 const API_URL =
   "https://script.google.com/macros/s/AKfycbz-tig9GMgWGbCq7iuiiM_d68Z4z9GxPtbOinDMYksWhqR4-VCOb23UmrmT3mjeKHZm/exec";
 
 
+/* =====================================================
+ * VARIABLES
+ * ===================================================== */
+
 let scanner = null;
 
-let scannerActif = false;
+let elevesDisponibles = [];
+
+let coursDisponibles = [];
+
+let carteCourante = null;
 
 let traitement = false;
 
 
-/*
- * Élèves sélectionnés pour la création
- * d'une nouvelle carte.
- */
+/* =====================================================
+ * UTILITAIRES
+ * ===================================================== */
 
-let nouveauxEleves = {
-
-  1: null,
-
-  2: null
-
-};
-
-
-/*
- * Carte actuellement sélectionnée
- * pour le pointage.
- */
-
-let carteActuelle = null;
-
-
-/*
- * Structure :
- *
- * {
- *   A001: ["C1", "C2"],
- *   A002: ["C3"]
- * }
- */
-
-let selectionElevesCours = {};
-
-
-/* ==================================================
-   AFFICHAGE DES MESSAGES
-   ================================================== */
-
-function message(
+function afficherMessage(
   texte,
-  type
+  type = "info"
 ) {
 
   const element =
-    document.getElementById(
-      "message"
-    );
+    document.getElementById("message");
 
-
-  element.className = "";
-
-
-  if (type) {
-
-    element.classList.add(
-      type
-    );
-  }
-
-
-  element.innerHTML =
+  element.textContent =
     texte;
-}
 
+  element.className =
+    "message " + type;
 
-/* ==================================================
-   AFFICHAGE DES SECTIONS
-   ================================================== */
-
-function afficherSection(
-  id
-) {
-
-  const sections =
-    [
-      "sectionAccueil",
-      "sectionNouvelleCarte",
-      "sectionCarteExistante",
-      "sectionSelection"
-    ];
-
-
-  sections.forEach(
-    function(sectionId) {
-
-      const element =
-        document.getElementById(
-          sectionId
-        );
-
-
-      if (!element) {
-        return;
-      }
-
-
-      if (
-        sectionId === id
-      ) {
-
-        element.classList.remove(
-          "hidden"
-        );
-
-      } else {
-
-        element.classList.add(
-          "hidden"
-        );
-      }
-    }
-  );
-}
-
-
-/* ==================================================
-   ACCUEIL
-   ================================================== */
-
-function retourAccueil() {
-
-  arreterScannerSilencieusement();
-
-
-  nouveauxEleves = {
-
-    1: null,
-
-    2: null
-
-  };
-
-
-  carteActuelle = null;
-
-  selectionElevesCours = {};
-
-
-  document.getElementById(
-    "idEleve1"
-  ).value = "";
-
-
-  document.getElementById(
-    "idEleve2"
-  ).value = "";
-
-
-  document.getElementById(
-    "email1"
-  ).value = "";
-
-
-  document.getElementById(
-    "email2"
-  ).value = "";
-
-
-  document.getElementById(
-    "montantPaye"
-  ).value = "";
-
-
-  document.getElementById(
-    "eleve1Resume"
-  ).classList.add(
-    "hidden"
-  );
-
-
-  document.getElementById(
-    "eleve2Resume"
-  ).classList.add(
-    "hidden"
-  );
-
-
-  document.getElementById(
-    "email1Container"
-  ).classList.add(
-    "hidden"
-  );
-
-
-  document.getElementById(
-    "email2Container"
-  ).classList.add(
-    "hidden"
-  );
-
-
-  document.getElementById(
-    "eleve2Form"
-  ).classList.add(
-    "hidden"
-  );
-
-
-  document.getElementById(
-    "montantCarteContainer"
-  ).classList.add(
-    "hidden"
-  );
-
-
-  document.getElementById(
-    "btnCreerCarte"
-  ).classList.add(
-    "hidden"
-  );
-
-
-  document.getElementById(
-    "btnAjouterEleve2"
-  ).classList.remove(
-    "hidden"
-  );
-
-
-  afficherSection(
-    "sectionAccueil"
-  );
-
-
-  message(
-    "Choisissez une action pour commencer.",
-    "info"
-  );
-}
-
-
-/* ==================================================
-   CARTE EXISTANTE
-   ================================================== */
-
-function choisirCarteExistante() {
-
-  afficherSection(
-    "sectionCarteExistante"
-  );
-
-
-  message(
-
-    "📷 Scannez le QR code d'un élève associé à la carte ou saisissez manuellement son QR Token.",
-
-    "info"
-
-  );
-}
-
-
-/* ==================================================
-   NOUVELLE CARTE
-   ================================================== */
-
-function choisirNouvelleCarte() {
-
-  afficherSection(
-    "sectionNouvelleCarte"
-  );
-
-
-  message(
-
-    "Sélectionnez 1 ou 2 élèves déjà enregistrés dans Eleves.",
-
-    "info"
-
-  );
-}
-
-
-/* ==================================================
-   AJOUT DU 2E ELEVE
-   ================================================== */
-
-function afficherEleve2() {
-
-  document.getElementById(
-    "eleve2Form"
-  ).classList.remove(
-    "hidden"
-  );
-
-
-  document.getElementById(
-    "btnAjouterEleve2"
-  ).classList.add(
+  element.classList.remove(
     "hidden"
   );
 }
 
 
-/* ==================================================
-   RECHERCHE D'UN ELEVE POUR NOUVELLE CARTE
-   ================================================== */
+function cacherMessage() {
 
-async function rechercherElevePourNouvelleCarte(
-  numero
-) {
+  const element =
+    document.getElementById("message");
 
-  const champ =
-    document.getElementById(
-      "idEleve" + numero
-    );
-
-
-  const idEleve =
-    champ.value.trim();
-
-
-  if (!idEleve) {
-
-    message(
-      "⚠️ Veuillez saisir un ID élève.",
-      "warning"
-    );
-
-    return;
-  }
-
-
-  message(
-    "⏳ Recherche de l'élève...",
-    "info"
-  );
-
-
-  try {
-
-    const resultat =
-      await getJSON(
-        API_URL +
-        "?action=eleve&id=" +
-        encodeURIComponent(
-          idEleve
-        )
-      );
-
-
-    /*
-     * Le serveur actuel ne possède pas
-     * de recherche par ID dans doGet.
-     *
-     * On utilise donc une fonction spéciale
-     * ci-dessous qui recherche par ID.
-     */
-
-    if (
-      !resultat ||
-      !resultat.ok
-    ) {
-
-      throw new Error(
-        resultat &&
-        resultat.message
-          ? resultat.message
-          : "Élève introuvable."
-      );
-    }
-
-
-    enregistrerEleveNouvelleCarte(
-      numero,
-      resultat
-    );
-
-
-  } catch (erreur) {
-
-    /*
-     * Fallback :
-     * la recherche par ID est effectuée
-     * par une action dédiée.
-     */
-
-    try {
-
-      const resultat =
-        await getJSON(
-          API_URL +
-          "?action=eleveParId&id=" +
-          encodeURIComponent(
-            idEleve
-          )
-        );
-
-
-      if (
-        !resultat ||
-        !resultat.ok
-      ) {
-
-        throw new Error(
-          resultat &&
-          resultat.message
-            ? resultat.message
-            : "Élève introuvable."
-        );
-      }
-
-
-      enregistrerEleveNouvelleCarte(
-        numero,
-        resultat
-      );
-
-
-    } catch (erreurFinale) {
-
-      message(
-
-        "❌ " +
-        erreurFinale.message,
-
-        "error"
-
-      );
-    }
-  }
-}
-
-
-/* ==================================================
-   ENREGISTREMENT LOCAL D'UN ELEVE
-   ================================================== */
-
-function enregistrerEleveNouvelleCarte(
-  numero,
-  eleve
-) {
-
-  nouveauxEleves[numero] =
-    eleve;
-
-
-  const resume =
-    document.getElementById(
-      "eleve" +
-      numero +
-      "Resume"
-    );
-
-
-  resume.innerHTML =
-
-    "<h3>👤 " +
-    escapeHtml(
-      eleve.nomComplet
-    ) +
-    "</h3>" +
-
-    "<p>" +
-    "ID élève : <strong>" +
-    escapeHtml(
-      eleve.idEleve
-    ) +
-    "</strong>" +
-    "</p>" +
-
-    "<p>" +
-    "E-mail actuel : " +
-    (
-      eleve.email
-        ? "<strong>" +
-          escapeHtml(
-            eleve.email
-          ) +
-          "</strong>"
-        : "<em>Aucun e-mail enregistré</em>"
-    ) +
-    "</p>";
-
-
-  resume.classList.remove(
+  element.classList.add(
     "hidden"
   );
-
-
-  const emailInput =
-    document.getElementById(
-      "email" +
-      numero
-    );
-
-
-  emailInput.value =
-    eleve.email || "";
-
-
-  document.getElementById(
-    "email" +
-    numero +
-    "Container"
-  ).classList.remove(
-    "hidden"
-  );
-
-
-  mettreAJourFormulaireNouvelleCarte();
-
-
-  message(
-
-    "✅ " +
-    escapeHtml(
-      eleve.nomComplet
-    ) +
-    " a été trouvé.",
-
-    "success"
-
-  );
 }
 
 
-/* ==================================================
-   VERIFICATION DU FORMULAIRE NOUVELLE CARTE
-   ================================================== */
-
-function mettreAJourFormulaireNouvelleCarte() {
-
-  const eleve1 =
-    nouveauxEleves[1];
-
-
-  const eleve2 =
-    nouveauxEleves[2];
-
-
-  const montant =
-    Number(
-      String(
-        document.getElementById(
-          "montantPaye"
-        ).value
-      )
-        .replace(",", ".")
-    );
-
-
-  /*
-   * Le montant n'apparaît qu'une fois
-   * qu'au moins un élève est sélectionné.
-   */
-
-  if (eleve1) {
-
-    document.getElementById(
-      "montantCarteContainer"
-    ).classList.remove(
-      "hidden"
-    );
-
-  } else {
-
-    document.getElementById(
-      "montantCarteContainer"
-    ).classList.add(
-      "hidden"
-    );
-  }
-
-
-  const email1 =
-    document.getElementById(
-      "email1"
-    ).value.trim();
-
-
-  const email2 =
-    document.getElementById(
-      "email2"
-    ).value.trim();
-
-
-  const formulaireValide =
-
-    !!eleve1 &&
-
-    !!email1 &&
-
-    (
-      !eleve2 ||
-      !!email2
-    ) &&
-
-    isFinite(montant) &&
-
-    montant > 0;
-
-
-  const bouton =
-    document.getElementById(
-      "btnCreerCarte"
-    );
-
-
-  if (formulaireValide) {
-
-    bouton.classList.remove(
-      "hidden"
-    );
-
-  } else {
-
-    bouton.classList.add(
-      "hidden"
-    );
-  }
-
-
-  const tarif =
-    document.getElementById(
-      "tarifCalcule"
-    );
-
-
-  if (
-    isFinite(montant) &&
-    montant > 0
-  ) {
-
-    const prix =
-      Math.round(
-        (
-          montant /
-          10
-        ) * 100
-      ) / 100;
-
-
-    tarif.innerHTML =
-
-      "Tarif par cours : " +
-
-      "<strong>" +
-
-      prix.toFixed(2) +
-
-      " €</strong>";
-
-  } else {
-
-    tarif.innerHTML =
-      "Tarif par cours : <strong>—</strong>";
-  }
-}
-
-
-/*
- * Mise à jour du formulaire
- * lorsque l'utilisateur tape.
- */
-
-document.getElementById(
-  "email1"
-).addEventListener(
-  "input",
-  mettreAJourFormulaireNouvelleCarte
-);
-
-
-document.getElementById(
-  "email2"
-).addEventListener(
-  "input",
-  mettreAJourFormulaireNouvelleCarte
-);
-
-
-document.getElementById(
-  "montantPaye"
-).addEventListener(
-  "input",
-  mettreAJourFormulaireNouvelleCarte
-);
-
-
-/* ==================================================
-   CREATION DE LA CARTE
-   ================================================== */
-
-async function creerCarte() {
-
-  const eleves = [];
-
-
-  if (
-    !nouveauxEleves[1]
-  ) {
-
-    message(
-      "⚠️ Sélectionnez au moins un élève.",
-      "warning"
-    );
-
-    return;
-  }
-
-
-  const email1 =
-    document.getElementById(
-      "email1"
-    ).value.trim();
-
-
-  if (!email1) {
-
-    message(
-      "⚠️ Veuillez saisir l'e-mail de l'élève 1.",
-      "warning"
-    );
-
-    return;
-  }
-
-
-  eleves.push({
-
-    idEleve:
-      nouveauxEleves[1].idEleve,
-
-    email:
-      email1
+function afficherSection(id) {
+
+  [
+    "accueil",
+    "rechercheCarte",
+    "choixCarte",
+    "nouvelleCarte",
+    "pointage",
+    "confirmation"
+  ].forEach(function (sectionId) {
+
+    document
+      .getElementById(sectionId)
+      .classList.add("hidden");
 
   });
 
 
-  if (
-    nouveauxEleves[2]
-  ) {
+  document
+    .getElementById(id)
+    .classList.remove("hidden");
 
-    const email2 =
-      document.getElementById(
-        "email2"
-      ).value.trim();
+}
 
 
-    if (!email2) {
+async function getJson(url) {
 
-      message(
-        "⚠️ Veuillez saisir l'e-mail de l'élève 2.",
-        "warning"
+  const response =
+    await fetch(url);
+
+  if (!response.ok) {
+
+    throw new Error(
+      "Erreur réseau."
+    );
+  }
+
+  return await response.json();
+}
+
+
+async function postJson(data) {
+
+  const response =
+    await fetch(
+      API_URL,
+      {
+        method: "POST",
+
+        headers: {
+          "Content-Type":
+            "text/plain;charset=utf-8"
+        },
+
+        body:
+          JSON.stringify(data)
+      }
+    );
+
+
+  if (!response.ok) {
+
+    throw new Error(
+      "Erreur réseau."
+    );
+  }
+
+
+  return await response.json();
+}
+
+
+/* =====================================================
+ * ACCUEIL
+ * ===================================================== */
+
+function retourAccueil() {
+
+  arreterScanner();
+
+  carteCourante = null;
+
+  traitement = false;
+
+  cacherMessage();
+
+  afficherSection(
+    "accueil"
+  );
+}
+
+
+/* =====================================================
+ * CARTE EXISTANTE
+ * ===================================================== */
+
+function ouvrirCarteExistante() {
+
+  cacherMessage();
+
+  afficherSection(
+    "rechercheCarte"
+  );
+
+  document
+    .getElementById("tokenManuel")
+    .value = "";
+}
+
+
+async function rechercherCarteAvecToken(token) {
+
+  token =
+    String(token || "").trim();
+
+
+  if (!token) {
+
+    afficherMessage(
+      "Introduis un QR Token.",
+      "error"
+    );
+
+    return;
+  }
+
+
+  if (traitement) {
+    return;
+  }
+
+
+  traitement = true;
+
+
+  try {
+
+    afficherMessage(
+      "Recherche de la carte...",
+      "info"
+    );
+
+
+    const url =
+      API_URL +
+      "?action=carte&token=" +
+      encodeURIComponent(token);
+
+
+    const resultat =
+      await getJson(url);
+
+
+    if (!resultat.ok) {
+
+      throw new Error(
+        resultat.message ||
+        "Carte introuvable."
+      );
+    }
+
+
+    arreterScanner();
+
+    cacherMessage();
+
+
+    /*
+     * Plusieurs cartes valides.
+     */
+    if (
+      resultat.plusieursCartes &&
+      resultat.cartes &&
+      resultat.cartes.length > 1
+    ) {
+
+      afficherChoixCartes(
+        resultat.cartes
       );
 
       return;
     }
 
 
-    eleves.push({
+    /*
+     * Une seule carte.
+     */
+    selectionnerCarte(
+      resultat.carte
+    );
+
+
+  } catch (erreur) {
+
+    afficherMessage(
+      erreur.message,
+      "error"
+    );
+
+  } finally {
+
+    traitement = false;
+  }
+}
+
+
+function rechercherCarteManuellement() {
+
+  const token =
+    document
+      .getElementById("tokenManuel")
+      .value
+      .trim();
+
+
+  rechercherCarteAvecToken(
+    token
+  );
+}
+
+
+/* =====================================================
+ * SCANNER
+ * ===================================================== */
+
+function demarrerScanner() {
+
+  arreterScanner();
+
+
+  document
+    .getElementById("reader")
+    .classList.remove("hidden");
+
+
+  scanner =
+    new Html5Qrcode(
+      "reader"
+    );
+
+
+  scanner.start(
+
+    {
+      facingMode: "environment"
+    },
+
+    {
+      fps: 10,
+
+      qrbox: {
+        width: 250,
+        height: 250
+      }
+
+    },
+
+    function (decodedText) {
+
+      arreterScanner();
+
+      document
+        .getElementById("tokenManuel")
+        .value = decodedText;
+
+
+      rechercherCarteAvecToken(
+        decodedText
+      );
+
+    },
+
+    function () {
+      // Ignorer les erreurs de lecture
+    }
+
+  ).catch(function (erreur) {
+
+    document
+      .getElementById("reader")
+      .classList.add("hidden");
+
+
+    afficherMessage(
+      "Impossible d'accéder à la caméra. Tu peux saisir le QR Token manuellement.",
+      "error"
+    );
+
+  });
+}
+
+
+function arreterScanner() {
+
+  if (!scanner) {
+    return;
+  }
+
+
+  scanner.stop()
+    .catch(function () {})
+    .finally(function () {
+
+      scanner = null;
+
+      document
+        .getElementById("reader")
+        .classList.add("hidden");
+
+    });
+}
+
+
+/* =====================================================
+ * CHOIX CARTE
+ * ===================================================== */
+
+function afficherChoixCartes(cartes) {
+
+  afficherSection(
+    "choixCarte"
+  );
+
+
+  const conteneur =
+    document.getElementById(
+      "listeCartes"
+    );
+
+
+  conteneur.innerHTML = "";
+
+
+  cartes.forEach(function (carte) {
+
+    const bloc =
+      document.createElement(
+        "div"
+      );
+
+
+    bloc.className =
+      "choice-card";
+
+
+    const noms =
+      carte.eleves
+        .map(function (eleve) {
+
+          return eleve.nomComplet;
+
+        })
+        .join(" + ");
+
+
+    bloc.innerHTML =
+
+      "<strong>" +
+      escapeHtml(
+        noms
+      ) +
+      "</strong>" +
+
+      "<br>" +
+
+      "Carte : " +
+      escapeHtml(
+        carte.idCarte
+      ) +
+
+      "<br>" +
+
+      "Crédits restants : " +
+      escapeHtml(
+        String(
+          carte.creditsRestants
+        )
+      );
+
+
+    const bouton =
+      document.createElement(
+        "button"
+      );
+
+
+    bouton.className =
+      "btn-primary";
+
+
+    bouton.textContent =
+      "Utiliser cette carte";
+
+
+    bouton.onclick =
+      function () {
+
+        selectionnerCarte(
+          carte
+        );
+
+      };
+
+
+    bloc.appendChild(
+      bouton
+    );
+
+
+    conteneur.appendChild(
+      bloc
+    );
+
+  });
+}
+
+
+/* =====================================================
+ * SÉLECTION CARTE
+ * ===================================================== */
+
+async function selectionnerCarte(carte) {
+
+  carteCourante =
+    carte;
+
+
+  afficherSection(
+    "pointage"
+  );
+
+
+  document
+    .getElementById(
+      "pointageCarteId"
+    )
+    .textContent =
+      "Carte " +
+      carte.idCarte;
+
+
+  document
+    .getElementById(
+      "pointageCredits"
+    )
+    .textContent =
+      carte.creditsRestants +
+      " crédit(s) restant(s)";
+
+
+  const conteneur =
+    document.getElementById(
+      "elevesPointage"
+    );
+
+
+  conteneur.innerHTML =
+    '<div class="loading">Chargement des cours...</div>';
+
+
+  try {
+
+    if (
+      !coursDisponibles ||
+      coursDisponibles.length === 0
+    ) {
+
+      const resultat =
+        await getJson(
+          API_URL +
+          "?action=cours"
+        );
+
+
+      if (!resultat.ok) {
+
+        throw new Error(
+          resultat.message ||
+          "Impossible de charger les cours."
+        );
+      }
+
+
+      coursDisponibles =
+        resultat.cours || [];
+    }
+
+
+    afficherElevesEtCours();
+
+
+  } catch (erreur) {
+
+    afficherMessage(
+      erreur.message,
+      "error"
+    );
+
+  }
+}
+
+
+/* =====================================================
+ * AFFICHAGE ÉLÈVES + COURS
+ * ===================================================== */
+
+function afficherElevesEtCours() {
+
+  const conteneur =
+    document.getElementById(
+      "elevesPointage"
+    );
+
+
+  conteneur.innerHTML = "";
+
+
+  carteCourante.eleves
+    .forEach(function (eleve) {
+
+      const bloc =
+        document.createElement(
+          "div"
+        );
+
+
+      bloc.className =
+        "card student-card";
+
+
+      const titre =
+        document.createElement(
+          "div"
+        );
+
+
+      titre.className =
+        "student-name";
+
+
+      titre.textContent =
+        eleve.nomComplet;
+
+
+      bloc.appendChild(
+        titre
+      );
+
+
+      coursDisponibles
+        .forEach(function (cours) {
+
+          const label =
+            document.createElement(
+              "label"
+            );
+
+
+          label.className =
+            "course";
+
+
+          const checkbox =
+            document.createElement(
+              "input"
+            );
+
+
+          checkbox.type =
+            "checkbox";
+
+
+          checkbox.dataset.eleve =
+            eleve.idEleve;
+
+
+          checkbox.dataset.cours =
+            cours.id;
+
+
+          checkbox.addEventListener(
+            "change",
+            actualiserResume
+          );
+
+
+          const infos =
+            document.createElement(
+              "div"
+            );
+
+
+          infos.className =
+            "course-info";
+
+
+          const nom =
+            document.createElement(
+              "div"
+            );
+
+
+          nom.className =
+            "course-name";
+
+
+          nom.textContent =
+            cours.nom;
+
+
+          infos.appendChild(
+            nom
+          );
+
+
+          if (cours.horaire) {
+
+            const horaire =
+              document.createElement(
+                "div"
+              );
+
+
+            horaire.className =
+              "course-time";
+
+
+            horaire.textContent =
+              cours.horaire;
+
+
+            infos.appendChild(
+              horaire
+            );
+          }
+
+
+          label.appendChild(
+            checkbox
+          );
+
+
+          label.appendChild(
+            infos
+          );
+
+
+          bloc.appendChild(
+            label
+          );
+
+        });
+
+
+      conteneur.appendChild(
+        bloc
+      );
+
+    });
+
+
+  actualiserResume();
+}
+
+
+/* =====================================================
+ * RÉSUMÉ
+ * ===================================================== */
+
+function actualiserResume() {
+
+  const cases =
+    document.querySelectorAll(
+      '#elevesPointage input[type="checkbox"]:checked'
+    );
+
+
+  const nombre =
+    cases.length;
+
+
+  const resume =
+    document.getElementById(
+      "resumeSelection"
+    );
+
+
+  resume.textContent =
+    nombre +
+    (
+      nombre > 1
+        ? " cours sélectionnés"
+        : " cours sélectionné"
+    ) +
+    " — " +
+    nombre +
+    " crédit" +
+    (
+      nombre > 1
+        ? "s"
+        : ""
+    ) +
+    " à débiter";
+
+
+  const bouton =
+    document.getElementById(
+      "btnValiderPointage"
+    );
+
+
+  bouton.disabled =
+    nombre === 0 ||
+    nombre >
+    carteCourante.creditsRestants;
+}
+
+
+/* =====================================================
+ * VALIDATION POINTAGE
+ * ===================================================== */
+
+async function validerPointage() {
+
+  if (
+    !carteCourante ||
+    traitement
+  ) {
+    return;
+  }
+
+
+  const cases =
+    document.querySelectorAll(
+      '#elevesPointage input[type="checkbox"]:checked'
+    );
+
+
+  if (cases.length === 0) {
+
+    afficherMessage(
+      "Sélectionne au moins un cours.",
+      "error"
+    );
+
+    return;
+  }
+
+
+  if (
+    cases.length >
+    carteCourante.creditsRestants
+  ) {
+
+    afficherMessage(
+      "Il n'y a pas assez de crédits sur cette carte.",
+      "error"
+    );
+
+    return;
+  }
+
+
+  traitement = true;
+
+
+  try {
+
+    /*
+     * Construction :
+     *
+     * [
+     *   {
+     *     idEleve: "A001",
+     *     cours: ["C1","C2"]
+     *   },
+     *   {
+     *     idEleve: "A002",
+     *     cours: ["C1"]
+     *   }
+     * ]
+     */
+    const selections = {};
+
+
+    cases.forEach(function (checkbox) {
+
+      const idEleve =
+        checkbox.dataset.eleve;
+
+      const idCours =
+        checkbox.dataset.cours;
+
+
+      if (!selections[idEleve]) {
+
+        selections[idEleve] = [];
+
+      }
+
+
+      selections[idEleve]
+        .push(idCours);
+
+    });
+
+
+    const selectionsFinales =
+      Object.keys(selections)
+        .map(function (idEleve) {
+
+          return {
+
+            idEleve:
+              idEleve,
+
+            cours:
+              selections[idEleve]
+
+          };
+
+        });
+
+
+    const resultat =
+      await postJson({
+
+        action:
+          "pointerAbonnement",
+
+        idCarte:
+          carteCourante.idCarte,
+
+        selections:
+          selectionsFinales
+
+      });
+
+
+    if (!resultat.ok) {
+
+      throw new Error(
+        resultat.message ||
+        "Le pointage n'a pas pu être enregistré."
+      );
+    }
+
+
+    afficherConfirmation(
+      resultat
+    );
+
+
+  } catch (erreur) {
+
+    afficherMessage(
+      erreur.message,
+      "error"
+    );
+
+  } finally {
+
+    traitement = false;
+  }
+}
+
+
+/* =====================================================
+ * CONFIRMATION
+ * ===================================================== */
+
+function afficherConfirmation(
+  resultat
+) {
+
+  arreterScanner();
+
+
+  afficherSection(
+    "confirmation"
+  );
+
+
+  const details =
+    document.getElementById(
+      "detailsConfirmation"
+    );
+
+
+  details.innerHTML =
+
+    "<p><strong>Carte :</strong> " +
+    escapeHtml(
+      resultat.idCarte
+    ) +
+    "</p>" +
+
+    "<p><strong>Présences enregistrées :</strong> " +
+    escapeHtml(
+      String(
+        resultat.nombrePresences
+      )
+    ) +
+    "</p>" +
+
+    "<p><strong>Crédits restants :</strong> " +
+    escapeHtml(
+      String(
+        resultat.creditsRestants
+      )
+    ) +
+    "</p>" +
+
+    "<p><strong>Statut :</strong> " +
+    escapeHtml(
+      resultat.statut
+    ) +
+    "</p>";
+}
+
+
+/* =====================================================
+ * NOUVELLE CARTE
+ * ===================================================== */
+
+async function ouvrirNouvelleCarte() {
+
+  cacherMessage();
+
+  afficherSection(
+    "nouvelleCarte"
+  );
+
+
+  document
+    .getElementById(
+      "chargementEleves"
+    )
+    .classList.remove(
+      "hidden"
+    );
+
+
+  document
+    .getElementById(
+      "formNouvelleCarte"
+    )
+    .classList.add(
+      "hidden"
+    );
+
+
+  try {
+
+    if (
+      !elevesDisponibles ||
+      elevesDisponibles.length === 0
+    ) {
+
+      const resultat =
+        await getJson(
+          API_URL +
+          "?action=eleves"
+        );
+
+
+      if (!resultat.ok) {
+
+        throw new Error(
+          resultat.message ||
+          "Impossible de charger les élèves."
+        );
+      }
+
+
+      elevesDisponibles =
+        resultat.eleves || [];
+    }
+
+
+    remplirSelectEleves();
+
+
+    document
+      .getElementById(
+        "chargementEleves"
+      )
+      .classList.add(
+        "hidden"
+      );
+
+
+    document
+      .getElementById(
+        "formNouvelleCarte"
+      )
+      .classList.remove(
+        "hidden"
+      );
+
+
+  } catch (erreur) {
+
+    afficherMessage(
+      erreur.message,
+      "error"
+    );
+
+  }
+}
+
+
+/* =====================================================
+ * REMPLIR SELECTS ÉLÈVES
+ * ===================================================== */
+
+function remplirSelectEleves() {
+
+  const select1 =
+    document.getElementById(
+      "eleve1"
+    );
+
+
+  const select2 =
+    document.getElementById(
+      "eleve2"
+    );
+
+
+  [select1, select2]
+    .forEach(function (select) {
+
+      select.innerHTML =
+        '<option value="">Sélectionner un élève</option>';
+
+
+      elevesDisponibles
+        .forEach(function (eleve) {
+
+          const option =
+            document.createElement(
+              "option"
+            );
+
+
+          option.value =
+            eleve.idEleve;
+
+
+          option.textContent =
+            eleve.nomComplet;
+
+
+          select.appendChild(
+            option
+          );
+
+        });
+
+    });
+}
+
+
+/* =====================================================
+ * SÉLECTION ÉLÈVE NOUVELLE CARTE
+ * ===================================================== */
+
+function selectionnerEleve(numero) {
+
+  const select =
+    document.getElementById(
+      "eleve" + numero
+    );
+
+
+  const id =
+    select.value;
+
+
+  const nomElement =
+    document.getElementById(
+      "nomEleve" + numero
+    );
+
+
+  const emailElement =
+    document.getElementById(
+      "email" + numero
+    );
+
+
+  if (!id) {
+
+    nomElement.textContent = "";
+
+    nomElement.classList.add(
+      "hidden"
+    );
+
+    emailElement.value = "";
+
+    return;
+  }
+
+
+  /*
+   * Empêche de sélectionner deux fois
+   * le même élève.
+   */
+  if (numero === 2) {
+
+    const id1 =
+      document.getElementById(
+        "eleve1"
+      ).value;
+
+
+    if (
+      id1 &&
+      id.toLowerCase() ===
+      id1.toLowerCase()
+    ) {
+
+      afficherMessage(
+        "Tu ne peux pas sélectionner le même élève deux fois.",
+        "error"
+      );
+
+
+      select.value = "";
+
+      nomElement.textContent = "";
+
+      nomElement.classList.add(
+        "hidden"
+      );
+
+      emailElement.value = "";
+
+      return;
+    }
+  }
+
+
+  const eleve =
+    elevesDisponibles.find(
+      function (item) {
+
+        return item.idEleve
+          .toLowerCase() ===
+          id.toLowerCase();
+
+      }
+    );
+
+
+  if (!eleve) {
+    return;
+  }
+
+
+  /*
+   * Affichage uniquement du prénom + nom.
+   */
+  nomElement.textContent =
+    eleve.prenom +
+    " " +
+    eleve.nom;
+
+
+  nomElement.classList.remove(
+    "hidden"
+  );
+
+
+  /*
+   * E-mail existant prérempli.
+   */
+  emailElement.value =
+    eleve.email || "";
+
+
+  cacherMessage();
+}
+
+
+/* =====================================================
+ * ACTIVER ÉLÈVE 2
+ * ===================================================== */
+
+function gererEleve2() {
+
+  const actif =
+    document
+      .getElementById(
+        "activerEleve2"
+      )
+      .checked;
+
+
+  const bloc =
+    document.getElementById(
+      "blocEleve2"
+    );
+
+
+  if (actif) {
+
+    bloc.classList.remove(
+      "hidden"
+    );
+
+  } else {
+
+    bloc.classList.add(
+      "hidden"
+    );
+
+
+    document
+      .getElementById(
+        "eleve2"
+      )
+      .value = "";
+
+
+    document
+      .getElementById(
+        "email2"
+      )
+      .value = "";
+
+
+    document
+      .getElementById(
+        "nomEleve2"
+      )
+      .textContent = "";
+
+
+    document
+      .getElementById(
+        "nomEleve2"
+      )
+      .classList.add(
+        "hidden"
+      );
+  }
+}
+
+
+/* =====================================================
+ * CRÉER CARTE
+ * ===================================================== */
+
+async function creerCarte() {
+
+  if (traitement) {
+    return;
+  }
+
+
+  const id1 =
+    document
+      .getElementById(
+        "eleve1"
+      )
+      .value;
+
+
+  if (!id1) {
+
+    afficherMessage(
+      "Sélectionne l'élève 1.",
+      "error"
+    );
+
+    return;
+  }
+
+
+  const email1 =
+    document
+      .getElementById(
+        "email1"
+      )
+      .value
+      .trim();
+
+
+  if (!email1) {
+
+    afficherMessage(
+      "L'adresse e-mail de l'élève 1 est obligatoire.",
+      "error"
+    );
+
+    return;
+  }
+
+
+  const elevesAEnvoyer = [
+
+    {
+      idEleve:
+        id1,
+
+      email:
+        email1
+    }
+
+  ];
+
+
+  const deuxiemeActif =
+    document
+      .getElementById(
+        "activerEleve2"
+      )
+      .checked;
+
+
+  if (deuxiemeActif) {
+
+    const id2 =
+      document
+        .getElementById(
+          "eleve2"
+        )
+        .value;
+
+
+    if (!id2) {
+
+      afficherMessage(
+        "Sélectionne l'élève 2.",
+        "error"
+      );
+
+      return;
+    }
+
+
+    if (
+      id2.toLowerCase() ===
+      id1.toLowerCase()
+    ) {
+
+      afficherMessage(
+        "Les deux élèves doivent être différents.",
+        "error"
+      );
+
+      return;
+    }
+
+
+    const email2 =
+      document
+        .getElementById(
+          "email2"
+        )
+        .value
+        .trim();
+
+
+    if (!email2) {
+
+      afficherMessage(
+        "L'adresse e-mail de l'élève 2 est obligatoire.",
+        "error"
+      );
+
+      return;
+    }
+
+
+    elevesAEnvoyer.push({
 
       idEleve:
-        nouveauxEleves[2].idEleve,
+        id2,
 
       email:
         email2
@@ -1631,28 +2063,28 @@ async function creerCarte() {
 
 
   const montant =
-    Number(
-      String(
-        document.getElementById(
-          "montantPaye"
-        ).value
+    document
+      .getElementById(
+        "montantPaye"
       )
-        .replace(",", ".")
-    );
+      .value;
 
 
   if (
-    !isFinite(montant) ||
-    montant <= 0
+    montant === "" ||
+    montant === null
   ) {
 
-    message(
-      "⚠️ Veuillez saisir un montant payé valide.",
-      "warning"
+    afficherMessage(
+      "Le montant payé est obligatoire.",
+      "error"
     );
 
     return;
   }
+
+
+  traitement = true;
 
 
   const bouton =
@@ -1663,1446 +2095,122 @@ async function creerCarte() {
 
   bouton.disabled = true;
 
-  bouton.textContent =
-    "⏳ Création de la carte...";
-
-
-  message(
-    "⏳ Création de la carte et envoi des QR codes...",
-    "info"
-  );
-
 
   try {
 
+    afficherMessage(
+      "Création de la carte...",
+      "info"
+    );
+
+
     const resultat =
-      await postJSON(
+      await postJson({
 
-        API_URL,
+        action:
+          "creerCarte",
 
-        {
+        montantPaye:
+          montant,
 
-          action:
-            "creerCarte",
+        eleves:
+          elevesAEnvoyer
 
-          eleves:
-            eleves,
-
-          montantPaye:
-            montant
-
-        }
-
-      );
+      });
 
 
-    if (
-      !resultat ||
-      !resultat.ok
-    ) {
+    if (!resultat.ok) {
 
       throw new Error(
-        resultat &&
-        resultat.message
-          ? resultat.message
-          : "Impossible de créer la carte."
+        resultat.message ||
+        "Impossible de créer la carte."
       );
     }
 
 
-    carteActuelle = {
-
-      idCarte:
-        resultat.idCarte,
-
-      idsEleves:
-        resultat.eleves.map(
-          function(eleve) {
-
-            return eleve.idEleve;
-
-          }
-        ),
-
-      eleves:
-        resultat.eleves,
-
-      dateAchat:
-        resultat.dateAchat,
-
-      dateDebut:
-        resultat.dateDebut,
-
-      dateFin:
-        resultat.dateFin,
-
-      creditsInitiaux:
-        resultat.creditsInitiaux,
-
-      creditsRestants:
-        resultat.creditsRestants,
-
-      statut:
-        resultat.statut,
-
-      montantPaye:
-        resultat.montantPaye,
-
-      tarifUnitaire:
-        resultat.tarifUnitaire
-
-    };
+    /*
+     * La carte vient d'être créée.
+     * On passe immédiatement au pointage.
+     */
+    carteCourante =
+      resultat.carte;
 
 
-    let texteEmail =
+    let messageEmail =
       "";
 
 
     if (
-      Array.isArray(
-        resultat.emails
-      )
+      resultat.emailsEnvoyes
     ) {
 
-      const echecs =
-        resultat.emails.filter(
-          function(item) {
+      messageEmail =
+        resultat.emailsEnvoyes +
+        " QR envoyé(s).";
 
-            return !item.ok;
-
-          }
-        );
-
-
-      if (
-        echecs.length === 0
-      ) {
-
-        texteEmail =
-          "<br>📧 Les QR codes ont été envoyés par e-mail.";
-
-      } else {
-
-        texteEmail =
-          "<br>⚠️ La carte a été créée, mais " +
-          echecs.length +
-          " e-mail(s) n'ont pas pu être envoyés.";
-
-      }
     }
 
 
-    message(
+    if (
+      resultat.emailsErreurs
+    ) {
 
-      "✅ <strong>Carte " +
-      escapeHtml(
-        resultat.idCarte
-      ) +
-      " créée.</strong>" +
+      messageEmail +=
+        " Attention : " +
+        resultat.emailsErreurs +
+        " e-mail(s) n'ont pas pu être envoyé(s).";
+    }
 
-      texteEmail +
 
-      "<br><br>" +
-
-      "10 crédits sont disponibles." +
-
-      "<br>" +
-
-      "Le premier pointage définira la date de début.",
-
-      "success"
-
+    afficherMessage(
+      "Carte " +
+      resultat.carte.idCarte +
+      " créée. " +
+      messageEmail,
+      resultat.emailsErreurs
+        ? "info"
+        : "success"
     );
 
 
     /*
-     * On passe directement au pointage.
+     * Charger les cours puis afficher
+     * directement le pointage.
      */
-
-    await afficherPointageCarte(
-      carteActuelle
+    await selectionnerCarte(
+      resultat.carte
     );
 
 
   } catch (erreur) {
 
-    bouton.disabled = false;
-
-    bouton.textContent =
-      "💳 Créer la carte";
-
-
-    message(
-
-      "❌ " +
+    afficherMessage(
       erreur.message,
-
       "error"
-
-    );
-  }
-}
-
-
-/* ==================================================
-   SCANNER
-   ================================================== */
-
-async function demarrerScanner() {
-
-  if (
-    scannerActif
-  ) {
-
-    return;
-  }
-
-
-  try {
-
-    message(
-      "📷 Demande d'autorisation de la caméra...",
-      "info"
-    );
-
-
-    if (
-      !navigator.mediaDevices ||
-      !navigator.mediaDevices.getUserMedia
-    ) {
-
-      throw new Error(
-        "Votre navigateur ne permet pas l'accès à la caméra."
-      );
-    }
-
-
-    const stream =
-      await navigator
-        .mediaDevices
-        .getUserMedia({
-
-          video: {
-            facingMode: {
-              ideal: "environment"
-            }
-          },
-
-          audio: false
-
-        });
-
-
-    stream
-      .getTracks()
-      .forEach(
-        function(track) {
-
-          track.stop();
-
-        }
-      );
-
-
-    scanner =
-      new Html5Qrcode(
-        "reader"
-      );
-
-
-    const configuration = {
-
-      fps: 10,
-
-      qrbox:
-        function(
-          width,
-          height
-        ) {
-
-          const taille =
-            Math.min(
-              width,
-              height
-            ) * 0.75;
-
-
-          return {
-
-            width:
-              Math.floor(
-                taille
-              ),
-
-            height:
-              Math.floor(
-                taille
-              )
-
-          };
-        }
-    };
-
-
-    await scanner.start(
-
-      {
-        facingMode:
-          "environment"
-      },
-
-      configuration,
-
-      function(qrCode) {
-
-        if (
-          traitement
-        ) {
-
-          return;
-        }
-
-
-        traitement = true;
-
-
-        traiterToken(
-          qrCode
-        );
-
-      },
-
-      function() {}
-
-    );
-
-
-    scannerActif =
-      true;
-
-
-    document.getElementById(
-      "start"
-    ).style.display =
-      "none";
-
-
-    document.getElementById(
-      "stop"
-    ).style.display =
-      "block";
-
-
-    message(
-      "📷 <strong>Scanner actif.</strong><br><br>Présentez le QR code devant la caméra.",
-      "info"
-    );
-
-
-  } catch (erreur) {
-
-    console.error(
-      erreur
-    );
-
-
-    scannerActif =
-      false;
-
-
-    scanner =
-      null;
-
-
-    message(
-
-      "❌ <strong>Impossible d'accéder à la caméra.</strong><br><br>" +
-      escapeHtml(
-        erreur.message
-      ),
-
-      "error"
-
-    );
-  }
-}
-
-
-/* ==================================================
-   TRAITEMENT TOKEN SCANNE
-   ================================================== */
-
-async function traiterToken(
-  token
-) {
-
-  await rechercherCarteParToken(
-    token
-  );
-}
-
-
-/* ==================================================
-   RECHERCHE MANUELLE
-   ================================================== */
-
-async function rechercherCarteManuellement() {
-
-  const champ =
-    document.getElementById(
-      "tokenManuel"
-    );
-
-
-  const token =
-    champ.value.trim();
-
-
-  if (!token) {
-
-    message(
-      "⚠️ Veuillez saisir un QR Token.",
-      "warning"
-    );
-
-    return;
-  }
-
-
-  traitement = true;
-
-
-  await rechercherCarteParToken(
-    token
-  );
-}
-
-
-/* ==================================================
-   RECHERCHE CARTE PAR TOKEN
-   ================================================== */
-
-async function rechercherCarteParToken(
-  token
-) {
-
-  message(
-    "⏳ Recherche de la carte...",
-    "info"
-  );
-
-
-  try {
-
-    const resultat =
-      await getJSON(
-
-        API_URL +
-        "?action=carte&token=" +
-        encodeURIComponent(
-          token
-        )
-
-      );
-
-
-    if (
-      !resultat ||
-      !resultat.ok
-    ) {
-
-      throw new Error(
-        resultat &&
-        resultat.message
-          ? resultat.message
-          : "Carte introuvable."
-      );
-    }
-
-
-    /*
-     * Si plusieurs cartes existent,
-     * la première est la carte prioritaire
-     * retournée par le serveur.
-     */
-
-    carteActuelle =
-      resultat.carte;
-
-
-    await arreterScannerSilencieusement();
-
-
-    afficherPointageCarte(
-      carteActuelle
-    );
-
-
-  } catch (erreur) {
-
-    message(
-
-      "❌ " +
-      escapeHtml(
-        erreur.message
-      ),
-
-      "error"
-
-    );
-
-
-    traitement =
-      false;
-  }
-}
-
-
-/* ==================================================
-   AFFICHAGE DU POINTAGE
-   ================================================== */
-
-async function afficherPointageCarte(
-  carte
-) {
-
-  selectionElevesCours = {};
-
-
-  afficherSection(
-    "sectionSelection"
-  );
-
-
-  const info =
-    document.getElementById(
-      "infoCarte"
-    );
-
-
-  let texte =
-
-    "<strong>Carte " +
-    escapeHtml(
-      carte.idCarte
-    ) +
-    "</strong><br>" +
-
-    "Élève(s) : ";
-
-
-  texte +=
-    carte.eleves
-      .map(function(eleve) {
-
-        return escapeHtml(
-          eleve.nomComplet
-        );
-
-      })
-      .join(
-        " + "
-      );
-
-
-  texte +=
-    "<br>" +
-
-    "Crédits restants : <strong>" +
-    escapeHtml(
-      String(
-        carte.creditsRestants
-      )
-    ) +
-    "</strong>";
-
-
-  if (
-    carte.dateDebut
-  ) {
-
-    texte +=
-      "<br>" +
-
-      "Date de début : <strong>" +
-      escapeHtml(
-        carte.dateDebut
-      ) +
-      "</strong>";
-  }
-
-
-  if (
-    carte.dateFin
-  ) {
-
-    texte +=
-      "<br>" +
-
-      "Date de fin : <strong>" +
-      escapeHtml(
-        carte.dateFin
-      ) +
-      "</strong>";
-  }
-
-
-  if (
-    carte.montantPaye
-  ) {
-
-    texte +=
-      "<br>" +
-
-      "Tarif par cours : <strong>" +
-      Number(
-        carte.tarifUnitaire
-      ).toFixed(2) +
-      " €</strong>";
-  }
-
-
-  info.innerHTML =
-    texte;
-
-
-  const container =
-    document.getElementById(
-      "elevesCoursContainer"
-    );
-
-
-  container.innerHTML = "";
-
-
-  const cours =
-    await chargerCours();
-
-
-  if (
-    !cours ||
-    cours.length === 0
-  ) {
-
-    message(
-      "❌ Aucun cours disponible.",
-      "error"
-    );
-
-    return;
-  }
-
-
-  /*
-   * Création d'un bloc par élève.
-   */
-
-  carte.eleves
-    .forEach(
-      function(eleve) {
-
-        selectionElevesCours[
-          eleve.idEleve
-        ] = [];
-
-
-        const bloc =
-          document.createElement(
-            "div"
-          );
-
-
-        bloc.className =
-          "eleve-selection";
-
-
-        let html =
-
-          "<h3>👤 " +
-          escapeHtml(
-            eleve.nomComplet
-          ) +
-          "</h3>" +
-
-          "<div class='cours-eleve'>";
-
-
-        cours.forEach(
-          function(coursItem) {
-
-            html +=
-
-              "<label class='cours-checkbox'>" +
-
-              "<input " +
-
-                "type='checkbox' " +
-
-                "class='checkbox-cours' " +
-
-                "data-eleve='" +
-                escapeHtml(
-                  eleve.idEleve
-                ) +
-                "' " +
-
-                "data-cours='" +
-                escapeHtml(
-                  coursItem.id
-                ) +
-                "' " +
-
-                "onchange='modifierSelectionCours(this)'>" +
-
-              "<span class='cours-info'>" +
-
-                "<span class='cours-nom'>" +
-                  escapeHtml(
-                    coursItem.nom
-                  ) +
-                "</span>" +
-
-                "<br>" +
-
-                "<span class='cours-horaire'>" +
-                  escapeHtml(
-                    coursItem.horaire
-                  ) +
-                "</span>" +
-
-              "</span>" +
-
-              "</label>";
-          }
-        );
-
-
-        html +=
-          "</div>";
-
-
-        bloc.innerHTML =
-          html;
-
-
-        container.appendChild(
-          bloc
-        );
-      }
-    );
-
-
-  mettreAJourResumeSelection();
-
-
-  message(
-    "Sélectionnez le ou les cours suivis par chaque élève.",
-    "info"
-  );
-
-
-  traitement =
-    true;
-}
-
-
-/* ==================================================
-   CHARGEMENT DES COURS
-   ================================================== */
-
-async function chargerCours() {
-
-  const resultat =
-    await getJSON(
-
-      API_URL +
-      "?action=cours"
-
-    );
-
-
-  return Array.isArray(
-    resultat
-  )
-    ? resultat
-    : [];
-}
-
-
-/* ==================================================
-   MODIFICATION SELECTION COURS
-   ================================================== */
-
-function modifierSelectionCours(
-  checkbox
-) {
-
-  const idEleve =
-    checkbox.dataset.eleve;
-
-
-  const idCours =
-    checkbox.dataset.cours;
-
-
-  if (
-    !selectionElevesCours[
-      idEleve
-    ]
-  ) {
-
-    selectionElevesCours[
-      idEleve
-    ] = [];
-  }
-
-
-  if (
-    checkbox.checked
-  ) {
-
-    if (
-      !selectionElevesCours[
-        idEleve
-      ].includes(
-        idCours
-      )
-    ) {
-
-      selectionElevesCours[
-        idEleve
-      ].push(
-        idCours
-      );
-    }
-
-  } else {
-
-    selectionElevesCours[
-      idEleve
-    ] =
-      selectionElevesCours[
-        idEleve
-      ].filter(
-        function(id) {
-
-          return id !== idCours;
-
-        }
-      );
-  }
-
-
-  mettreAJourResumeSelection();
-}
-
-
-/* ==================================================
-   RESUME SELECTION
-   ================================================== */
-
-function compterPresencesSelectionnees() {
-
-  let nombre = 0;
-
-
-  Object.keys(
-    selectionElevesCours
-  )
-    .forEach(
-      function(idEleve) {
-
-        nombre +=
-          selectionElevesCours[
-            idEleve
-          ].length;
-
-      }
-    );
-
-
-  return nombre;
-}
-
-
-function mettreAJourResumeSelection() {
-
-  const nombre =
-    compterPresencesSelectionnees();
-
-
-  const resume =
-    document.getElementById(
-      "resumeSelection"
-    );
-
-
-  const bouton =
-    document.getElementById(
-      "btnValiderSelection"
-    );
-
-
-  if (
-    nombre === 0
-  ) {
-
-    resume.innerHTML =
-      "0 présence à enregistrer";
-
-
-    bouton.disabled =
-      true;
-
-
-    return;
-  }
-
-
-  const tarif =
-    Number(
-      carteActuelle &&
-      carteActuelle.tarifUnitaire
-        ? carteActuelle.tarifUnitaire
-        : 0
-    );
-
-
-  const total =
-    Math.round(
-      (
-        nombre *
-        tarif
-      ) * 100
-    ) / 100;
-
-
-  const motPresence =
-    nombre > 1
-      ? "présences"
-      : "présence";
-
-
-  const motCredit =
-    nombre > 1
-      ? "crédits"
-      : "crédit";
-
-
-  resume.innerHTML =
-
-    "<strong>" +
-    nombre +
-    " " +
-    motPresence +
-    "</strong> à enregistrer — " +
-
-    "<strong>" +
-    nombre +
-    " " +
-    motCredit +
-    "</strong> seront débités." +
-
-    "<br>" +
-
-    "Tarif : <strong>" +
-    tarif.toFixed(2) +
-    " € / cours</strong>" +
-
-    "<br>" +
-
-    "<span class='grand-total'>" +
-    "Valeur correspondante : " +
-    total.toFixed(2) +
-    " €" +
-    "</span>";
-
-
-  bouton.disabled =
-    false;
-}
-
-
-/* ==================================================
-   VALIDATION DU POINTAGE
-   ================================================== */
-
-async function validerSelection() {
-
-  const selections = [];
-
-
-  Object.keys(
-    selectionElevesCours
-  )
-    .forEach(
-      function(idEleve) {
-
-        selectionElevesCours[
-          idEleve
-        ].forEach(
-          function(idCours) {
-
-            selections.push({
-
-              idEleve:
-                idEleve,
-
-              idCours:
-                idCours
-
-            });
-          }
-        );
-      }
-    );
-
-
-  if (
-    selections.length === 0
-  ) {
-
-    message(
-      "⚠️ Sélectionnez au moins un cours.",
-      "warning"
-    );
-
-    return;
-  }
-
-
-  const bouton =
-    document.getElementById(
-      "btnValiderSelection"
-    );
-
-
-  bouton.disabled =
-    true;
-
-
-  bouton.textContent =
-    "⏳ Enregistrement...";
-
-
-  try {
-
-    const resultat =
-      await postJSON(
-
-        API_URL,
-
-        {
-
-          action:
-            "pointerCarte",
-
-          idCarte:
-            carteActuelle.idCarte,
-
-          selections:
-            selections
-
-        }
-
-      );
-
-
-    if (
-      !resultat ||
-      !resultat.ok
-    ) {
-
-      throw new Error(
-        resultat &&
-        resultat.message
-          ? resultat.message
-          : "Impossible d'enregistrer les présences."
-      );
-    }
-
-
-    carteActuelle.creditsRestants =
-      resultat.creditsApres;
-
-
-    carteActuelle.dateDebut =
-      resultat.dateDebut;
-
-
-    carteActuelle.dateFin =
-      resultat.dateFin;
-
-
-    carteActuelle.statut =
-      resultat.statut;
-
-
-    afficherResultatPointage(
-      resultat
-    );
-
-
-  } catch (erreur) {
-
-    bouton.disabled =
-      false;
-
-
-    bouton.textContent =
-      "✅ Valider les présences";
-
-
-    message(
-
-      "❌ " +
-      escapeHtml(
-        erreur.message
-      ),
-
-      "error"
-
-    );
-  }
-}
-
-
-/* ==================================================
-   RESULTAT DU POINTAGE
-   ================================================== */
-
-function afficherResultatPointage(
-  resultat
-) {
-
-  afficherSection(
-    "sectionSelection"
-  );
-
-
-  const container =
-    document.getElementById(
-      "elevesCoursContainer"
-    );
-
-
-  container.innerHTML = "";
-
-
-  document.getElementById(
-    "resumeSelection"
-  ).innerHTML =
-
-    "<div class='titre-resultat'>" +
-    "✅ Présences validées" +
-    "</div>" +
-
-    "Carte : <strong>" +
-    escapeHtml(
-      resultat.idCarte
-    ) +
-    "</strong>" +
-
-    "<br>" +
-
-    "Présences enregistrées : <strong>" +
-    resultat.nombrePresences +
-    "</strong>" +
-
-    "<br>" +
-
-    "Crédits restants : <strong>" +
-    resultat.creditsApres +
-    "</strong>" +
-
-    "<br>" +
-
-    "Tarif par cours : <strong>" +
-    Number(
-      resultat.tarifUnitaire
-    ).toFixed(2) +
-    " €</strong>" +
-
-    "<br>" +
-
-    "Date de début : <strong>" +
-    escapeHtml(
-      resultat.dateDebut
-    ) +
-    "</strong>" +
-
-    "<br>" +
-
-    "Date de fin : <strong>" +
-    escapeHtml(
-      resultat.dateFin
-    ) +
-    "</strong>";
-
-
-  document.getElementById(
-    "btnValiderSelection"
-  ).classList.add(
-    "hidden"
-  );
-
-
-  message(
-
-    "✅ <strong>Pointage enregistré avec succès.</strong><br><br>" +
-
-    "La carte " +
-    escapeHtml(
-      resultat.idCarte
-    ) +
-    " dispose maintenant de " +
-    "<strong>" +
-    resultat.creditsApres +
-    "</strong> crédit(s).",
-
-    "success"
-
-  );
-
-
-  const boutonRetour =
-    document.querySelector(
-      "#sectionSelection .btn-secondary"
-    );
-
-
-  boutonRetour.textContent =
-    "🏠 Retour à l'accueil";
-
-
-  boutonRetour.onclick =
-    retourAccueil;
-
-
-  traitement =
-    false;
-}
-
-
-/* ==================================================
-   ANNULATION DU POINTAGE
-   ================================================== */
-
-function annulerPointage() {
-
-  carteActuelle =
-    null;
-
-
-  selectionElevesCours =
-    {};
-
-
-  traitement =
-    false;
-
-
-  retourAccueil();
-}
-
-
-/* ==================================================
-   ARRET DU SCANNER
-   ================================================== */
-
-async function arreterScanner() {
-
-  await arreterScannerSilencieusement();
-
-
-  message(
-    "Scanner arrêté. Vous pouvez saisir le QR Token manuellement ou redémarrer la caméra.",
-    "info"
-  );
-}
-
-
-async function arreterScannerSilencieusement() {
-
-  if (
-    !scanner
-  ) {
-
-    scannerActif =
-      false;
-
-    return;
-  }
-
-
-  try {
-
-    if (
-      scannerActif
-    ) {
-
-      await scanner.stop();
-    }
-
-
-    await scanner.clear();
-
-  } catch (e) {
-
-    console.warn(
-      "Erreur arrêt scanner :",
-      e
     );
 
   } finally {
 
-    scanner =
-      null;
+    traitement = false;
 
-    scannerActif =
-      false;
-
-    document.getElementById(
-      "start"
-    ).style.display =
-      "block";
-
-
-    document.getElementById(
-      "stop"
-    ).style.display =
-      "none";
+    bouton.disabled = false;
   }
 }
 
 
-/* ==================================================
-   REQUETE GET JSON
-   ================================================== */
+/* =====================================================
+ * ÉCHAPPEMENT HTML
+ * ===================================================== */
 
-async function getJSON(
-  url
-) {
+function escapeHtml(texte) {
 
-  const reponse =
-    await fetch(
-      url,
-      {
-
-        method:
-          "GET",
-
-        cache:
-          "no-store"
-
-      }
-    );
-
-
-  if (
-    !reponse.ok
-  ) {
-
-    throw new Error(
-      "Erreur HTTP " +
-      reponse.status
-    );
-  }
-
-
-  return await reponse.json();
+  return String(texte || "")
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
 }
-
-
-/* ==================================================
-   REQUETE POST JSON
-   ================================================== */
-
-async function postJSON(
-  url,
-  donnees
-) {
-
-  const reponse =
-    await fetch(
-
-      url,
-
-      {
-
-        method:
-          "POST",
-
-        headers: {
-
-          "Content-Type":
-            "text/plain;charset=utf-8"
-
-        },
-
-        body:
-          JSON.stringify(
-            donnees
-          )
-
-      }
-
-    );
-
-
-  if (
-    !reponse.ok
-  ) {
-
-    throw new Error(
-      "Erreur HTTP " +
-      reponse.status
-    );
-  }
-
-
-  return await reponse.json();
-}
-
-
-/* ==================================================
-   SECURITE HTML
-   ================================================== */
-
-function escapeHtml(
-  texte
-) {
-
-  return String(
-    texte || ""
-  )
-
-    .replace(
-      /&/g,
-      "&amp;"
-    )
-
-    .replace(
-      /</g,
-      "&lt;"
-    )
-
-    .replace(
-      />/g,
-      "&gt;"
-    )
-
-    .replace(
-      /"/g,
-      "&quot;"
-    )
-
-    .replace(
-      /'/g,
-      "&#039;"
-    );
-}
-
 
 </script>
 
