@@ -5,209 +5,458 @@
 
   <meta charset="UTF-8">
 
-  <meta name="viewport"
-        content="width=device-width, initial-scale=1.0">
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0">
 
-  <title>Pointage - École de danse</title>
+  <title>Pointage - Abonnements</title>
 
-  <script src="https://unpkg.com/html5-qrcode"
-          type="text/javascript"></script>
+  <script
+    src="https://unpkg.com/html5-qrcode"
+    type="text/javascript">
+  </script>
 
 
   <style>
 
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 20px;
-      background: #f5f5f5;
-      text-align: center;
+    * {
+      box-sizing: border-box;
     }
 
+
+    body {
+
+      font-family:
+        Arial,
+        sans-serif;
+
+      margin: 0;
+
+      padding: 20px;
+
+      background: #f5f5f5;
+
+      text-align: center;
+
+      color: #222;
+    }
+
+
     h1 {
+
+      margin-top: 5px;
+
       margin-bottom: 25px;
     }
 
-    button {
-      width: 100%;
-      max-width: 500px;
-      box-sizing: border-box;
-      padding: 15px;
-      margin: 8px auto;
-      font-size: 18px;
-      border-radius: 10px;
-    }
 
-    button {
-      border: none;
-      background: #222;
-      color: white;
-      cursor: pointer;
-    }
+    h2 {
 
-    button:disabled {
-      opacity: 0.5;
-      cursor: not-allowed;
-    }
-
-    #stop {
-      display: none;
-      background: #777;
-    }
-
-    #reader {
-      width: 100%;
-      max-width: 500px;
-      margin: 20px auto;
-      background: white;
-      border-radius: 12px;
-      overflow: hidden;
-    }
-
-    #message {
-      max-width: 500px;
-      margin: 20px auto;
-      padding: 18px;
-      border-radius: 10px;
-      background: white;
-      line-height: 1.5;
-    }
-
-    .info {
-      background: #e5efff !important;
-    }
-
-    .success {
-      background: #dff5df !important;
-      color: #145214;
-    }
-
-    .error {
-      background: #ffe0e0 !important;
-      color: #8b0000;
-    }
-
-    .warning {
-      background: #fff2cc !important;
-      color: #765600;
-    }
-
-    .nom {
-      font-size: 25px;
-      font-weight: bold;
-      margin-bottom: 10px;
-    }
-
-    .credits {
-      font-size: 22px;
-      font-weight: bold;
-      margin-top: 10px;
-    }
-
-
-    /* ==================================================
-       SELECTION ELEVE / COURS
-       ================================================== */
-
-    .selection-container {
-      width: 100%;
-      max-width: 500px;
-      box-sizing: border-box;
-      margin: 20px auto;
-      padding: 18px;
-      background: white;
-      border-radius: 12px;
-      text-align: left;
-    }
-
-    .selection-container h2 {
-      text-align: center;
       margin-top: 0;
     }
 
-    .info-carte {
-      padding: 12px;
-      border-radius: 8px;
-      background: #e5efff;
-      text-align: center;
-      line-height: 1.5;
-    }
 
-    .eleve-selection {
-      margin-top: 18px;
+    button {
+
+      width: 100%;
+
+      max-width: 500px;
+
       padding: 15px;
-      border: 1px solid #ddd;
+
+      margin: 8px auto;
+
+      font-size: 18px;
+
       border-radius: 10px;
-      background: #fafafa;
-    }
 
-    .eleve-selection h3 {
-      margin: 0 0 12px 0;
-      font-size: 19px;
-    }
+      border: none;
 
-    .cours-eleve {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
+      background: #222;
 
-    .cours-checkbox {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      padding: 12px;
-      border: 1px solid #ddd;
-      border-radius: 8px;
-      background: white;
-      cursor: pointer;
-      box-sizing: border-box;
-    }
+      color: white;
 
-    .cours-checkbox:hover {
-      background: #f5f5f5;
-    }
-
-    .cours-checkbox input {
-      width: 22px;
-      height: 22px;
-      flex-shrink: 0;
       cursor: pointer;
     }
 
-    .cours-info {
-      flex: 1;
-      line-height: 1.35;
+
+    button:disabled {
+
+      opacity: 0.5;
+
+      cursor: not-allowed;
     }
 
-    .cours-nom {
-      font-weight: bold;
-    }
-
-    .cours-horaire {
-      font-size: 14px;
-      color: #666;
-    }
-
-    .resume-selection {
-      margin-top: 20px;
-      padding: 15px;
-      border-radius: 8px;
-      background: #e9f7ef;
-      text-align: center;
-      line-height: 1.5;
-      font-size: 17px;
-    }
 
     .btn-success {
+
       background: #238636;
     }
 
+
     .btn-secondary {
+
       background: #777;
     }
 
-    .bouton-selection {
+
+    .btn-primary {
+
+      background: #2563eb;
+    }
+
+
+    .btn-danger {
+
+      background: #b91c1c;
+    }
+
+
+    #stop {
+
+      display: none;
+
+      background: #777;
+    }
+
+
+    #reader {
+
+      width: 100%;
+
+      max-width: 500px;
+
+      margin: 20px auto;
+
+      background: white;
+
+      border-radius: 12px;
+
+      overflow: hidden;
+    }
+
+
+    #message {
+
+      width: 100%;
+
+      max-width: 500px;
+
+      margin: 20px auto;
+
+      padding: 18px;
+
+      border-radius: 10px;
+
+      background: white;
+
+      line-height: 1.5;
+    }
+
+
+    .info {
+
+      background: #e5efff !important;
+    }
+
+
+    .success {
+
+      background: #dff5df !important;
+
+      color: #145214;
+    }
+
+
+    .error {
+
+      background: #ffe0e0 !important;
+
+      color: #8b0000;
+    }
+
+
+    .warning {
+
+      background: #fff2cc !important;
+
+      color: #765600;
+    }
+
+
+    .selection-container {
+
+      width: 100%;
+
+      max-width: 500px;
+
+      margin: 20px auto;
+
+      padding: 18px;
+
+      background: white;
+
+      border-radius: 12px;
+
+      text-align: left;
+    }
+
+
+    .selection-container h2 {
+
+      text-align: center;
+    }
+
+
+    .choice-button {
+
+      display: block;
+
+      margin: 12px auto;
+
+      max-width: 500px;
+    }
+
+
+    .hidden {
+
+      display: none !important;
+    }
+
+
+    .form-group {
+
+      margin-bottom: 16px;
+
+      text-align: left;
+    }
+
+
+    .form-group label {
+
+      display: block;
+
+      font-weight: bold;
+
+      margin-bottom: 7px;
+    }
+
+
+    input[type="text"],
+    input[type="email"],
+    input[type="number"] {
+
+      width: 100%;
+
+      padding: 13px;
+
+      font-size: 17px;
+
+      border: 1px solid #ccc;
+
+      border-radius: 8px;
+    }
+
+
+    .eleve-card {
+
+      margin-top: 15px;
+
+      padding: 15px;
+
+      border: 1px solid #ddd;
+
+      border-radius: 10px;
+
+      background: #fafafa;
+    }
+
+
+    .eleve-card h3 {
+
+      margin:
+        0 0 8px 0;
+    }
+
+
+    .eleve-card p {
+
+      margin:
+        5px 0;
+    }
+
+
+    .eleve-selection {
+
+      margin-top: 18px;
+
+      padding: 15px;
+
+      border: 1px solid #ddd;
+
+      border-radius: 10px;
+
+      background: #fafafa;
+    }
+
+
+    .eleve-selection h3 {
+
+      margin:
+        0 0 12px 0;
+    }
+
+
+    .cours-eleve {
+
+      display: flex;
+
+      flex-direction: column;
+
+      gap: 8px;
+    }
+
+
+    .cours-checkbox {
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 12px;
+
+      padding: 12px;
+
+      border: 1px solid #ddd;
+
+      border-radius: 8px;
+
+      background: white;
+
+      cursor: pointer;
+    }
+
+
+    .cours-checkbox input {
+
+      width: 22px;
+
+      height: 22px;
+
+      flex-shrink: 0;
+    }
+
+
+    .cours-info {
+
+      flex: 1;
+
+      line-height: 1.35;
+    }
+
+
+    .cours-nom {
+
+      font-weight: bold;
+    }
+
+
+    .cours-horaire {
+
+      font-size: 14px;
+
+      color: #666;
+    }
+
+
+    .info-carte {
+
+      padding: 14px;
+
+      border-radius: 8px;
+
+      background: #e5efff;
+
+      text-align: center;
+
+      line-height: 1.6;
+    }
+
+
+    .resume-selection {
+
+      margin-top: 20px;
+
+      padding: 15px;
+
+      border-radius: 8px;
+
+      background: #e9f7ef;
+
+      text-align: center;
+
+      line-height: 1.6;
+
+      font-size: 17px;
+    }
+
+
+    .email-info {
+
+      padding: 12px;
+
+      background: #f0f0f0;
+
+      border-radius: 8px;
+
+      margin-bottom: 12px;
+    }
+
+
+    .token-box {
+
+      display: flex;
+
+      gap: 8px;
+    }
+
+
+    .token-box input {
+
+      flex: 1;
+    }
+
+
+    .carte-resume {
+
+      padding: 15px;
+
+      margin-bottom: 15px;
+
+      border-radius: 10px;
+
+      background: #e5efff;
+
+      line-height: 1.6;
+    }
+
+
+    .titre-resultat {
+
+      font-size: 24px;
+
+      font-weight: bold;
+
+      margin-bottom: 12px;
+    }
+
+
+    .grand-total {
+
+      font-size: 23px;
+
+      font-weight: bold;
+
       margin-top: 10px;
     }
 
@@ -218,78 +467,384 @@
 
 <body>
 
-  <h1>💃 Pointage des cartes d'abonnement</h1>
+
+  <h1>
+    💃 Pointage des cartes d'abonnement
+  </h1>
 
 
   <!-- ==================================================
-       SELECTION APRES SCAN
+       ETAPE 1 : CHOIX INITIAL
        ================================================== -->
 
-  <div id="selectionApresScan"
-       class="selection-container"
-       style="display:none;">
+  <section
+    id="sectionAccueil"
+    class="selection-container">
 
-    <h2>👥 Présences</h2>
+    <h2>
+      Que souhaitez-vous faire ?
+    </h2>
 
-    <p id="infoCarte"
-       class="info-carte"></p>
 
-    <div id="elevesCoursContainer"></div>
+    <button
+      class="btn-primary choice-button"
+      onclick="choisirCarteExistante()">
 
-    <div id="resumeSelection"
-         class="resume-selection">
+      📷 Carte déjà enregistrée
 
-      0 présence à enregistrer — 0 crédit sera débité
+    </button>
+
+
+    <button
+      class="btn-success choice-button"
+      onclick="choisirNouvelleCarte()">
+
+      ➕ Nouvelle carte
+
+    </button>
+
+  </section>
+
+
+  <!-- ==================================================
+       NOUVELLE CARTE
+       ================================================== -->
+
+  <section
+    id="sectionNouvelleCarte"
+    class="selection-container hidden">
+
+    <h2>
+      ➕ Nouvelle carte
+    </h2>
+
+
+    <p>
+      Sélectionnez 1 ou 2 élèves déjà enregistrés
+      dans l'onglet <strong>Eleves</strong>.
+    </p>
+
+
+    <!-- PREMIER ELEVE -->
+
+    <div class="form-group">
+
+      <label for="idEleve1">
+        ID élève 1
+      </label>
+
+      <input
+        id="idEleve1"
+        type="text"
+        placeholder="Ex. A001"
+        autocomplete="off">
 
     </div>
 
-    <button id="btnValiderSelection"
-            class="btn-success"
-            disabled>
+
+    <button
+      class="btn-primary"
+      onclick="rechercherElevePourNouvelleCarte(1)">
+
+      🔎 Rechercher l'élève 1
+
+    </button>
+
+
+    <div
+      id="eleve1Resume"
+      class="eleve-card hidden">
+    </div>
+
+
+    <div
+      id="email1Container"
+      class="hidden">
+
+      <div class="form-group">
+
+        <label for="email1">
+          Adresse e-mail de l'élève 1
+        </label>
+
+        <input
+          id="email1"
+          type="email"
+          placeholder="adresse@email.com">
+
+      </div>
+
+    </div>
+
+
+    <!-- DEUXIEME ELEVE -->
+
+    <button
+      id="btnAjouterEleve2"
+      class="btn-secondary"
+      onclick="afficherEleve2()">
+
+      ➕ Ajouter un 2e élève
+
+    </button>
+
+
+    <div
+      id="eleve2Form"
+      class="hidden">
+
+      <div class="form-group">
+
+        <label for="idEleve2">
+          ID élève 2
+        </label>
+
+        <input
+          id="idEleve2"
+          type="text"
+          placeholder="Ex. A002"
+          autocomplete="off">
+
+      </div>
+
+
+      <button
+        class="btn-primary"
+        onclick="rechercherElevePourNouvelleCarte(2)">
+
+        🔎 Rechercher l'élève 2
+
+      </button>
+
+
+      <div
+        id="eleve2Resume"
+        class="eleve-card hidden">
+      </div>
+
+
+      <div
+        id="email2Container"
+        class="hidden">
+
+        <div class="form-group">
+
+          <label for="email2">
+            Adresse e-mail de l'élève 2
+          </label>
+
+          <input
+            id="email2"
+            type="email"
+            placeholder="adresse@email.com">
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- MONTANT -->
+
+    <div
+      id="montantCarteContainer"
+      class="hidden">
+
+      <div class="form-group">
+
+        <label for="montantPaye">
+          Montant payé pour la carte (€)
+        </label>
+
+        <input
+          id="montantPaye"
+          type="number"
+          min="0.01"
+          step="0.01"
+          placeholder="Ex. 100">
+
+      </div>
+
+
+      <div
+        id="tarifCalcule"
+        class="info-carte">
+
+        Tarif par cours :
+        <strong>—</strong>
+
+      </div>
+
+    </div>
+
+
+    <button
+      id="btnCreerCarte"
+      class="btn-success hidden"
+      onclick="creerCarte()">
+
+      💳 Créer la carte
+
+    </button>
+
+
+    <button
+      class="btn-secondary"
+      onclick="retourAccueil()">
+
+      ↩️ Retour
+
+    </button>
+
+  </section>
+
+
+  <!-- ==================================================
+       CARTE EXISTANTE
+       ================================================== -->
+
+  <section
+    id="sectionCarteExistante"
+    class="selection-container hidden">
+
+    <h2>
+      📷 Carte déjà enregistrée
+    </h2>
+
+
+    <p>
+      Scannez le QR code d'un élève associé
+      à la carte.
+    </p>
+
+
+    <button
+      id="start"
+      onclick="demarrerScanner()">
+
+      📷 Autoriser la caméra
+
+    </button>
+
+
+    <button
+      id="stop"
+      onclick="arreterScanner()">
+
+      ⛔ Arrêter le scanner
+
+    </button>
+
+
+    <div id="reader"></div>
+
+
+    <div class="form-group">
+
+      <label for="tokenManuel">
+        Ou saisir manuellement le QR Token
+      </label>
+
+
+      <div class="token-box">
+
+        <input
+          id="tokenManuel"
+          type="text"
+          maxlength="50"
+          placeholder="Ex. Sarah001"
+          autocomplete="off">
+
+        <button
+          style="width:auto; margin:0;"
+          class="btn-primary"
+          onclick="rechercherCarteManuellement()">
+
+          🔎
+
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <button
+      class="btn-secondary"
+      onclick="retourAccueil()">
+
+      ↩️ Retour
+
+    </button>
+
+  </section>
+
+
+  <!-- ==================================================
+       SELECTION DES PRESENCES
+       ================================================== -->
+
+  <section
+    id="sectionSelection"
+    class="selection-container hidden">
+
+    <h2>
+      👥 Pointage
+    </h2>
+
+
+    <div
+      id="infoCarte"
+      class="carte-resume">
+    </div>
+
+
+    <div
+      id="elevesCoursContainer">
+    </div>
+
+
+    <div
+      id="resumeSelection"
+      class="resume-selection">
+
+      0 présence à enregistrer
+
+    </div>
+
+
+    <button
+      id="btnValiderSelection"
+      class="btn-success"
+      disabled
+      onclick="validerSelection()">
 
       ✅ Valider les présences
 
     </button>
 
-    <button id="btnAnnulerSelection"
-            class="btn-secondary">
+
+    <button
+      class="btn-secondary"
+      onclick="annulerPointage()">
 
       ↩️ Annuler
 
     </button>
 
-  </div>
+  </section>
 
 
   <!-- ==================================================
-       CONTROLES SCANNER
+       MESSAGE GENERAL
        ================================================== -->
 
-  <button id="start"
-          onclick="demarrer()">
+  <div
+    id="message"
+    class="info">
 
-    📷 Autoriser la caméra
-
-  </button>
-
-
-  <button id="stop"
-          onclick="arreter()">
-
-    ⛔ Arrêter le scanner
-
-  </button>
-
-
-  <div id="reader"></div>
-
-
-  <div id="message"
-       class="info">
-
-    Appuyez sur
-    <strong>« 📷 Autoriser la caméra »</strong>
-    puis présentez le QR code devant la caméra.
+    Choisissez une action pour commencer.
 
   </div>
 
@@ -298,13 +853,9 @@
 
 
 /* ==================================================
-1.   CONFIGURATION
-================================================== */
+   CONFIGURATION
+   ================================================== */
 
-
-/*
- * Adresse de ton Apps Script.
- */
 const API_URL =
   "https://script.google.com/macros/s/AKfycbz-tig9GMgWGbCq7iuiiM_d68Z4z9GxPtbOinDMYksWhqR4-VCOb23UmrmT3mjeKHZm/exec";
 
@@ -313,570 +864,1406 @@ let scanner = null;
 
 let scannerActif = false;
 
-/*
- * Verrou général du scanner.
- *
- * true = aucun nouveau QR ne doit être traité.
- */
 let traitement = false;
 
 
 /*
- * true = l'utilisateur est actuellement
- * en train de choisir les élèves et les cours.
+ * Élèves sélectionnés pour la création
+ * d'une nouvelle carte.
  */
-let selectionEnCours = false;
+
+let nouveauxEleves = {
+
+  1: null,
+
+  2: null
+
+};
 
 
 /*
- * Données retournées par Apps Script
- * après le scan.
+ * Carte actuellement sélectionnée
+ * pour le pointage.
  */
-let donneesScan = null;
+
+let carteActuelle = null;
 
 
 /*
  * Structure :
  *
  * {
- *   "A002": ["C2", "C3"],
- *   "A003": ["C2"]
+ *   A001: ["C1", "C2"],
+ *   A002: ["C3"]
  * }
- *
- * Cela signifie :
- *
- * A002 -> C2 + C3
- * A003 -> C2
  */
+
 let selectionElevesCours = {};
 
 
 /* ==================================================
-2.   AFFICHAGE DES MESSAGES
-================================================== */
+   AFFICHAGE DES MESSAGES
+   ================================================== */
 
-function message(texte, type) {
+function message(
+  texte,
+  type
+) {
 
   const element =
-    document.getElementById("message");
+    document.getElementById(
+      "message"
+    );
+
 
   element.className = "";
 
+
   if (type) {
-    element.classList.add(type);
+
+    element.classList.add(
+      type
+    );
   }
 
-  element.innerHTML = texte;
+
+  element.innerHTML =
+    texte;
 }
 
 
 /* ==================================================
-3.   DEMARRAGE DE LA CAMERA
-================================================== */
+   AFFICHAGE DES SECTIONS
+   ================================================== */
 
-function demarrer() {
+function afficherSection(
+  id
+) {
 
-  /*
-   * IMPORTANT :
-   * Il n'y a plus de sélection de cours ici.
-   *
-   * Le cours sera choisi APRÈS le scan,
-   * individuellement pour chaque élève.
-   */
-
-  if (scannerActif) {
-    return;
-  }
+  const sections =
+    [
+      "sectionAccueil",
+      "sectionNouvelleCarte",
+      "sectionCarteExistante",
+      "sectionSelection"
+    ];
 
 
-  /*
-   * Si une ancienne sélection existe,
-   * on la ferme avant de démarrer.
-   */
-  fermerSelection();
+  sections.forEach(
+    function(sectionId) {
+
+      const element =
+        document.getElementById(
+          sectionId
+        );
+
+
+      if (!element) {
+        return;
+      }
+
+
+      if (
+        sectionId === id
+      ) {
+
+        element.classList.remove(
+          "hidden"
+        );
+
+      } else {
+
+        element.classList.add(
+          "hidden"
+        );
+      }
+    }
+  );
+}
+
+
+/* ==================================================
+   ACCUEIL
+   ================================================== */
+
+function retourAccueil() {
+
+  arreterScannerSilencieusement();
+
+
+  nouveauxEleves = {
+
+    1: null,
+
+    2: null
+
+  };
+
+
+  carteActuelle = null;
+
+  selectionElevesCours = {};
+
+
+  document.getElementById(
+    "idEleve1"
+  ).value = "";
+
+
+  document.getElementById(
+    "idEleve2"
+  ).value = "";
+
+
+  document.getElementById(
+    "email1"
+  ).value = "";
+
+
+  document.getElementById(
+    "email2"
+  ).value = "";
+
+
+  document.getElementById(
+    "montantPaye"
+  ).value = "";
+
+
+  document.getElementById(
+    "eleve1Resume"
+  ).classList.add(
+    "hidden"
+  );
+
+
+  document.getElementById(
+    "eleve2Resume"
+  ).classList.add(
+    "hidden"
+  );
+
+
+  document.getElementById(
+    "email1Container"
+  ).classList.add(
+    "hidden"
+  );
+
+
+  document.getElementById(
+    "email2Container"
+  ).classList.add(
+    "hidden"
+  );
+
+
+  document.getElementById(
+    "eleve2Form"
+  ).classList.add(
+    "hidden"
+  );
+
+
+  document.getElementById(
+    "montantCarteContainer"
+  ).classList.add(
+    "hidden"
+  );
+
+
+  document.getElementById(
+    "btnCreerCarte"
+  ).classList.add(
+    "hidden"
+  );
+
+
+  document.getElementById(
+    "btnAjouterEleve2"
+  ).classList.remove(
+    "hidden"
+  );
+
+
+  afficherSection(
+    "sectionAccueil"
+  );
+
+
+  message(
+    "Choisissez une action pour commencer.",
+    "info"
+  );
+}
+
+
+/* ==================================================
+   CARTE EXISTANTE
+   ================================================== */
+
+function choisirCarteExistante() {
+
+  afficherSection(
+    "sectionCarteExistante"
+  );
 
 
   message(
 
-    "📷 Demande d'autorisation de la caméra...<br><br>" +
-    "Si Android affiche une demande, choisissez " +
-    "<strong>Autoriser</strong>.",
+    "📷 Scannez le QR code d'un élève associé à la carte ou saisissez manuellement son QR Token.",
 
     "info"
 
   );
+}
 
 
-  if (!navigator.mediaDevices ||
-      !navigator.mediaDevices.getUserMedia) {
+/* ==================================================
+   NOUVELLE CARTE
+   ================================================== */
+
+function choisirNouvelleCarte() {
+
+  afficherSection(
+    "sectionNouvelleCarte"
+  );
+
+
+  message(
+
+    "Sélectionnez 1 ou 2 élèves déjà enregistrés dans Eleves.",
+
+    "info"
+
+  );
+}
+
+
+/* ==================================================
+   AJOUT DU 2E ELEVE
+   ================================================== */
+
+function afficherEleve2() {
+
+  document.getElementById(
+    "eleve2Form"
+  ).classList.remove(
+    "hidden"
+  );
+
+
+  document.getElementById(
+    "btnAjouterEleve2"
+  ).classList.add(
+    "hidden"
+  );
+}
+
+
+/* ==================================================
+   RECHERCHE D'UN ELEVE POUR NOUVELLE CARTE
+   ================================================== */
+
+async function rechercherElevePourNouvelleCarte(
+  numero
+) {
+
+  const champ =
+    document.getElementById(
+      "idEleve" + numero
+    );
+
+
+  const idEleve =
+    champ.value.trim();
+
+
+  if (!idEleve) {
 
     message(
-
-      "❌ Votre navigateur ne permet pas l'accès à la caméra.",
-
-      "error"
-
+      "⚠️ Veuillez saisir un ID élève.",
+      "warning"
     );
 
     return;
   }
 
 
-  navigator.mediaDevices.getUserMedia({
-
-    video: {
-      facingMode: {
-        ideal: "environment"
-      }
-    },
-
-    audio: false
-
-  })
+  message(
+    "⏳ Recherche de l'élève...",
+    "info"
+  );
 
 
-  .then(function(stream) {
+  try {
+
+    const resultat =
+      await getJSON(
+        API_URL +
+        "?action=eleve&id=" +
+        encodeURIComponent(
+          idEleve
+        )
+      );
 
 
     /*
-     * Cette demande sert uniquement
-     * à obtenir l'autorisation.
+     * Le serveur actuel ne possède pas
+     * de recherche par ID dans doGet.
      *
-     * Html5Qrcode ouvrira ensuite
-     * sa propre caméra.
+     * On utilise donc une fonction spéciale
+     * ci-dessous qui recherche par ID.
      */
 
-    stream.getTracks().forEach(function(track) {
-      track.stop();
+    if (
+      !resultat ||
+      !resultat.ok
+    ) {
+
+      throw new Error(
+        resultat &&
+        resultat.message
+          ? resultat.message
+          : "Élève introuvable."
+      );
+    }
+
+
+    enregistrerEleveNouvelleCarte(
+      numero,
+      resultat
+    );
+
+
+  } catch (erreur) {
+
+    /*
+     * Fallback :
+     * la recherche par ID est effectuée
+     * par une action dédiée.
+     */
+
+    try {
+
+      const resultat =
+        await getJSON(
+          API_URL +
+          "?action=eleveParId&id=" +
+          encodeURIComponent(
+            idEleve
+          )
+        );
+
+
+      if (
+        !resultat ||
+        !resultat.ok
+      ) {
+
+        throw new Error(
+          resultat &&
+          resultat.message
+            ? resultat.message
+            : "Élève introuvable."
+        );
+      }
+
+
+      enregistrerEleveNouvelleCarte(
+        numero,
+        resultat
+      );
+
+
+    } catch (erreurFinale) {
+
+      message(
+
+        "❌ " +
+        erreurFinale.message,
+
+        "error"
+
+      );
+    }
+  }
+}
+
+
+/* ==================================================
+   ENREGISTREMENT LOCAL D'UN ELEVE
+   ================================================== */
+
+function enregistrerEleveNouvelleCarte(
+  numero,
+  eleve
+) {
+
+  nouveauxEleves[numero] =
+    eleve;
+
+
+  const resume =
+    document.getElementById(
+      "eleve" +
+      numero +
+      "Resume"
+    );
+
+
+  resume.innerHTML =
+
+    "<h3>👤 " +
+    escapeHtml(
+      eleve.nomComplet
+    ) +
+    "</h3>" +
+
+    "<p>" +
+    "ID élève : <strong>" +
+    escapeHtml(
+      eleve.idEleve
+    ) +
+    "</strong>" +
+    "</p>" +
+
+    "<p>" +
+    "E-mail actuel : " +
+    (
+      eleve.email
+        ? "<strong>" +
+          escapeHtml(
+            eleve.email
+          ) +
+          "</strong>"
+        : "<em>Aucun e-mail enregistré</em>"
+    ) +
+    "</p>";
+
+
+  resume.classList.remove(
+    "hidden"
+  );
+
+
+  const emailInput =
+    document.getElementById(
+      "email" +
+      numero
+    );
+
+
+  emailInput.value =
+    eleve.email || "";
+
+
+  document.getElementById(
+    "email" +
+    numero +
+    "Container"
+  ).classList.remove(
+    "hidden"
+  );
+
+
+  mettreAJourFormulaireNouvelleCarte();
+
+
+  message(
+
+    "✅ " +
+    escapeHtml(
+      eleve.nomComplet
+    ) +
+    " a été trouvé.",
+
+    "success"
+
+  );
+}
+
+
+/* ==================================================
+   VERIFICATION DU FORMULAIRE NOUVELLE CARTE
+   ================================================== */
+
+function mettreAJourFormulaireNouvelleCarte() {
+
+  const eleve1 =
+    nouveauxEleves[1];
+
+
+  const eleve2 =
+    nouveauxEleves[2];
+
+
+  const montant =
+    Number(
+      String(
+        document.getElementById(
+          "montantPaye"
+        ).value
+      )
+        .replace(",", ".")
+    );
+
+
+  /*
+   * Le montant n'apparaît qu'une fois
+   * qu'au moins un élève est sélectionné.
+   */
+
+  if (eleve1) {
+
+    document.getElementById(
+      "montantCarteContainer"
+    ).classList.remove(
+      "hidden"
+    );
+
+  } else {
+
+    document.getElementById(
+      "montantCarteContainer"
+    ).classList.add(
+      "hidden"
+    );
+  }
+
+
+  const email1 =
+    document.getElementById(
+      "email1"
+    ).value.trim();
+
+
+  const email2 =
+    document.getElementById(
+      "email2"
+    ).value.trim();
+
+
+  const formulaireValide =
+
+    !!eleve1 &&
+
+    !!email1 &&
+
+    (
+      !eleve2 ||
+      !!email2
+    ) &&
+
+    isFinite(montant) &&
+
+    montant > 0;
+
+
+  const bouton =
+    document.getElementById(
+      "btnCreerCarte"
+    );
+
+
+  if (formulaireValide) {
+
+    bouton.classList.remove(
+      "hidden"
+    );
+
+  } else {
+
+    bouton.classList.add(
+      "hidden"
+    );
+  }
+
+
+  const tarif =
+    document.getElementById(
+      "tarifCalcule"
+    );
+
+
+  if (
+    isFinite(montant) &&
+    montant > 0
+  ) {
+
+    const prix =
+      Math.round(
+        (
+          montant /
+          10
+        ) * 100
+      ) / 100;
+
+
+    tarif.innerHTML =
+
+      "Tarif par cours : " +
+
+      "<strong>" +
+
+      prix.toFixed(2) +
+
+      " €</strong>";
+
+  } else {
+
+    tarif.innerHTML =
+      "Tarif par cours : <strong>—</strong>";
+  }
+}
+
+
+/*
+ * Mise à jour du formulaire
+ * lorsque l'utilisateur tape.
+ */
+
+document.getElementById(
+  "email1"
+).addEventListener(
+  "input",
+  mettreAJourFormulaireNouvelleCarte
+);
+
+
+document.getElementById(
+  "email2"
+).addEventListener(
+  "input",
+  mettreAJourFormulaireNouvelleCarte
+);
+
+
+document.getElementById(
+  "montantPaye"
+).addEventListener(
+  "input",
+  mettreAJourFormulaireNouvelleCarte
+);
+
+
+/* ==================================================
+   CREATION DE LA CARTE
+   ================================================== */
+
+async function creerCarte() {
+
+  const eleves = [];
+
+
+  if (
+    !nouveauxEleves[1]
+  ) {
+
+    message(
+      "⚠️ Sélectionnez au moins un élève.",
+      "warning"
+    );
+
+    return;
+  }
+
+
+  const email1 =
+    document.getElementById(
+      "email1"
+    ).value.trim();
+
+
+  if (!email1) {
+
+    message(
+      "⚠️ Veuillez saisir l'e-mail de l'élève 1.",
+      "warning"
+    );
+
+    return;
+  }
+
+
+  eleves.push({
+
+    idEleve:
+      nouveauxEleves[1].idEleve,
+
+    email:
+      email1
+
+  });
+
+
+  if (
+    nouveauxEleves[2]
+  ) {
+
+    const email2 =
+      document.getElementById(
+        "email2"
+      ).value.trim();
+
+
+    if (!email2) {
+
+      message(
+        "⚠️ Veuillez saisir l'e-mail de l'élève 2.",
+        "warning"
+      );
+
+      return;
+    }
+
+
+    eleves.push({
+
+      idEleve:
+        nouveauxEleves[2].idEleve,
+
+      email:
+        email2
+
     });
+  }
+
+
+  const montant =
+    Number(
+      String(
+        document.getElementById(
+          "montantPaye"
+        ).value
+      )
+        .replace(",", ".")
+    );
+
+
+  if (
+    !isFinite(montant) ||
+    montant <= 0
+  ) {
+
+    message(
+      "⚠️ Veuillez saisir un montant payé valide.",
+      "warning"
+    );
+
+    return;
+  }
+
+
+  const bouton =
+    document.getElementById(
+      "btnCreerCarte"
+    );
+
+
+  bouton.disabled = true;
+
+  bouton.textContent =
+    "⏳ Création de la carte...";
+
+
+  message(
+    "⏳ Création de la carte et envoi des QR codes...",
+    "info"
+  );
+
+
+  try {
+
+    const resultat =
+      await postJSON(
+
+        API_URL,
+
+        {
+
+          action:
+            "creerCarte",
+
+          eleves:
+            eleves,
+
+          montantPaye:
+            montant
+
+        }
+
+      );
+
+
+    if (
+      !resultat ||
+      !resultat.ok
+    ) {
+
+      throw new Error(
+        resultat &&
+        resultat.message
+          ? resultat.message
+          : "Impossible de créer la carte."
+      );
+    }
+
+
+    carteActuelle = {
+
+      idCarte:
+        resultat.idCarte,
+
+      idsEleves:
+        resultat.eleves.map(
+          function(eleve) {
+
+            return eleve.idEleve;
+
+          }
+        ),
+
+      eleves:
+        resultat.eleves,
+
+      dateAchat:
+        resultat.dateAchat,
+
+      dateDebut:
+        resultat.dateDebut,
+
+      dateFin:
+        resultat.dateFin,
+
+      creditsInitiaux:
+        resultat.creditsInitiaux,
+
+      creditsRestants:
+        resultat.creditsRestants,
+
+      statut:
+        resultat.statut,
+
+      montantPaye:
+        resultat.montantPaye,
+
+      tarifUnitaire:
+        resultat.tarifUnitaire
+
+    };
+
+
+    let texteEmail =
+      "";
+
+
+    if (
+      Array.isArray(
+        resultat.emails
+      )
+    ) {
+
+      const echecs =
+        resultat.emails.filter(
+          function(item) {
+
+            return !item.ok;
+
+          }
+        );
+
+
+      if (
+        echecs.length === 0
+      ) {
+
+        texteEmail =
+          "<br>📧 Les QR codes ont été envoyés par e-mail.";
+
+      } else {
+
+        texteEmail =
+          "<br>⚠️ La carte a été créée, mais " +
+          echecs.length +
+          " e-mail(s) n'ont pas pu être envoyés.";
+
+      }
+    }
 
 
     message(
 
-      "✅ Caméra autorisée.<br><br>" +
-      "Démarrage du scanner...",
+      "✅ <strong>Carte " +
+      escapeHtml(
+        resultat.idCarte
+      ) +
+      " créée.</strong>" +
+
+      texteEmail +
+
+      "<br><br>" +
+
+      "10 crédits sont disponibles." +
+
+      "<br>" +
+
+      "Le premier pointage définira la date de début.",
 
       "success"
 
     );
 
 
-    setTimeout(function() {
+    /*
+     * On passe directement au pointage.
+     */
 
-      lancerScanner();
-
-    }, 300);
-
-  })
-
-
-  .catch(function(error) {
-
-
-    console.error(
-      "Erreur autorisation caméra :",
-      error
+    await afficherPointageCarte(
+      carteActuelle
     );
 
 
-    let texte =
-      "❌ <strong>Impossible d'accéder à la caméra.</strong><br><br>";
+  } catch (erreur) {
 
+    bouton.disabled = false;
 
-    if (error.name === "NotAllowedError") {
-
-      texte +=
-        "L'accès à la caméra a été refusé. " +
-        "Vérifiez l'autorisation de la caméra dans les réglages du navigateur.";
-
-    }
-
-
-    else if (error.name === "NotFoundError") {
-
-      texte +=
-        "Aucune caméra n'a été trouvée.";
-
-    }
-
-
-    else if (error.name === "NotReadableError") {
-
-      texte +=
-        "La caméra est déjà utilisée par une autre application.";
-
-    }
-
-
-    else if (error.name === "SecurityError") {
-
-      texte +=
-        "Le navigateur bloque l'accès à la caméra.";
-
-    }
-
-
-    else {
-
-      texte +=
-        "Erreur : " +
-        error.name +
-        "<br>" +
-        error.message;
-
-    }
+    bouton.textContent =
+      "💳 Créer la carte";
 
 
     message(
-      texte,
+
+      "❌ " +
+      erreur.message,
+
       "error"
+
     );
-
-  });
-
+  }
 }
 
 
 /* ==================================================
-4.   LANCEMENT DU SCANNER QR
-================================================== */
+   SCANNER
+   ================================================== */
 
-function lancerScanner() {
+async function demarrerScanner() {
 
-  if (scannerActif) {
+  if (
+    scannerActif
+  ) {
+
     return;
   }
 
 
-  /*
-   * Si un ancien objet existe encore,
-   * on le supprime.
-   */
+  try {
 
-  if (scanner) {
-
-    try {
-      scanner.clear();
-    } catch (e) {}
-
-    scanner = null;
-  }
+    message(
+      "📷 Demande d'autorisation de la caméra...",
+      "info"
+    );
 
 
-  scanner =
-    new Html5Qrcode("reader");
+    if (
+      !navigator.mediaDevices ||
+      !navigator.mediaDevices.getUserMedia
+    ) {
 
-
-  const configuration = {
-
-    fps: 10,
-
-    qrbox: function(width, height) {
-
-      const taille =
-        Math.min(width, height) * 0.75;
-
-      return {
-
-        width:
-          Math.floor(taille),
-
-        height:
-          Math.floor(taille)
-
-      };
-
+      throw new Error(
+        "Votre navigateur ne permet pas l'accès à la caméra."
+      );
     }
 
-  };
+
+    const stream =
+      await navigator
+        .mediaDevices
+        .getUserMedia({
+
+          video: {
+            facingMode: {
+              ideal: "environment"
+            }
+          },
+
+          audio: false
+
+        });
 
 
-  scanner.start(
+    stream
+      .getTracks()
+      .forEach(
+        function(track) {
 
-    {
-      facingMode: "environment"
-    },
+          track.stop();
 
-    configuration,
-
-
-    function(qrCode) {
-
-
-      /*
-       * Si un traitement est déjà en cours,
-       * on ignore complètement ce QR.
-       */
-
-      if (traitement) {
-        return;
-      }
-
-
-      /*
-       * VERROUILLAGE IMMÉDIAT
-       */
-
-      traitement = true;
-
-
-      console.log(
-        "QR détecté : scanner verrouillé."
+        }
       );
 
 
-      traiterQR(qrCode);
-
-    },
-
-
-    function() {
-
-      /*
-       * Recherche permanente d'un QR.
-       * Rien à faire ici.
-       */
-
-    }
-
-  )
+    scanner =
+      new Html5Qrcode(
+        "reader"
+      );
 
 
-  .then(function() {
+    const configuration = {
+
+      fps: 10,
+
+      qrbox:
+        function(
+          width,
+          height
+        ) {
+
+          const taille =
+            Math.min(
+              width,
+              height
+            ) * 0.75;
 
 
-    scannerActif = true;
+          return {
+
+            width:
+              Math.floor(
+                taille
+              ),
+
+            height:
+              Math.floor(
+                taille
+              )
+
+          };
+        }
+    };
 
 
-    document.getElementById("start")
-      .style.display = "none";
+    await scanner.start(
+
+      {
+        facingMode:
+          "environment"
+      },
+
+      configuration,
+
+      function(qrCode) {
+
+        if (
+          traitement
+        ) {
+
+          return;
+        }
 
 
-    document.getElementById("stop")
-      .style.display = "block";
+        traitement = true;
 
 
-    message(
+        traiterToken(
+          qrCode
+        );
 
-      "📷 <strong>Scanner actif</strong><br><br>" +
-      "Présentez le QR code devant la caméra.",
+      },
 
-      "info"
+      function() {}
 
     );
 
-  })
+
+    scannerActif =
+      true;
 
 
-  .catch(function(error) {
+    document.getElementById(
+      "start"
+    ).style.display =
+      "none";
 
+
+    document.getElementById(
+      "stop"
+    ).style.display =
+      "block";
+
+
+    message(
+      "📷 <strong>Scanner actif.</strong><br><br>Présentez le QR code devant la caméra.",
+      "info"
+    );
+
+
+  } catch (erreur) {
 
     console.error(
-      "Erreur lancement scanner :",
-      error
+      erreur
     );
 
 
-    scannerActif = false;
-    traitement = false;
-    scanner = null;
+    scannerActif =
+      false;
 
 
-    document.getElementById("start")
-      .style.display = "block";
-
-
-    document.getElementById("stop")
-      .style.display = "none";
+    scanner =
+      null;
 
 
     message(
 
-      "❌ <strong>Impossible de démarrer le scanner.</strong><br><br>" +
-      String(error),
+      "❌ <strong>Impossible d'accéder à la caméra.</strong><br><br>" +
+      escapeHtml(
+        erreur.message
+      ),
+
+      "error"
+
+    );
+  }
+}
+
+
+/* ==================================================
+   TRAITEMENT TOKEN SCANNE
+   ================================================== */
+
+async function traiterToken(
+  token
+) {
+
+  await rechercherCarteParToken(
+    token
+  );
+}
+
+
+/* ==================================================
+   RECHERCHE MANUELLE
+   ================================================== */
+
+async function rechercherCarteManuellement() {
+
+  const champ =
+    document.getElementById(
+      "tokenManuel"
+    );
+
+
+  const token =
+    champ.value.trim();
+
+
+  if (!token) {
+
+    message(
+      "⚠️ Veuillez saisir un QR Token.",
+      "warning"
+    );
+
+    return;
+  }
+
+
+  traitement = true;
+
+
+  await rechercherCarteParToken(
+    token
+  );
+}
+
+
+/* ==================================================
+   RECHERCHE CARTE PAR TOKEN
+   ================================================== */
+
+async function rechercherCarteParToken(
+  token
+) {
+
+  message(
+    "⏳ Recherche de la carte...",
+    "info"
+  );
+
+
+  try {
+
+    const resultat =
+      await getJSON(
+
+        API_URL +
+        "?action=carte&token=" +
+        encodeURIComponent(
+          token
+        )
+
+      );
+
+
+    if (
+      !resultat ||
+      !resultat.ok
+    ) {
+
+      throw new Error(
+        resultat &&
+        resultat.message
+          ? resultat.message
+          : "Carte introuvable."
+      );
+    }
+
+
+    /*
+     * Si plusieurs cartes existent,
+     * la première est la carte prioritaire
+     * retournée par le serveur.
+     */
+
+    carteActuelle =
+      resultat.carte;
+
+
+    await arreterScannerSilencieusement();
+
+
+    afficherPointageCarte(
+      carteActuelle
+    );
+
+
+  } catch (erreur) {
+
+    message(
+
+      "❌ " +
+      escapeHtml(
+        erreur.message
+      ),
 
       "error"
 
     );
 
-  });
 
-}
-
-
-/* ==================================================
-5.   TRAITEMENT DU QR
-================================================== */
-
-function traiterQR(token) {
-
-
-  message(
-
-    "⏳ <strong>Lecture du QR code...</strong><br><br>" +
-    "Recherche de la carte et des élèves associés.",
-
-    "info"
-
-  );
-
-
-  const callbackName =
-    "reponseEleve_" +
-    Date.now();
-
-
-  let termine = false;
-
-
-  window[callbackName] =
-    function(resultat) {
-
-
-      /*
-       * Protection contre une double réponse.
-       */
-
-      if (termine) {
-        return;
-      }
-
-
-      termine = true;
-
-
-      console.log(
-        "Réponse Apps Script :",
-        resultat
-      );
-
-
-      nettoyerJSONP();
-
-
-      if (!resultat) {
-
-        message(
-          "❌ Réponse vide du serveur.",
-          "error"
-        );
-
-        libererScannerDans6Secondes();
-
-        return;
-      }
-
-
-      /*
-       * Si le QR n'est pas valide ou si la carte
-       * n'est pas disponible, on affiche l'erreur.
-       */
-
-      if (!resultat.success) {
-
-        afficherResultat(resultat);
-
-        libererScannerDans6Secondes();
-
-        return;
-      }
-
-
-      /*
-       * Le QR est reconnu.
-       *
-       * On ne valide PAS encore la présence.
-       *
-       * On affiche maintenant la sélection
-       * élève × cours.
-       */
-
-      afficherSelectionApresScan(resultat);
-
-    };
-
-
-  const url =
-    API_URL +
-    "?action=eleve" +
-    "&token=" +
-    encodeURIComponent(token) +
-    "&callback=" +
-    encodeURIComponent(callbackName);
-
-
-  const script =
-    document.createElement("script");
-
-
-  script.src = url;
-
-
-  script.onerror =
-    function() {
-
-
-      if (termine) {
-        return;
-      }
-
-
-      termine = true;
-
-
-      console.error(
-        "Erreur de communication avec Apps Script."
-      );
-
-
-      message(
-
-        "❌ <strong>Impossible de contacter Google Sheets.</strong><br><br>" +
-        "Vérifiez la connexion Internet.",
-
-        "error"
-
-      );
-
-
-      nettoyerJSONP();
-
-
-      libererScannerDans6Secondes();
-
-    };
-
-
-  function nettoyerJSONP() {
-
-    try {
-      delete window[callbackName];
-    } catch (e) {}
-
-    if (script.parentNode) {
-      script.parentNode.removeChild(script);
-    }
-
+    traitement =
+      false;
   }
-
-
-  document.body.appendChild(script);
-
 }
 
 
 /* ==================================================
-6.   SELECTION ELEVE / COURS
-================================================== */
+   AFFICHAGE DU POINTAGE
+   ================================================== */
 
-function afficherSelectionApresScan(resultat) {
-
-
-  donneesScan = resultat;
+async function afficherPointageCarte(
+  carte
+) {
 
   selectionElevesCours = {};
 
-  selectionEnCours = true;
+
+  afficherSection(
+    "sectionSelection"
+  );
+
+
+  const info =
+    document.getElementById(
+      "infoCarte"
+    );
+
+
+  let texte =
+
+    "<strong>Carte " +
+    escapeHtml(
+      carte.idCarte
+    ) +
+    "</strong><br>" +
+
+    "Élève(s) : ";
+
+
+  texte +=
+    carte.eleves
+      .map(function(eleve) {
+
+        return escapeHtml(
+          eleve.nomComplet
+        );
+
+      })
+      .join(
+        " + "
+      );
+
+
+  texte +=
+    "<br>" +
+
+    "Crédits restants : <strong>" +
+    escapeHtml(
+      String(
+        carte.creditsRestants
+      )
+    ) +
+    "</strong>";
+
+
+  if (
+    carte.dateDebut
+  ) {
+
+    texte +=
+      "<br>" +
+
+      "Date de début : <strong>" +
+      escapeHtml(
+        carte.dateDebut
+      ) +
+      "</strong>";
+  }
+
+
+  if (
+    carte.dateFin
+  ) {
+
+    texte +=
+      "<br>" +
+
+      "Date de fin : <strong>" +
+      escapeHtml(
+        carte.dateFin
+      ) +
+      "</strong>";
+  }
+
+
+  if (
+    carte.montantPaye
+  ) {
+
+    texte +=
+      "<br>" +
+
+      "Tarif par cours : <strong>" +
+      Number(
+        carte.tarifUnitaire
+      ).toFixed(2) +
+      " €</strong>";
+  }
+
+
+  info.innerHTML =
+    texte;
 
 
   const container =
@@ -885,69 +2272,22 @@ function afficherSelectionApresScan(resultat) {
     );
 
 
-  const bloc =
-    document.getElementById(
-      "selectionApresScan"
-    );
-
-
-  const infoCarte =
-    document.getElementById(
-      "infoCarte"
-    );
-
-
   container.innerHTML = "";
 
 
-  /*
-   * Informations générales de la carte.
-   */
-
-  infoCarte.innerHTML =
-
-    "Carte <strong>" +
-    escapeHtml(resultat.idCarte || "") +
-    "</strong><br>" +
-
-    "Crédits restants : <strong>" +
-    escapeHtml(String(resultat.creditsRestants || 0)) +
-    "</strong>";
-
-
-  const eleves =
-    resultat.eleves || [];
-
-
   const cours =
-    resultat.cours || [];
+    await chargerCours();
 
 
-  if (eleves.length === 0) {
-
-    message(
-      "❌ Aucun élève associé à cette carte.",
-      "error"
-    );
-
-    selectionEnCours = false;
-
-    libererScannerDans6Secondes();
-
-    return;
-  }
-
-
-  if (cours.length === 0) {
+  if (
+    !cours ||
+    cours.length === 0
+  ) {
 
     message(
       "❌ Aucun cours disponible.",
       "error"
     );
-
-    selectionEnCours = false;
-
-    libererScannerDans6Secondes();
 
     return;
   }
@@ -957,101 +2297,145 @@ function afficherSelectionApresScan(resultat) {
    * Création d'un bloc par élève.
    */
 
-  eleves.forEach(function(eleve) {
+  carte.eleves
+    .forEach(
+      function(eleve) {
+
+        selectionElevesCours[
+          eleve.idEleve
+        ] = [];
 
 
-    selectionElevesCours[eleve.id] = [];
+        const bloc =
+          document.createElement(
+            "div"
+          );
 
 
-    const blocEleve =
-      document.createElement("div");
+        bloc.className =
+          "eleve-selection";
 
 
-    blocEleve.className =
-      "eleve-selection";
+        let html =
+
+          "<h3>👤 " +
+          escapeHtml(
+            eleve.nomComplet
+          ) +
+          "</h3>" +
+
+          "<div class='cours-eleve'>";
 
 
-    let html =
+        cours.forEach(
+          function(coursItem) {
 
-      "<h3>👤 " +
-      escapeHtml(eleve.nomComplet) +
-      "</h3>" +
+            html +=
 
-      "<div class='cours-eleve'>";
+              "<label class='cours-checkbox'>" +
 
+              "<input " +
 
-    cours.forEach(function(c) {
+                "type='checkbox' " +
 
+                "class='checkbox-cours' " +
 
-      html +=
+                "data-eleve='" +
+                escapeHtml(
+                  eleve.idEleve
+                ) +
+                "' " +
 
-        "<label class='cours-checkbox'>" +
+                "data-cours='" +
+                escapeHtml(
+                  coursItem.id
+                ) +
+                "' " +
 
-          "<input " +
-            "type='checkbox' " +
-            "class='checkbox-cours' " +
-            "data-eleve='" +
-              escapeHtml(eleve.id) +
-            "' " +
-            "data-cours='" +
-              escapeHtml(c.id) +
-            "' " +
-            "onchange='modifierSelectionCours(this)'>" +
+                "onchange='modifierSelectionCours(this)'>" +
 
-          "<span class='cours-info'>" +
+              "<span class='cours-info'>" +
 
-            "<span class='cours-nom'>" +
-              escapeHtml(c.nom) +
-            "</span>" +
+                "<span class='cours-nom'>" +
+                  escapeHtml(
+                    coursItem.nom
+                  ) +
+                "</span>" +
 
-            "<br>" +
+                "<br>" +
 
-            "<span class='cours-horaire'>" +
-              escapeHtml(c.horaire) +
-            "</span>" +
+                "<span class='cours-horaire'>" +
+                  escapeHtml(
+                    coursItem.horaire
+                  ) +
+                "</span>" +
 
-          "</span>" +
+              "</span>" +
 
-        "</label>";
-
-    });
-
-
-    html +=
-      "</div>";
-
-
-    blocEleve.innerHTML = html;
+              "</label>";
+          }
+        );
 
 
-    container.appendChild(blocEleve);
-
-  });
-
-
-  /*
-   * Affichage du panneau.
-   */
-
-  bloc.style.display = "block";
+        html +=
+          "</div>";
 
 
-  /*
-   * Le scanner reste verrouillé pendant toute
-   * la durée de cette sélection.
-   */
+        bloc.innerHTML =
+          html;
+
+
+        container.appendChild(
+          bloc
+        );
+      }
+    );
+
 
   mettreAJourResumeSelection();
 
+
+  message(
+    "Sélectionnez le ou les cours suivis par chaque élève.",
+    "info"
+  );
+
+
+  traitement =
+    true;
 }
 
 
 /* ==================================================
-7.   MODIFICATION DE LA SELECTION
-================================================== */
+   CHARGEMENT DES COURS
+   ================================================== */
 
-function modifierSelectionCours(checkbox) {
+async function chargerCours() {
 
+  const resultat =
+    await getJSON(
+
+      API_URL +
+      "?action=cours"
+
+    );
+
+
+  return Array.isArray(
+    resultat
+  )
+    ? resultat
+    : [];
+}
+
+
+/* ==================================================
+   MODIFICATION SELECTION COURS
+   ================================================== */
+
+function modifierSelectionCours(
+  checkbox
+) {
 
   const idEleve =
     checkbox.dataset.eleve;
@@ -1061,77 +2445,87 @@ function modifierSelectionCours(checkbox) {
     checkbox.dataset.cours;
 
 
-  if (!selectionElevesCours[idEleve]) {
+  if (
+    !selectionElevesCours[
+      idEleve
+    ]
+  ) {
 
-    selectionElevesCours[idEleve] = [];
-
+    selectionElevesCours[
+      idEleve
+    ] = [];
   }
 
 
-  if (checkbox.checked) {
-
+  if (
+    checkbox.checked
+  ) {
 
     if (
-      !selectionElevesCours[idEleve]
-        .includes(idCours)
+      !selectionElevesCours[
+        idEleve
+      ].includes(
+        idCours
+      )
     ) {
 
-      selectionElevesCours[idEleve]
-        .push(idCours);
-
+      selectionElevesCours[
+        idEleve
+      ].push(
+        idCours
+      );
     }
 
-  }
+  } else {
 
-
-  else {
-
-
-    selectionElevesCours[idEleve] =
-
-      selectionElevesCours[idEleve]
-        .filter(function(id) {
+    selectionElevesCours[
+      idEleve
+    ] =
+      selectionElevesCours[
+        idEleve
+      ].filter(
+        function(id) {
 
           return id !== idCours;
 
-        });
-
+        }
+      );
   }
 
 
   mettreAJourResumeSelection();
-
 }
 
 
 /* ==================================================
-8.   CALCUL DU RESUME
-================================================== */
+   RESUME SELECTION
+   ================================================== */
 
 function compterPresencesSelectionnees() {
-
 
   let nombre = 0;
 
 
   Object.keys(
     selectionElevesCours
-  ).forEach(function(idEleve) {
+  )
+    .forEach(
+      function(idEleve) {
 
+        nombre +=
+          selectionElevesCours[
+            idEleve
+          ].length;
 
-    nombre +=
-      selectionElevesCours[idEleve].length;
-
-  });
+      }
+    );
 
 
   return nombre;
-
 }
 
 
 function mettreAJourResumeSelection() {
-
 
   const nombre =
     compterPresencesSelectionnees();
@@ -1149,20 +2543,38 @@ function mettreAJourResumeSelection() {
     );
 
 
-  if (nombre === 0) {
-
+  if (
+    nombre === 0
+  ) {
 
     resume.innerHTML =
-      "0 présence à enregistrer — " +
-      "0 crédit sera débité";
+      "0 présence à enregistrer";
 
 
-    bouton.disabled = true;
+    bouton.disabled =
+      true;
 
 
     return;
-
   }
+
+
+  const tarif =
+    Number(
+      carteActuelle &&
+      carteActuelle.tarifUnitaire
+        ? carteActuelle.tarifUnitaire
+        : 0
+    );
+
+
+  const total =
+    Math.round(
+      (
+        nombre *
+        tarif
+      ) * 100
+    ) / 100;
 
 
   const motPresence =
@@ -1189,82 +2601,73 @@ function mettreAJourResumeSelection() {
     nombre +
     " " +
     motCredit +
-    "</strong> seront débités";
+    "</strong> seront débités." +
+
+    "<br>" +
+
+    "Tarif : <strong>" +
+    tarif.toFixed(2) +
+    " € / cours</strong>" +
+
+    "<br>" +
+
+    "<span class='grand-total'>" +
+    "Valeur correspondante : " +
+    total.toFixed(2) +
+    " €" +
+    "</span>";
 
 
-  bouton.disabled = false;
-
+  bouton.disabled =
+    false;
 }
 
 
 /* ==================================================
-9.   VALIDATION DE LA SELECTION
-================================================== */
+   VALIDATION DU POINTAGE
+   ================================================== */
 
-document.getElementById(
-  "btnValiderSelection"
-)
-.addEventListener(
-  "click",
-  validerSelection
-);
-
-
-function validerSelection() {
-
-
-  if (!donneesScan ||
-      !donneesScan.success) {
-
-    return;
-  }
-
+async function validerSelection() {
 
   const selections = [];
 
 
-  /*
-   * Construction de la liste exacte
-   * élève + cours.
-   */
-
   Object.keys(
     selectionElevesCours
-  ).forEach(function(idEleve) {
+  )
+    .forEach(
+      function(idEleve) {
 
+        selectionElevesCours[
+          idEleve
+        ].forEach(
+          function(idCours) {
 
-    selectionElevesCours[idEleve]
-      .forEach(function(idCours) {
+            selections.push({
 
+              idEleve:
+                idEleve,
 
-        selections.push({
+              idCours:
+                idCours
 
-          idEleve: idEleve,
-
-          idCours: idCours
-
-        });
-
-      });
-
-  });
-
-
-  if (selections.length === 0) {
-
-
-    message(
-
-      "⚠️ Veuillez sélectionner au moins " +
-      "un cours pour un élève.",
-
-      "warning"
-
+            });
+          }
+        );
+      }
     );
 
 
-    return;
+  if (
+    selections.length === 0
+  ) {
 
+    message(
+      "⚠️ Sélectionnez au moins un cours.",
+      "warning"
+    );
+
+    return;
   }
 
 
@@ -1274,250 +2677,107 @@ function validerSelection() {
     );
 
 
-  bouton.disabled = true;
+  bouton.disabled =
+    true;
+
 
   bouton.textContent =
-    "⏳ Validation en cours...";
+    "⏳ Enregistrement...";
 
 
-  /*
-   * Le scanner reste verrouillé.
-   */
+  try {
 
-  traitement = true;
+    const resultat =
+      await postJSON(
 
+        API_URL,
 
-  const callbackName =
-    "reponseValidation_" +
-    Date.now();
+        {
 
+          action:
+            "pointerCarte",
 
-  let termine = false;
+          idCarte:
+            carteActuelle.idCarte,
 
+          selections:
+            selections
 
-  window[callbackName] =
-    function(resultat) {
+        }
 
-
-      if (termine) {
-        return;
-      }
-
-
-      termine = true;
-
-
-      nettoyerJSONP();
-
-
-      console.log(
-        "Réponse validation :",
-        resultat
       );
 
 
-      bouton.disabled = false;
+    if (
+      !resultat ||
+      !resultat.ok
+    ) {
 
-      bouton.textContent =
-        "✅ Valider les présences";
-
-
-      if (resultat.success) {
-
-
-        fermerSelection();
-
-
-        afficherResultat(resultat);
-
-
-        /*
-         * On garde le scanner verrouillé
-         * quelques secondes après validation.
-         */
-
-        libererScannerDans6Secondes();
+      throw new Error(
+        resultat &&
+        resultat.message
+          ? resultat.message
+          : "Impossible d'enregistrer les présences."
+      );
+    }
 
 
-      }
+    carteActuelle.creditsRestants =
+      resultat.creditsApres;
 
 
-      else {
+    carteActuelle.dateDebut =
+      resultat.dateDebut;
 
 
-        /*
-         * En cas d'erreur, on laisse la sélection
-         * visible pour permettre une correction.
-         */
-
-        afficherResultat(resultat);
+    carteActuelle.dateFin =
+      resultat.dateFin;
 
 
-        bouton.disabled = false;
-
-        bouton.textContent =
-          "✅ Valider les présences";
+    carteActuelle.statut =
+      resultat.statut;
 
 
-        traitement = true;
-
-      }
-
-    };
-
-
-  /*
-   * On envoie également la sélection complète
-   * sous forme JSON.
-   */
-
-  const url =
-    API_URL +
-
-    "?action=pointer" +
-
-    "&token=" +
-    encodeURIComponent(
-      donneesScan.token
-    ) +
-
-    "&selection=" +
-    encodeURIComponent(
-      JSON.stringify(selections)
-    ) +
-
-    "&callback=" +
-    encodeURIComponent(
-      callbackName
+    afficherResultatPointage(
+      resultat
     );
 
 
-  const script =
-    document.createElement("script");
+  } catch (erreur) {
+
+    bouton.disabled =
+      false;
 
 
-  script.src = url;
+    bouton.textContent =
+      "✅ Valider les présences";
 
 
-  script.onerror =
-    function() {
+    message(
 
+      "❌ " +
+      escapeHtml(
+        erreur.message
+      ),
 
-      if (termine) {
-        return;
-      }
+      "error"
 
-
-      termine = true;
-
-
-      nettoyerJSONP();
-
-
-      bouton.disabled = false;
-
-      bouton.textContent =
-        "✅ Valider les présences";
-
-
-      message(
-
-        "❌ <strong>Impossible de contacter Google Sheets.</strong><br><br>" +
-        "Aucune modification n'a été effectuée.",
-
-        "error"
-
-      );
-
-
-      /*
-       * La sélection reste visible.
-       */
-
-      traitement = true;
-
-    };
-
-
-  function nettoyerJSONP() {
-
-
-    try {
-      delete window[callbackName];
-    } catch (e) {}
-
-
-    if (script.parentNode) {
-      script.parentNode.removeChild(script);
-    }
-
+    );
   }
-
-
-  document.body.appendChild(script);
-
 }
 
 
 /* ==================================================
-10.  ANNULATION DE LA SELECTION
-================================================== */
+   RESULTAT DU POINTAGE
+   ================================================== */
 
-document.getElementById(
-  "btnAnnulerSelection"
-)
-.addEventListener(
-  "click",
-  annulerSelection
-);
+function afficherResultatPointage(
+  resultat
+) {
 
-
-function annulerSelection() {
-
-
-  fermerSelection();
-
-
-  donneesScan = null;
-
-  selectionElevesCours = {};
-
-  selectionEnCours = false;
-
-
-  /*
-   * On conserve le scanner actif,
-   * mais on attend quelques secondes
-   * avant d'accepter un nouveau QR.
-   */
-
-  traitement = false;
-
-
-  message(
-
-    "📷 <strong>Prêt pour le prochain élève.</strong><br><br>" +
-    "Présentez le QR code devant la caméra.",
-
-    "info"
-
+  afficherSection(
+    "sectionSelection"
   );
-
-}
-
-
-function fermerSelection() {
-
-
-  const bloc =
-    document.getElementById(
-      "selectionApresScan"
-    );
-
-
-  if (bloc) {
-    bloc.style.display = "none";
-  }
 
 
   const container =
@@ -1526,392 +2786,321 @@ function fermerSelection() {
     );
 
 
-  if (container) {
-    container.innerHTML = "";
-  }
+  container.innerHTML = "";
 
 
-  selectionEnCours = false;
+  document.getElementById(
+    "resumeSelection"
+  ).innerHTML =
 
-}
+    "<div class='titre-resultat'>" +
+    "✅ Présences validées" +
+    "</div>" +
+
+    "Carte : <strong>" +
+    escapeHtml(
+      resultat.idCarte
+    ) +
+    "</strong>" +
+
+    "<br>" +
+
+    "Présences enregistrées : <strong>" +
+    resultat.nombrePresences +
+    "</strong>" +
+
+    "<br>" +
+
+    "Crédits restants : <strong>" +
+    resultat.creditsApres +
+    "</strong>" +
+
+    "<br>" +
+
+    "Tarif par cours : <strong>" +
+    Number(
+      resultat.tarifUnitaire
+    ).toFixed(2) +
+    " €</strong>" +
+
+    "<br>" +
+
+    "Date de début : <strong>" +
+    escapeHtml(
+      resultat.dateDebut
+    ) +
+    "</strong>" +
+
+    "<br>" +
+
+    "Date de fin : <strong>" +
+    escapeHtml(
+      resultat.dateFin
+    ) +
+    "</strong>";
 
 
-/* ==================================================
-11.  DEVERROUILLAGE DU SCANNER
-================================================== */
-
-function libererScannerDans6Secondes() {
-
-
-  console.log(
-    "Scanner verrouillé pendant 6 secondes."
+  document.getElementById(
+    "btnValiderSelection"
+  ).classList.add(
+    "hidden"
   );
 
-
-  setTimeout(function() {
-
-
-    /*
-     * Si une sélection est encore ouverte,
-     * surtout ne pas déverrouiller le scanner.
-     */
-
-    if (selectionEnCours) {
-
-      console.log(
-        "Sélection en cours : scanner toujours verrouillé."
-      );
-
-      return;
-
-    }
-
-
-    traitement = false;
-
-
-    console.log(
-      "Scanner à nouveau disponible."
-    );
-
-
-    if (scannerActif) {
-
-
-      message(
-
-        "📷 <strong>Prêt pour le prochain élève.</strong><br><br>" +
-        "Présentez le QR code devant la caméra.",
-
-        "info"
-
-      );
-
-    }
-
-  }, 6000);
-
-}
-
-
-/* ==================================================
-12.  AFFICHAGE DU RESULTAT
-================================================== */
-
-function afficherResultat(resultat) {
-
-
-  if (!resultat) {
-
-
-    message(
-
-      "❌ Réponse vide du serveur.",
-
-      "error"
-
-    );
-
-
-    return;
-
-  }
-
-
-  console.log(
-    "Résultat :",
-    resultat
-  );
-
-
-  /* -----------------------------------------------
-     12.1. SCAN / VALIDATION VALIDE
-  ------------------------------------------------ */
-
-  if (resultat.success) {
-
-
-    /*
-     * Nouveau fonctionnement :
-     * plusieurs élèves et plusieurs cours
-     * peuvent être enregistrés en une seule fois.
-     */
-
-    let texte =
-
-      "<div class='nom'>" +
-      "✅ Présences validées" +
-      "</div>" +
-
-      "<strong>" +
-      (resultat.message ||
-       "Les présences ont été enregistrées.") +
-      "</strong>" +
-
-      "<br><br>";
-
-
-    if (typeof resultat.nombrePresences !== "undefined") {
-
-      texte +=
-
-        "Présences enregistrées : <strong>" +
-        resultat.nombrePresences +
-        "</strong><br>";
-
-    }
-
-
-    if (typeof resultat.creditsConsommes !== "undefined") {
-
-      texte +=
-
-        "Crédits consommés : <strong>" +
-        resultat.creditsConsommes +
-        "</strong><br>";
-
-    }
-
-
-    if (typeof resultat.creditsApres !== "undefined") {
-
-      texte +=
-
-        "<div class='credits'>" +
-        "Crédits restants : " +
-        resultat.creditsApres +
-        "</div>";
-
-    }
-
-
-    if (resultat.dateFin) {
-
-      texte +=
-
-        "<br>" +
-
-        "Carte valable jusqu'au " +
-
-        "<strong>" +
-
-        resultat.dateFin +
-
-        "</strong>";
-
-    }
-
-
-    message(
-      texte,
-      "success"
-    );
-
-
-    return;
-
-  }
-
-
-  /* -----------------------------------------------
-     12.2. DOUBLE SCAN
-  ------------------------------------------------ */
-
-  if (resultat.type === "duplicate") {
-
-
-    message(
-
-      "⚠️ <strong>" +
-      (resultat.eleve || "") +
-      "</strong><br><br>" +
-
-      resultat.message +
-
-      (
-        typeof resultat.credits !== "undefined"
-
-        ?
-
-        "<br><br>Crédits restants : " +
-        resultat.credits
-
-        :
-
-        ""
-      ),
-
-      "warning"
-
-    );
-
-
-    return;
-
-  }
-
-
-  /* -----------------------------------------------
-     12.3. CARTE EPUISEE
-  ------------------------------------------------ */
-
-  if (resultat.type === "empty") {
-
-
-    message(
-
-      "❌ <strong>" +
-      (resultat.eleve || "") +
-      "</strong><br><br>" +
-
-      resultat.message,
-
-      "error"
-
-    );
-
-
-    return;
-
-  }
-
-
-  /* -----------------------------------------------
-     12.4. CARTE INEXISTANTE / HORS PERIODE
-  ------------------------------------------------ */
-
-  if (resultat.type === "expired") {
-
-
-    message(
-
-      "❌ <strong>" +
-      (resultat.eleve || "") +
-      "</strong><br><br>" +
-
-      resultat.message,
-
-      "error"
-
-    );
-
-
-    return;
-
-  }
-
-
-  /* -----------------------------------------------
-     12.5. AUTRE ERREUR
-  ------------------------------------------------ */
 
   message(
 
-    "❌ " +
-    (
-      resultat.message ||
-      "QR code refusé."
-    ),
+    "✅ <strong>Pointage enregistré avec succès.</strong><br><br>" +
 
-    "error"
+    "La carte " +
+    escapeHtml(
+      resultat.idCarte
+    ) +
+    " dispose maintenant de " +
+    "<strong>" +
+    resultat.creditsApres +
+    "</strong> crédit(s).",
+
+    "success"
 
   );
 
+
+  const boutonRetour =
+    document.querySelector(
+      "#sectionSelection .btn-secondary"
+    );
+
+
+  boutonRetour.textContent =
+    "🏠 Retour à l'accueil";
+
+
+  boutonRetour.onclick =
+    retourAccueil;
+
+
+  traitement =
+    false;
 }
 
 
 /* ==================================================
-13.  ARRET DU SCANNER
-================================================== */
+   ANNULATION DU POINTAGE
+   ================================================== */
 
-function arreter() {
+function annulerPointage() {
 
-
-  fermerSelection();
-
-
-  donneesScan = null;
-
-  selectionElevesCours = {};
-
-  selectionEnCours = false;
+  carteActuelle =
+    null;
 
 
-  if (!scanner || !scannerActif) {
+  selectionElevesCours =
+    {};
 
 
-    traitement = false;
+  traitement =
+    false;
+
+
+  retourAccueil();
+}
+
+
+/* ==================================================
+   ARRET DU SCANNER
+   ================================================== */
+
+async function arreterScanner() {
+
+  await arreterScannerSilencieusement();
+
+
+  message(
+    "Scanner arrêté. Vous pouvez saisir le QR Token manuellement ou redémarrer la caméra.",
+    "info"
+  );
+}
+
+
+async function arreterScannerSilencieusement() {
+
+  if (
+    !scanner
+  ) {
+
+    scannerActif =
+      false;
 
     return;
-
   }
 
 
-  scanner.stop()
+  try {
+
+    if (
+      scannerActif
+    ) {
+
+      await scanner.stop();
+    }
 
 
-  .then(function() {
+    await scanner.clear();
 
+  } catch (e) {
 
-    scanner.clear();
-
-
-    scanner = null;
-
-    scannerActif = false;
-
-    traitement = false;
-
-
-    document.getElementById("start")
-      .style.display = "block";
-
-
-    document.getElementById("stop")
-      .style.display = "none";
-
-
-    message(
-
-      "Scanner arrêté.<br><br>" +
-      "Vous pouvez redémarrer la caméra.",
-
-      "info"
-
+    console.warn(
+      "Erreur arrêt scanner :",
+      e
     );
 
-  })
+  } finally {
+
+    scanner =
+      null;
+
+    scannerActif =
+      false;
+
+    document.getElementById(
+      "start"
+    ).style.display =
+      "block";
 
 
-  .catch(function(error) {
-
-
-    console.error(error);
-
-  });
-
+    document.getElementById(
+      "stop"
+    ).style.display =
+      "none";
+  }
 }
 
 
 /* ==================================================
-14.  SECURITE HTML
-================================================== */
+   REQUETE GET JSON
+   ================================================== */
 
-function escapeHtml(texte) {
+async function getJSON(
+  url
+) {
+
+  const reponse =
+    await fetch(
+      url,
+      {
+
+        method:
+          "GET",
+
+        cache:
+          "no-store"
+
+      }
+    );
 
 
-  return String(texte || "")
+  if (
+    !reponse.ok
+  ) {
 
-    .replace(/&/g, "&amp;")
+    throw new Error(
+      "Erreur HTTP " +
+      reponse.status
+    );
+  }
 
-    .replace(/</g, "&lt;")
 
-    .replace(/>/g, "&gt;")
+  return await reponse.json();
+}
 
-    .replace(/"/g, "&quot;")
 
-    .replace(/'/g, "&#039;");
+/* ==================================================
+   REQUETE POST JSON
+   ================================================== */
 
+async function postJSON(
+  url,
+  donnees
+) {
+
+  const reponse =
+    await fetch(
+
+      url,
+
+      {
+
+        method:
+          "POST",
+
+        headers: {
+
+          "Content-Type":
+            "text/plain;charset=utf-8"
+
+        },
+
+        body:
+          JSON.stringify(
+            donnees
+          )
+
+      }
+
+    );
+
+
+  if (
+    !reponse.ok
+  ) {
+
+    throw new Error(
+      "Erreur HTTP " +
+      reponse.status
+    );
+  }
+
+
+  return await reponse.json();
+}
+
+
+/* ==================================================
+   SECURITE HTML
+   ================================================== */
+
+function escapeHtml(
+  texte
+) {
+
+  return String(
+    texte || ""
+  )
+
+    .replace(
+      /&/g,
+      "&amp;"
+    )
+
+    .replace(
+      /</g,
+      "&lt;"
+    )
+
+    .replace(
+      />/g,
+      "&gt;"
+    )
+
+    .replace(
+      /"/g,
+      "&quot;"
+    )
+
+    .replace(
+      /'/g,
+      "&#039;"
+    );
 }
 
 
