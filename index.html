@@ -10,7 +10,7 @@
     content="width=device-width, initial-scale=1.0"
   >
 
-  <title>Cuerpo Libre — Pointage abonnement</title>
+  <title>Pointage par abonnement</title>
 
   <script src="https://unpkg.com/html5-qrcode"></script>
 
@@ -28,15 +28,13 @@
     }
 
     .container {
-      width: min(100%, 700px);
-      margin: 0 auto;
-      padding: 20px;
+      width: min(700px, 94%);
+      margin: 25px auto;
     }
 
     h1 {
       text-align: center;
-      margin: 10px 0 25px;
-      font-size: 26px;
+      margin-bottom: 25px;
     }
 
     h2 {
@@ -46,62 +44,58 @@
     .card {
       background: white;
       border-radius: 16px;
-      padding: 20px;
+      padding: 22px;
       margin-bottom: 18px;
-      box-shadow: 0 3px 12px rgba(0,0,0,.08);
+      box-shadow: 0 3px 12px rgba(0,0,0,0.08);
     }
 
     button {
-      width: 100%;
-      border: 0;
-      border-radius: 12px;
-      padding: 15px;
-      font-size: 17px;
-      font-weight: bold;
+      border: none;
+      border-radius: 10px;
+      padding: 13px 18px;
+      font-size: 16px;
       cursor: pointer;
-      margin-top: 10px;
+      margin: 5px 0;
     }
 
     .btn-primary {
       background: #222;
       color: white;
+      width: 100%;
     }
 
     .btn-secondary {
-      background: #e9e9e9;
+      background: #e8e8e8;
       color: #222;
+      width: 100%;
     }
 
     .btn-success {
-      background: #198754;
+      background: #16803c;
       color: white;
+      width: 100%;
     }
 
     .btn-danger {
-      background: #dc3545;
+      background: #b42318;
       color: white;
+      width: 100%;
     }
 
-    button:disabled {
-      opacity: .45;
-      cursor: not-allowed;
-    }
-
-    input,
-    select {
+    input {
       width: 100%;
       padding: 13px;
-      margin-top: 7px;
       border: 1px solid #ccc;
-      border-radius: 10px;
+      border-radius: 9px;
       font-size: 16px;
-      background: white;
+      margin-top: 6px;
+      margin-bottom: 12px;
     }
 
     label {
-      display: block;
-      margin-top: 15px;
       font-weight: bold;
+      display: block;
+      margin-top: 10px;
     }
 
     .hidden {
@@ -109,32 +103,27 @@
     }
 
     .message {
-      padding: 14px;
-      border-radius: 10px;
-      margin-bottom: 15px;
-      font-weight: bold;
-    }
-
-    .message.success {
-      background: #d1e7dd;
-      color: #0f5132;
+      padding: 13px;
+      border-radius: 9px;
+      margin: 12px 0;
+      background: #f0f0f0;
     }
 
     .message.error {
-      background: #f8d7da;
-      color: #842029;
+      background: #ffe4e1;
+      color: #9d1c12;
     }
 
-    .message.info {
-      background: #cff4fc;
-      color: #055160;
+    .message.success {
+      background: #e1f7e8;
+      color: #146c32;
     }
 
-    .student-card {
-      border: 1px solid #ddd;
-      border-radius: 14px;
-      padding: 15px;
-      margin-top: 15px;
+    .student-box {
+      background: #f6f6f6;
+      border-radius: 10px;
+      padding: 14px;
+      margin: 10px 0;
     }
 
     .student-name {
@@ -145,23 +134,19 @@
 
     .course {
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       gap: 10px;
-      padding: 11px 5px;
-      border-bottom: 1px solid #eee;
-      font-weight: normal;
-      cursor: pointer;
+      padding: 9px 0;
+      border-bottom: 1px solid #ddd;
     }
 
     .course:last-child {
-      border-bottom: 0;
+      border-bottom: none;
     }
 
     .course input {
-      width: 20px;
-      height: 20px;
-      margin: 0;
-      flex-shrink: 0;
+      width: auto;
+      margin: 3px 0 0 0;
     }
 
     .course-info {
@@ -179,73 +164,55 @@
     }
 
     .credits {
-      font-size: 22px;
+      font-size: 25px;
       font-weight: bold;
       text-align: center;
-      margin: 12px 0;
+      margin: 10px 0 18px;
     }
 
-    .card-id {
-      text-align: center;
-      font-size: 14px;
-      color: #777;
-    }
-
-    .summary {
-      position: sticky;
-      bottom: 0;
-      background: white;
-      padding: 15px;
-      border-radius: 12px;
-      margin-top: 15px;
-      box-shadow: 0 -2px 10px rgba(0,0,0,.08);
-      text-align: center;
-      font-weight: bold;
+    .credits span {
+      font-size: 15px;
+      font-weight: normal;
     }
 
     #reader {
       width: 100%;
-      margin-top: 15px;
+      margin: 15px auto;
     }
 
-    .choice-card {
-      border: 1px solid #ddd;
-      border-radius: 12px;
-      padding: 15px;
-      margin-top: 10px;
-    }
-
-    .choice-card button {
-      margin-top: 8px;
-    }
-
-    .check-line {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-top: 18px;
-      font-weight: bold;
-    }
-
-    .check-line input {
-      width: 20px;
-      height: 20px;
-      margin: 0;
-    }
-
-    .name-preview {
-      background: #f1f1f1;
-      padding: 12px;
-      border-radius: 10px;
-      margin-top: 10px;
-      font-size: 18px;
-      font-weight: bold;
-    }
-
-    .loading {
+    .scan-title {
       text-align: center;
-      padding: 15px;
-      color: #666;
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+
+    .small {
+      color: #777;
+      font-size: 13px;
+    }
+
+    .card-choice {
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      padding: 14px;
+      margin: 10px 0;
+      cursor: pointer;
+    }
+
+    .card-choice:hover {
+      background: #f4f4f4;
+    }
+
+    .card-id {
+      font-size: 19px;
+      font-weight: bold;
+    }
+
+    .warning {
+      background: #fff4cc;
+      padding: 12px;
+      border-radius: 8px;
+      margin-top: 10px;
     }
 
   </style>
@@ -257,29 +224,16 @@
 
 <div class="container">
 
-  <h1>💃 Cuerpo Libre<br>Pointage abonnement</h1>
+  <h1>💃 Pointage par abonnement</h1>
 
 
-  <!-- =================================================
-       MESSAGE GLOBAL
-       ================================================= -->
+  <!-- ========================= -->
+  <!-- ACCUEIL -->
+  <!-- ========================= -->
 
-  <div
-    id="message"
-    class="hidden"
-  ></div>
+  <div id="homeView" class="card">
 
-
-  <!-- =================================================
-       ACCUEIL
-       ================================================= -->
-
-  <section
-    id="accueil"
-    class="card"
-  >
-
-    <h2>Que souhaitez-vous faire ?</h2>
+    <h2>Bienvenue</h2>
 
     <button
       class="btn-primary"
@@ -295,208 +249,196 @@
       ➕ Nouvelle carte
     </button>
 
-  </section>
+  </div>
 
 
-  <!-- =================================================
-       RECHERCHE CARTE EXISTANTE
-       ================================================= -->
+  <!-- ========================= -->
+  <!-- SCANNER -->
+  <!-- ========================= -->
 
-  <section
-    id="rechercheCarte"
+  <div
+    id="scannerCard"
     class="card hidden"
   >
 
-    <h2>Carte déjà enregistrée</h2>
+    <div class="scan-title">
+      📷 Scanner le QR code
+    </div>
 
-    <p>
-      Scanne le QR code de l'élève
-      ou introduis manuellement son QR Token.
-    </p>
-
+    <div id="reader"></div>
 
     <button
-      id="btnScanner"
+      class="btn-danger"
+      onclick="fermerScanner()"
+    >
+      Fermer le scanner
+    </button>
+
+  </div>
+
+
+  <!-- ========================= -->
+  <!-- CARTE EXISTANTE -->
+  <!-- ========================= -->
+
+  <div
+    id="existingView"
+    class="card hidden"
+  >
+
+    <h2>💳 Carte existante</h2>
+
+    <button
       class="btn-primary"
-      onclick="demarrerScanner()"
+      onclick="lancerScanner('carte')"
     >
       📷 Scanner le QR code
     </button>
 
-
-    <div
-      id="reader"
-      class="hidden"
-    ></div>
-
-
-    <label for="tokenManuel">
-      QR Token
+    <label>
+      Ou entrer le QR Token manuellement
     </label>
 
     <input
-      id="tokenManuel"
+      id="existingToken"
       type="text"
-      autocomplete="off"
       placeholder="Ex. Sarah001"
     >
 
-
     <button
-      class="btn-success"
+      class="btn-secondary"
       onclick="rechercherCarteManuellement()"
     >
       Rechercher
     </button>
 
+    <div id="existingMessage"></div>
 
-    <button
-      class="btn-secondary"
-      onclick="retourAccueil()"
-    >
-      ← Retour
-    </button>
-
-  </section>
+  </div>
 
 
-  <!-- =================================================
-       CHOIX ENTRE PLUSIEURS CARTES
-       ================================================= -->
+  <!-- ========================= -->
+  <!-- CHOIX CARTE -->
+  <!-- ========================= -->
 
-  <section
-    id="choixCarte"
+  <div
+    id="cardChoiceView"
     class="card hidden"
   >
 
-    <h2>Cartes disponibles</h2>
+    <h2>💳 Cartes disponibles</h2>
 
     <p>
       Plusieurs cartes valides sont associées à cet élève.
-      Sélectionne la carte à utiliser.
+      Choisis la carte à utiliser.
     </p>
 
-    <div id="listeCartes"></div>
+    <div id="cardsList"></div>
 
-    <button
-      class="btn-secondary"
-      onclick="retourAccueil()"
-    >
-      ← Retour
-    </button>
-
-  </section>
+  </div>
 
 
-  <!-- =================================================
-       NOUVELLE CARTE
-       ================================================= -->
+  <!-- ========================= -->
+  <!-- NOUVELLE CARTE -->
+  <!-- ========================= -->
 
-  <section
-    id="nouvelleCarte"
+  <div
+    id="newCardView"
     class="card hidden"
   >
 
-    <h2>Créer une nouvelle carte</h2>
+    <h2>➕ Nouvelle carte</h2>
 
+    <!-- ELEVE 1 -->
 
-    <div
-      id="chargementEleves"
-      class="loading"
-    >
-      Chargement des élèves...
-    </div>
+    <div class="student-box">
 
+      <h3>Élève 1</h3>
 
-    <div id="formNouvelleCarte" class="hidden">
-
-      <!-- ÉLÈVE 1 -->
-
-      <label for="eleve1">
-        Élève 1
-      </label>
-
-      <select
-        id="eleve1"
-        onchange="selectionnerEleve(1)"
+      <button
+        class="btn-primary"
+        onclick="lancerScanner('eleve1')"
       >
-        <option value="">
-          Sélectionner un élève
-        </option>
-      </select>
+        📷 Scanner le QR code de l'élève
+      </button>
 
-
-      <div
-        id="nomEleve1"
-        class="name-preview hidden"
-      ></div>
-
-
-      <label for="email1">
-        Adresse e-mail de l'élève 1
+      <label>
+        Ou entrer le QR Token manuellement
       </label>
 
       <input
-        id="email1"
-        type="email"
-        placeholder="adresse@email.com"
+        id="tokenEleve1"
+        type="text"
+        placeholder="Ex. Sarah001"
       >
 
+      <button
+        class="btn-secondary"
+        onclick="chercherEleveNouvelleCarte(1)"
+      >
+        Vérifier le QR Token
+      </button>
 
-      <!-- ÉLÈVE 2 -->
+      <div id="eleve1Result"></div>
 
-      <label class="check-line">
+    </div>
 
+
+    <!-- ELEVE 2 -->
+
+    <div class="student-box">
+
+      <label>
         <input
           id="activerEleve2"
           type="checkbox"
-          onchange="gererEleve2()"
+          style="width:auto; margin-right:8px;"
+          onchange="toggleEleve2()"
         >
-
-        Ajouter un 2e élève à cette carte
-
+        Ajouter un deuxième élève à cette carte
       </label>
 
-
       <div
-        id="blocEleve2"
+        id="eleve2Container"
         class="hidden"
       >
 
-        <label for="eleve2">
-          Élève 2
-        </label>
+        <h3>Élève 2</h3>
 
-        <select
-          id="eleve2"
-          onchange="selectionnerEleve(2)"
+        <button
+          class="btn-primary"
+          onclick="lancerScanner('eleve2')"
         >
-          <option value="">
-            Sélectionner un élève
-          </option>
-        </select>
+          📷 Scanner le QR code de l'élève
+        </button>
 
-
-        <div
-          id="nomEleve2"
-          class="name-preview hidden"
-        ></div>
-
-
-        <label for="email2">
-          Adresse e-mail de l'élève 2
+        <label>
+          Ou entrer le QR Token manuellement
         </label>
 
         <input
-          id="email2"
-          type="email"
-          placeholder="adresse@email.com"
+          id="tokenEleve2"
+          type="text"
+          placeholder="Ex. Julie002"
         >
+
+        <button
+          class="btn-secondary"
+          onclick="chercherEleveNouvelleCarte(2)"
+        >
+          Vérifier le QR Token
+        </button>
+
+        <div id="eleve2Result"></div>
 
       </div>
 
+    </div>
 
-      <!-- MONTANT -->
+
+    <!-- MONTANT -->
+
+    <div class="student-box">
 
       <label for="montantPaye">
         Montant payé
@@ -510,202 +452,132 @@
         placeholder="Ex. 100"
       >
 
-
-      <button
-        id="btnCreerCarte"
-        class="btn-success"
-        onclick="creerCarte()"
-      >
-        Créer la carte
-      </button>
-
-    </div>
-
-
-    <button
-      class="btn-secondary"
-      onclick="retourAccueil()"
-    >
-      ← Retour
-    </button>
-
-  </section>
-
-
-  <!-- =================================================
-       POINTAGE
-       ================================================= -->
-
-  <section
-    id="pointage"
-    class="hidden"
-  >
-
-    <div class="card">
-
-      <div
-        id="pointageCarteId"
-        class="card-id"
-      ></div>
-
-      <div
-        id="pointageCredits"
-        class="credits"
-      ></div>
-
-    </div>
-
-
-    <div id="elevesPointage"></div>
-
-
-    <div class="summary">
-
-      <div id="resumeSelection">
-        0 cours sélectionné
+      <div class="small">
+        Le montant est saisi manuellement.
+        Le tarif par cours sera calculé automatiquement
+        à partir de 10 crédits.
       </div>
 
-      <button
-        id="btnValiderPointage"
-        class="btn-success"
-        onclick="validerPointage()"
-        disabled
-      >
-        Valider le pointage
-      </button>
-
     </div>
 
+
+    <button
+      id="createCardButton"
+      class="btn-success"
+      onclick="creerNouvelleCarte()"
+    >
+      Créer la carte
+    </button>
 
     <button
       class="btn-secondary"
       onclick="retourAccueil()"
     >
-      ← Annuler
+      Retour
     </button>
 
-  </section>
+    <div id="newCardMessage"></div>
+
+  </div>
 
 
-  <!-- =================================================
-       CONFIRMATION
-       ================================================= -->
+  <!-- ========================= -->
+  <!-- POINTAGE -->
+  <!-- ========================= -->
 
-  <section
-    id="confirmation"
+  <div
+    id="pointageView"
     class="card hidden"
   >
 
-    <h2>✅ Pointage enregistré</h2>
+    <h2>✅ Pointage</h2>
 
-    <div id="detailsConfirmation"></div>
+    <div id="pointageInfo"></div>
+
+    <div
+      id="pointageStudents"
+    ></div>
 
     <button
-      class="btn-primary"
-      onclick="retourAccueil()"
+      class="btn-success"
+      onclick="validerPointage()"
     >
-      Nouveau pointage
+      Valider le pointage
     </button>
 
-  </section>
+    <button
+      class="btn-secondary"
+      onclick="retourAccueil()"
+    >
+      Retour à l'accueil
+    </button>
+
+    <div id="pointageMessage"></div>
+
+  </div>
+
 
 </div>
 
 
 <script>
 
-/* =====================================================
+/***************************************
  * CONFIGURATION
- * ===================================================== */
+ ***************************************/
 
 const API_URL =
   "https://script.google.com/macros/s/AKfycbz-tig9GMgWGbCq7iuiiM_d68Z4z9GxPtbOinDMYksWhqR4-VCOb23UmrmT3mjeKHZm/exec";
 
 
-/* =====================================================
+/***************************************
  * VARIABLES
- * ===================================================== */
+ ***************************************/
 
 let scanner = null;
-
-let elevesDisponibles = [];
-
-let coursDisponibles = [];
+let scannerActif = false;
+let modeScan = null;
 
 let carteCourante = null;
+let coursDisponibles = [];
 
-let traitement = false;
-
-
-/* =====================================================
- * UTILITAIRES
- * ===================================================== */
-
-function afficherMessage(
-  texte,
-  type = "info"
-) {
-
-  const element =
-    document.getElementById("message");
-
-  element.textContent =
-    texte;
-
-  element.className =
-    "message " + type;
-
-  element.classList.remove(
-    "hidden"
-  );
-}
+let eleve1 = null;
+let eleve2 = null;
 
 
-function cacherMessage() {
+/***************************************
+ * INITIALISATION
+ ***************************************/
 
-  const element =
-    document.getElementById("message");
+document.addEventListener(
+  "DOMContentLoaded",
+  function() {
 
-  element.classList.add(
-    "hidden"
-  );
-}
+    chargerCours();
 
-
-function afficherSection(id) {
-
-  [
-    "accueil",
-    "rechercheCarte",
-    "choixCarte",
-    "nouvelleCarte",
-    "pointage",
-    "confirmation"
-  ].forEach(function (sectionId) {
-
-    document
-      .getElementById(sectionId)
-      .classList.add("hidden");
-
-  });
+  }
+);
 
 
-  document
-    .getElementById(id)
-    .classList.remove("hidden");
+/***************************************
+ * API GET
+ ***************************************/
 
-}
+async function apiGet(params) {
 
-
-async function getJson(url) {
+  const url =
+    API_URL +
+    "?" +
+    new URLSearchParams(params).toString();
 
   const response =
-    await fetch(url);
+    await fetch(url, {
+      method: "GET"
+    });
 
   if (!response.ok) {
-
     throw new Error(
-      "Erreur réseau."
+      "Erreur de communication avec le serveur."
     );
   }
 
@@ -713,168 +585,111 @@ async function getJson(url) {
 }
 
 
-async function postJson(data) {
+/***************************************
+ * API POST
+ ***************************************/
+
+async function apiPost(data) {
 
   const response =
-    await fetch(
-      API_URL,
-      {
-        method: "POST",
-
-        headers: {
-          "Content-Type":
-            "text/plain;charset=utf-8"
-        },
-
-        body:
-          JSON.stringify(data)
-      }
-    );
-
+    await fetch(API_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "text/plain;charset=utf-8"
+      },
+      body: JSON.stringify(data)
+    });
 
   if (!response.ok) {
-
     throw new Error(
-      "Erreur réseau."
+      "Erreur de communication avec le serveur."
     );
   }
-
 
   return await response.json();
 }
 
 
-/* =====================================================
- * ACCUEIL
- * ===================================================== */
+/***************************************
+ * CHARGER COURS
+ ***************************************/
 
-function retourAccueil() {
-
-  arreterScanner();
-
-  carteCourante = null;
-
-  traitement = false;
-
-  cacherMessage();
-
-  afficherSection(
-    "accueil"
-  );
-}
-
-
-/* =====================================================
- * CARTE EXISTANTE
- * ===================================================== */
-
-function ouvrirCarteExistante() {
-
-  cacherMessage();
-
-  afficherSection(
-    "rechercheCarte"
-  );
-
-  document
-    .getElementById("tokenManuel")
-    .value = "";
-}
-
-
-async function rechercherCarteAvecToken(token) {
-
-  token =
-    String(token || "").trim();
-
-
-  if (!token) {
-
-    afficherMessage(
-      "Introduis un QR Token.",
-      "error"
-    );
-
-    return;
-  }
-
-
-  if (traitement) {
-    return;
-  }
-
-
-  traitement = true;
-
+async function chargerCours() {
 
   try {
 
-    afficherMessage(
-      "Recherche de la carte...",
-      "info"
-    );
+    const result =
+      await apiGet({
+        action: "cours"
+      });
 
-
-    const url =
-      API_URL +
-      "?action=carte&token=" +
-      encodeURIComponent(token);
-
-
-    const resultat =
-      await getJson(url);
-
-
-    if (!resultat.ok) {
-
-      throw new Error(
-        resultat.message ||
-        "Carte introuvable."
-      );
+    if (result.ok) {
+      coursDisponibles =
+        result.cours || [];
     }
 
+  } catch (error) {
 
-    arreterScanner();
+    console.error(error);
 
-    cacherMessage();
-
-
-    /*
-     * Plusieurs cartes valides.
-     */
-    if (
-      resultat.plusieursCartes &&
-      resultat.cartes &&
-      resultat.cartes.length > 1
-    ) {
-
-      afficherChoixCartes(
-        resultat.cartes
-      );
-
-      return;
-    }
-
-
-    /*
-     * Une seule carte.
-     */
-    selectionnerCarte(
-      resultat.carte
-    );
-
-
-  } catch (erreur) {
-
-    afficherMessage(
-      erreur.message,
-      "error"
-    );
-
-  } finally {
-
-    traitement = false;
   }
+}
+
+
+/***************************************
+ * AFFICHAGE VUES
+ ***************************************/
+
+function cacherToutesLesVues() {
+
+  [
+    "homeView",
+    "existingView",
+    "cardChoiceView",
+    "newCardView",
+    "pointageView"
+  ].forEach(function(id) {
+
+    document
+      .getElementById(id)
+      .classList.add("hidden");
+
+  });
+}
+
+
+function retourAccueil() {
+
+  fermerScanner();
+
+  cacherToutesLesVues();
+
+  document
+    .getElementById("homeView")
+    .classList.remove("hidden");
+
+  carteCourante = null;
+}
+
+
+/***************************************
+ * CARTE EXISTANTE
+ ***************************************/
+
+function ouvrirCarteExistante() {
+
+  fermerScanner();
+
+  cacherToutesLesVues();
+
+  document
+    .getElementById("existingView")
+    .classList.remove("hidden");
+
+  document
+    .getElementById("existingMessage")
+    .innerHTML = "";
+
 }
 
 
@@ -882,1334 +697,1193 @@ function rechercherCarteManuellement() {
 
   const token =
     document
-      .getElementById("tokenManuel")
+      .getElementById("existingToken")
       .value
       .trim();
 
-
-  rechercherCarteAvecToken(
-    token
-  );
-}
-
-
-/* =====================================================
- * SCANNER
- * ===================================================== */
-
-function demarrerScanner() {
-
-  arreterScanner();
-
-
-  document
-    .getElementById("reader")
-    .classList.remove("hidden");
-
-
-  scanner =
-    new Html5Qrcode(
-      "reader"
-    );
-
-
-  scanner.start(
-
-    {
-      facingMode: "environment"
-    },
-
-    {
-      fps: 10,
-
-      qrbox: {
-        width: 250,
-        height: 250
-      }
-
-    },
-
-    function (decodedText) {
-
-      arreterScanner();
-
-      document
-        .getElementById("tokenManuel")
-        .value = decodedText;
-
-
-      rechercherCarteAvecToken(
-        decodedText
-      );
-
-    },
-
-    function () {
-      // Ignorer les erreurs de lecture
-    }
-
-  ).catch(function (erreur) {
-
-    document
-      .getElementById("reader")
-      .classList.add("hidden");
-
+  if (!token) {
 
     afficherMessage(
-      "Impossible d'accéder à la caméra. Tu peux saisir le QR Token manuellement.",
-      "error"
+      "existingMessage",
+      "Entre un QR Token.",
+      true
     );
 
-  });
-}
-
-
-function arreterScanner() {
-
-  if (!scanner) {
     return;
   }
 
-
-  scanner.stop()
-    .catch(function () {})
-    .finally(function () {
-
-      scanner = null;
-
-      document
-        .getElementById("reader")
-        .classList.add("hidden");
-
-    });
+  rechercherCarte(token);
 }
 
 
-/* =====================================================
- * CHOIX CARTE
- * ===================================================== */
+/***************************************
+ * RECHERCHER CARTE
+ ***************************************/
 
-function afficherChoixCartes(cartes) {
+async function rechercherCarte(token) {
 
-  afficherSection(
-    "choixCarte"
+  fermerScanner();
+
+  afficherMessage(
+    "existingMessage",
+    "Recherche de la carte..."
   );
-
-
-  const conteneur =
-    document.getElementById(
-      "listeCartes"
-    );
-
-
-  conteneur.innerHTML = "";
-
-
-  cartes.forEach(function (carte) {
-
-    const bloc =
-      document.createElement(
-        "div"
-      );
-
-
-    bloc.className =
-      "choice-card";
-
-
-    const noms =
-      carte.eleves
-        .map(function (eleve) {
-
-          return eleve.nomComplet;
-
-        })
-        .join(" + ");
-
-
-    bloc.innerHTML =
-
-      "<strong>" +
-      escapeHtml(
-        noms
-      ) +
-      "</strong>" +
-
-      "<br>" +
-
-      "Carte : " +
-      escapeHtml(
-        carte.idCarte
-      ) +
-
-      "<br>" +
-
-      "Crédits restants : " +
-      escapeHtml(
-        String(
-          carte.creditsRestants
-        )
-      );
-
-
-    const bouton =
-      document.createElement(
-        "button"
-      );
-
-
-    bouton.className =
-      "btn-primary";
-
-
-    bouton.textContent =
-      "Utiliser cette carte";
-
-
-    bouton.onclick =
-      function () {
-
-        selectionnerCarte(
-          carte
-        );
-
-      };
-
-
-    bloc.appendChild(
-      bouton
-    );
-
-
-    conteneur.appendChild(
-      bloc
-    );
-
-  });
-}
-
-
-/* =====================================================
- * SÉLECTION CARTE
- * ===================================================== */
-
-async function selectionnerCarte(carte) {
-
-  carteCourante =
-    carte;
-
-
-  afficherSection(
-    "pointage"
-  );
-
-
-  document
-    .getElementById(
-      "pointageCarteId"
-    )
-    .textContent =
-      "Carte " +
-      carte.idCarte;
-
-
-  document
-    .getElementById(
-      "pointageCredits"
-    )
-    .textContent =
-      carte.creditsRestants +
-      " crédit(s) restant(s)";
-
-
-  const conteneur =
-    document.getElementById(
-      "elevesPointage"
-    );
-
-
-  conteneur.innerHTML =
-    '<div class="loading">Chargement des cours...</div>';
-
 
   try {
 
-    if (
-      !coursDisponibles ||
-      coursDisponibles.length === 0
-    ) {
-
-      const resultat =
-        await getJson(
-          API_URL +
-          "?action=cours"
-        );
-
-
-      if (!resultat.ok) {
-
-        throw new Error(
-          resultat.message ||
-          "Impossible de charger les cours."
-        );
-      }
-
-
-      coursDisponibles =
-        resultat.cours || [];
-    }
-
-
-    afficherElevesEtCours();
-
-
-  } catch (erreur) {
-
-    afficherMessage(
-      erreur.message,
-      "error"
-    );
-
-  }
-}
-
-
-/* =====================================================
- * AFFICHAGE ÉLÈVES + COURS
- * ===================================================== */
-
-function afficherElevesEtCours() {
-
-  const conteneur =
-    document.getElementById(
-      "elevesPointage"
-    );
-
-
-  conteneur.innerHTML = "";
-
-
-  carteCourante.eleves
-    .forEach(function (eleve) {
-
-      const bloc =
-        document.createElement(
-          "div"
-        );
-
-
-      bloc.className =
-        "card student-card";
-
-
-      const titre =
-        document.createElement(
-          "div"
-        );
-
-
-      titre.className =
-        "student-name";
-
-
-      titre.textContent =
-        eleve.nomComplet;
-
-
-      bloc.appendChild(
-        titre
-      );
-
-
-      coursDisponibles
-        .forEach(function (cours) {
-
-          const label =
-            document.createElement(
-              "label"
-            );
-
-
-          label.className =
-            "course";
-
-
-          const checkbox =
-            document.createElement(
-              "input"
-            );
-
-
-          checkbox.type =
-            "checkbox";
-
-
-          checkbox.dataset.eleve =
-            eleve.idEleve;
-
-
-          checkbox.dataset.cours =
-            cours.id;
-
-
-          checkbox.addEventListener(
-            "change",
-            actualiserResume
-          );
-
-
-          const infos =
-            document.createElement(
-              "div"
-            );
-
-
-          infos.className =
-            "course-info";
-
-
-          const nom =
-            document.createElement(
-              "div"
-            );
-
-
-          nom.className =
-            "course-name";
-
-
-          nom.textContent =
-            cours.nom;
-
-
-          infos.appendChild(
-            nom
-          );
-
-
-          if (cours.horaire) {
-
-            const horaire =
-              document.createElement(
-                "div"
-              );
-
-
-            horaire.className =
-              "course-time";
-
-
-            horaire.textContent =
-              cours.horaire;
-
-
-            infos.appendChild(
-              horaire
-            );
-          }
-
-
-          label.appendChild(
-            checkbox
-          );
-
-
-          label.appendChild(
-            infos
-          );
-
-
-          bloc.appendChild(
-            label
-          );
-
-        });
-
-
-      conteneur.appendChild(
-        bloc
-      );
-
-    });
-
-
-  actualiserResume();
-}
-
-
-/* =====================================================
- * RÉSUMÉ
- * ===================================================== */
-
-function actualiserResume() {
-
-  const cases =
-    document.querySelectorAll(
-      '#elevesPointage input[type="checkbox"]:checked'
-    );
-
-
-  const nombre =
-    cases.length;
-
-
-  const resume =
-    document.getElementById(
-      "resumeSelection"
-    );
-
-
-  resume.textContent =
-    nombre +
-    (
-      nombre > 1
-        ? " cours sélectionnés"
-        : " cours sélectionné"
-    ) +
-    " — " +
-    nombre +
-    " crédit" +
-    (
-      nombre > 1
-        ? "s"
-        : ""
-    ) +
-    " à débiter";
-
-
-  const bouton =
-    document.getElementById(
-      "btnValiderPointage"
-    );
-
-
-  bouton.disabled =
-    nombre === 0 ||
-    nombre >
-    carteCourante.creditsRestants;
-}
-
-
-/* =====================================================
- * VALIDATION POINTAGE
- * ===================================================== */
-
-async function validerPointage() {
-
-  if (
-    !carteCourante ||
-    traitement
-  ) {
-    return;
-  }
-
-
-  const cases =
-    document.querySelectorAll(
-      '#elevesPointage input[type="checkbox"]:checked'
-    );
-
-
-  if (cases.length === 0) {
-
-    afficherMessage(
-      "Sélectionne au moins un cours.",
-      "error"
-    );
-
-    return;
-  }
-
-
-  if (
-    cases.length >
-    carteCourante.creditsRestants
-  ) {
-
-    afficherMessage(
-      "Il n'y a pas assez de crédits sur cette carte.",
-      "error"
-    );
-
-    return;
-  }
-
-
-  traitement = true;
-
-
-  try {
-
-    /*
-     * Construction :
-     *
-     * [
-     *   {
-     *     idEleve: "A001",
-     *     cours: ["C1","C2"]
-     *   },
-     *   {
-     *     idEleve: "A002",
-     *     cours: ["C1"]
-     *   }
-     * ]
-     */
-    const selections = {};
-
-
-    cases.forEach(function (checkbox) {
-
-      const idEleve =
-        checkbox.dataset.eleve;
-
-      const idCours =
-        checkbox.dataset.cours;
-
-
-      if (!selections[idEleve]) {
-
-        selections[idEleve] = [];
-
-      }
-
-
-      selections[idEleve]
-        .push(idCours);
-
-    });
-
-
-    const selectionsFinales =
-      Object.keys(selections)
-        .map(function (idEleve) {
-
-          return {
-
-            idEleve:
-              idEleve,
-
-            cours:
-              selections[idEleve]
-
-          };
-
-        });
-
-
-    const resultat =
-      await postJson({
-
-        action:
-          "pointerAbonnement",
-
-        idCarte:
-          carteCourante.idCarte,
-
-        selections:
-          selectionsFinales
-
+    const result =
+      await apiGet({
+        action: "carte",
+        token: token
       });
 
-
-    if (!resultat.ok) {
-
-      throw new Error(
-        resultat.message ||
-        "Le pointage n'a pas pu être enregistré."
-      );
-    }
-
-
-    afficherConfirmation(
-      resultat
-    );
-
-
-  } catch (erreur) {
-
-    afficherMessage(
-      erreur.message,
-      "error"
-    );
-
-  } finally {
-
-    traitement = false;
-  }
-}
-
-
-/* =====================================================
- * CONFIRMATION
- * ===================================================== */
-
-function afficherConfirmation(
-  resultat
-) {
-
-  arreterScanner();
-
-
-  afficherSection(
-    "confirmation"
-  );
-
-
-  const details =
-    document.getElementById(
-      "detailsConfirmation"
-    );
-
-
-  details.innerHTML =
-
-    "<p><strong>Carte :</strong> " +
-    escapeHtml(
-      resultat.idCarte
-    ) +
-    "</p>" +
-
-    "<p><strong>Présences enregistrées :</strong> " +
-    escapeHtml(
-      String(
-        resultat.nombrePresences
-      )
-    ) +
-    "</p>" +
-
-    "<p><strong>Crédits restants :</strong> " +
-    escapeHtml(
-      String(
-        resultat.creditsRestants
-      )
-    ) +
-    "</p>" +
-
-    "<p><strong>Statut :</strong> " +
-    escapeHtml(
-      resultat.statut
-    ) +
-    "</p>";
-}
-
-
-/* =====================================================
- * NOUVELLE CARTE
- * ===================================================== */
-
-async function ouvrirNouvelleCarte() {
-
-  cacherMessage();
-
-  afficherSection(
-    "nouvelleCarte"
-  );
-
-
-  document
-    .getElementById(
-      "chargementEleves"
-    )
-    .classList.remove(
-      "hidden"
-    );
-
-
-  document
-    .getElementById(
-      "formNouvelleCarte"
-    )
-    .classList.add(
-      "hidden"
-    );
-
-
-  try {
-
-    if (
-      !elevesDisponibles ||
-      elevesDisponibles.length === 0
-    ) {
-
-      const resultat =
-        await getJson(
-          API_URL +
-          "?action=eleves"
-        );
-
-
-      if (!resultat.ok) {
-
-        throw new Error(
-          resultat.message ||
-          "Impossible de charger les élèves."
-        );
-      }
-
-
-      elevesDisponibles =
-        resultat.eleves || [];
-    }
-
-
-    remplirSelectEleves();
-
-
-    document
-      .getElementById(
-        "chargementEleves"
-      )
-      .classList.add(
-        "hidden"
-      );
-
-
-    document
-      .getElementById(
-        "formNouvelleCarte"
-      )
-      .classList.remove(
-        "hidden"
-      );
-
-
-  } catch (erreur) {
-
-    afficherMessage(
-      erreur.message,
-      "error"
-    );
-
-  }
-}
-
-
-/* =====================================================
- * REMPLIR SELECTS ÉLÈVES
- * ===================================================== */
-
-function remplirSelectEleves() {
-
-  const select1 =
-    document.getElementById(
-      "eleve1"
-    );
-
-
-  const select2 =
-    document.getElementById(
-      "eleve2"
-    );
-
-
-  [select1, select2]
-    .forEach(function (select) {
-
-      select.innerHTML =
-        '<option value="">Sélectionner un élève</option>';
-
-
-      elevesDisponibles
-        .forEach(function (eleve) {
-
-          const option =
-            document.createElement(
-              "option"
-            );
-
-
-          option.value =
-            eleve.idEleve;
-
-
-          option.textContent =
-            eleve.nomComplet;
-
-
-          select.appendChild(
-            option
-          );
-
-        });
-
-    });
-}
-
-
-/* =====================================================
- * SÉLECTION ÉLÈVE NOUVELLE CARTE
- * ===================================================== */
-
-function selectionnerEleve(numero) {
-
-  const select =
-    document.getElementById(
-      "eleve" + numero
-    );
-
-
-  const id =
-    select.value;
-
-
-  const nomElement =
-    document.getElementById(
-      "nomEleve" + numero
-    );
-
-
-  const emailElement =
-    document.getElementById(
-      "email" + numero
-    );
-
-
-  if (!id) {
-
-    nomElement.textContent = "";
-
-    nomElement.classList.add(
-      "hidden"
-    );
-
-    emailElement.value = "";
-
-    return;
-  }
-
-
-  /*
-   * Empêche de sélectionner deux fois
-   * le même élève.
-   */
-  if (numero === 2) {
-
-    const id1 =
-      document.getElementById(
-        "eleve1"
-      ).value;
-
-
-    if (
-      id1 &&
-      id.toLowerCase() ===
-      id1.toLowerCase()
-    ) {
+    if (!result.ok) {
 
       afficherMessage(
-        "Tu ne peux pas sélectionner le même élève deux fois.",
-        "error"
+        "existingMessage",
+        result.message ||
+        "Carte introuvable.",
+        true
       );
-
-
-      select.value = "";
-
-      nomElement.textContent = "";
-
-      nomElement.classList.add(
-        "hidden"
-      );
-
-      emailElement.value = "";
 
       return;
     }
-  }
 
+    if (
+      result.cartes &&
+      result.cartes.length > 1
+    ) {
 
-  const eleve =
-    elevesDisponibles.find(
-      function (item) {
+      afficherChoixCartes(
+        result.cartes
+      );
 
-        return item.idEleve
-          .toLowerCase() ===
-          id.toLowerCase();
+      return;
+    }
 
-      }
+    const carte =
+      result.carte ||
+      result.cartes[0];
+
+    afficherPointage(carte);
+
+  } catch (error) {
+
+    afficherMessage(
+      "existingMessage",
+      error.message,
+      true
     );
-
-
-  if (!eleve) {
-    return;
   }
-
-
-  /*
-   * Affichage uniquement du prénom + nom.
-   */
-  nomElement.textContent =
-    eleve.prenom +
-    " " +
-    eleve.nom;
-
-
-  nomElement.classList.remove(
-    "hidden"
-  );
-
-
-  /*
-   * E-mail existant prérempli.
-   */
-  emailElement.value =
-    eleve.email || "";
-
-
-  cacherMessage();
 }
 
 
-/* =====================================================
- * ACTIVER ÉLÈVE 2
- * ===================================================== */
+/***************************************
+ * CHOIX CARTE
+ ***************************************/
 
-function gererEleve2() {
+function afficherChoixCartes(cartes) {
 
-  const actif =
-    document
-      .getElementById(
-        "activerEleve2"
-      )
-      .checked;
+  cacherToutesLesVues();
 
+  document
+    .getElementById("cardChoiceView")
+    .classList.remove("hidden");
 
-  const bloc =
+  const container =
     document.getElementById(
-      "blocEleve2"
+      "cardsList"
     );
 
+  container.innerHTML = "";
 
-  if (actif) {
+  cartes.forEach(function(carte) {
 
-    bloc.classList.remove(
+    const div =
+      document.createElement("div");
+
+    div.className =
+      "card-choice";
+
+    const noms =
+      (carte.eleves || [])
+        .map(function(eleve) {
+          return (
+            eleve.prenom +
+            " " +
+            eleve.nom
+          );
+        })
+        .join(" + ");
+
+    div.innerHTML =
+      "<div class='card-id'>" +
+      escapeHtml(carte.idCarte) +
+      "</div>" +
+
+      "<div>" +
+      escapeHtml(noms) +
+      "</div>" +
+
+      "<div>" +
+      carte.creditsRestants +
+      " crédit(s) restant(s)" +
+      "</div>";
+
+    div.onclick =
+      function() {
+        afficherPointage(carte);
+      };
+
+    container.appendChild(div);
+
+  });
+}
+
+
+/***************************************
+ * NOUVELLE CARTE
+ ***************************************/
+
+function ouvrirNouvelleCarte() {
+
+  fermerScanner();
+
+  cacherToutesLesVues();
+
+  document
+    .getElementById("newCardView")
+    .classList.remove("hidden");
+
+  eleve1 = null;
+  eleve2 = null;
+
+  document
+    .getElementById("tokenEleve1")
+    .value = "";
+
+  document
+    .getElementById("tokenEleve2")
+    .value = "";
+
+  document
+    .getElementById("montantPaye")
+    .value = "";
+
+  document
+    .getElementById("eleve1Result")
+    .innerHTML = "";
+
+  document
+    .getElementById("eleve2Result")
+    .innerHTML = "";
+
+  document
+    .getElementById("activerEleve2")
+    .checked = false;
+
+  document
+    .getElementById("eleve2Container")
+    .classList.add("hidden");
+
+  document
+    .getElementById("newCardMessage")
+    .innerHTML = "";
+}
+
+
+/***************************************
+ * ELEVE 2
+ ***************************************/
+
+function toggleEleve2() {
+
+  const checked =
+    document
+      .getElementById("activerEleve2")
+      .checked;
+
+  const container =
+    document
+      .getElementById("eleve2Container");
+
+  if (checked) {
+
+    container.classList.remove(
       "hidden"
     );
 
   } else {
 
-    bloc.classList.add(
+    container.classList.add(
       "hidden"
     );
 
+    eleve2 = null;
 
     document
-      .getElementById(
-        "eleve2"
-      )
+      .getElementById("eleve2Result")
+      .innerHTML = "";
+
+    document
+      .getElementById("tokenEleve2")
       .value = "";
-
-
-    document
-      .getElementById(
-        "email2"
-      )
-      .value = "";
-
-
-    document
-      .getElementById(
-        "nomEleve2"
-      )
-      .textContent = "";
-
-
-    document
-      .getElementById(
-        "nomEleve2"
-      )
-      .classList.add(
-        "hidden"
-      );
   }
 }
 
 
-/* =====================================================
- * CRÉER CARTE
- * ===================================================== */
+/***************************************
+ * RECHERCHE ELEVE POUR NOUVELLE CARTE
+ ***************************************/
 
-async function creerCarte() {
+async function chercherEleveNouvelleCarte(
+  numero
+) {
 
-  if (traitement) {
-    return;
-  }
+  const inputId =
+    numero === 1
+      ? "tokenEleve1"
+      : "tokenEleve2";
 
+  const resultId =
+    numero === 1
+      ? "eleve1Result"
+      : "eleve2Result";
 
-  const id1 =
+  const token =
     document
-      .getElementById(
-        "eleve1"
-      )
-      .value;
-
-
-  if (!id1) {
-
-    afficherMessage(
-      "Sélectionne l'élève 1.",
-      "error"
-    );
-
-    return;
-  }
-
-
-  const email1 =
-    document
-      .getElementById(
-        "email1"
-      )
+      .getElementById(inputId)
       .value
       .trim();
 
-
-  if (!email1) {
+  if (!token) {
 
     afficherMessage(
-      "L'adresse e-mail de l'élève 1 est obligatoire.",
-      "error"
+      resultId,
+      "Entre un QR Token.",
+      true
     );
 
     return;
   }
-
-
-  const elevesAEnvoyer = [
-
-    {
-      idEleve:
-        id1,
-
-      email:
-        email1
-    }
-
-  ];
-
-
-  const deuxiemeActif =
-    document
-      .getElementById(
-        "activerEleve2"
-      )
-      .checked;
-
-
-  if (deuxiemeActif) {
-
-    const id2 =
-      document
-        .getElementById(
-          "eleve2"
-        )
-        .value;
-
-
-    if (!id2) {
-
-      afficherMessage(
-        "Sélectionne l'élève 2.",
-        "error"
-      );
-
-      return;
-    }
-
-
-    if (
-      id2.toLowerCase() ===
-      id1.toLowerCase()
-    ) {
-
-      afficherMessage(
-        "Les deux élèves doivent être différents.",
-        "error"
-      );
-
-      return;
-    }
-
-
-    const email2 =
-      document
-        .getElementById(
-          "email2"
-        )
-        .value
-        .trim();
-
-
-    if (!email2) {
-
-      afficherMessage(
-        "L'adresse e-mail de l'élève 2 est obligatoire.",
-        "error"
-      );
-
-      return;
-    }
-
-
-    elevesAEnvoyer.push({
-
-      idEleve:
-        id2,
-
-      email:
-        email2
-
-    });
-  }
-
-
-  const montant =
-    document
-      .getElementById(
-        "montantPaye"
-      )
-      .value;
-
-
-  if (
-    montant === "" ||
-    montant === null
-  ) {
-
-    afficherMessage(
-      "Le montant payé est obligatoire.",
-      "error"
-    );
-
-    return;
-  }
-
-
-  traitement = true;
-
-
-  const bouton =
-    document.getElementById(
-      "btnCreerCarte"
-    );
-
-
-  bouton.disabled = true;
-
 
   try {
 
     afficherMessage(
-      "Création de la carte...",
-      "info"
+      resultId,
+      "Recherche de l'élève..."
     );
 
-
-    const resultat =
-      await postJson({
-
-        action:
-          "creerCarte",
-
-        montantPaye:
-          montant,
-
-        eleves:
-          elevesAEnvoyer
-
+    const result =
+      await apiGet({
+        action: "eleve",
+        token: token
       });
 
+    if (!result.ok) {
 
-    if (!resultat.ok) {
-
-      throw new Error(
-        resultat.message ||
-        "Impossible de créer la carte."
+      afficherMessage(
+        resultId,
+        result.message ||
+        "Élève introuvable.",
+        true
       );
+
+      return;
     }
 
-
-    /*
-     * La carte vient d'être créée.
-     * On passe immédiatement au pointage.
-     */
-    carteCourante =
-      resultat.carte;
-
-
-    let messageEmail =
-      "";
-
+    const eleve =
+      result.eleve;
 
     if (
-      resultat.emailsEnvoyes
+      numero === 2 &&
+      eleve1 &&
+      eleve.idEleve === eleve1.idEleve
     ) {
 
-      messageEmail =
-        resultat.emailsEnvoyes +
-        " QR envoyé(s).";
+      afficherMessage(
+        resultId,
+        "Cet élève est déjà sélectionné comme élève 1.",
+        true
+      );
 
+      eleve2 = null;
+
+      return;
     }
 
+    if (numero === 1) {
 
-    if (
-      resultat.emailsErreurs
-    ) {
+      eleve1 = eleve;
 
-      messageEmail +=
-        " Attention : " +
-        resultat.emailsErreurs +
-        " e-mail(s) n'ont pas pu être envoyé(s).";
+    } else {
+
+      eleve2 = eleve;
     }
 
+    afficherEleveSelectionne(
+      resultId,
+      eleve
+    );
+
+  } catch (error) {
 
     afficherMessage(
-      "Carte " +
-      resultat.carte.idCarte +
-      " créée. " +
-      messageEmail,
-      resultat.emailsErreurs
-        ? "info"
-        : "success"
+      resultId,
+      error.message,
+      true
     );
-
-
-    /*
-     * Charger les cours puis afficher
-     * directement le pointage.
-     */
-    await selectionnerCarte(
-      resultat.carte
-    );
-
-
-  } catch (erreur) {
-
-    afficherMessage(
-      erreur.message,
-      "error"
-    );
-
-  } finally {
-
-    traitement = false;
-
-    bouton.disabled = false;
   }
 }
 
 
-/* =====================================================
- * ÉCHAPPEMENT HTML
- * ===================================================== */
+/***************************************
+ * AFFICHER ELEVE
+ ***************************************/
 
-function escapeHtml(texte) {
+function afficherEleveSelectionne(
+  containerId,
+  eleve
+) {
 
-  return String(texte || "")
+  const container =
+    document.getElementById(
+      containerId
+    );
+
+  container.innerHTML =
+
+    "<div class='message success'>" +
+
+    "<strong>Élève sélectionné :</strong><br>" +
+
+    "<span style='font-size:19px;'>" +
+
+    escapeHtml(eleve.prenom) +
+    " " +
+    escapeHtml(eleve.nom) +
+
+    "</span>" +
+
+    "<label>Adresse e-mail</label>" +
+
+    "<input " +
+    "type='email' " +
+    "value='" +
+    escapeHtml(eleve.email || "") +
+    "' " +
+    "id='" +
+    (
+      eleve === eleve1
+        ? "emailEleve1"
+        : "emailEleve2"
+    ) +
+    "' " +
+    "placeholder='adresse@email.com'>" +
+
+    "</div>";
+}
+
+
+/***************************************
+ * CREER CARTE
+ ***************************************/
+
+async function creerNouvelleCarte() {
+
+  if (!eleve1) {
+
+    afficherMessage(
+      "newCardMessage",
+      "Sélectionne d'abord l'élève 1 avec son QR Token.",
+      true
+    );
+
+    return;
+  }
+
+  if (
+    document
+      .getElementById("activerEleve2")
+      .checked &&
+    !eleve2
+  ) {
+
+    afficherMessage(
+      "newCardMessage",
+      "Sélectionne l'élève 2 ou désactive l'option.",
+      true
+    );
+
+    return;
+  }
+
+  const email1 =
+    document
+      .getElementById("emailEleve1")
+      .value
+      .trim();
+
+  if (!validerEmail(email1)) {
+
+    afficherMessage(
+      "newCardMessage",
+      "L'adresse e-mail de l'élève 1 est invalide.",
+      true
+    );
+
+    return;
+  }
+
+  const eleves = [
+    {
+      token: eleve1.token,
+      email: email1
+    }
+  ];
+
+  if (eleve2) {
+
+    const email2 =
+      document
+        .getElementById("emailEleve2")
+        .value
+        .trim();
+
+    if (!validerEmail(email2)) {
+
+      afficherMessage(
+        "newCardMessage",
+        "L'adresse e-mail de l'élève 2 est invalide.",
+        true
+      );
+
+      return;
+    }
+
+    eleves.push({
+      token: eleve2.token,
+      email: email2
+    });
+  }
+
+  const montant =
+    document
+      .getElementById("montantPaye")
+      .value;
+
+  if (
+    !montant ||
+    Number(montant) <= 0
+  ) {
+
+    afficherMessage(
+      "newCardMessage",
+      "Entre le montant payé.",
+      true
+    );
+
+    return;
+  }
+
+  const button =
+    document.getElementById(
+      "createCardButton"
+    );
+
+  button.disabled = true;
+  button.textContent =
+    "Création en cours...";
+
+  try {
+
+    const result =
+      await apiPost({
+        action: "creerCarte",
+        eleves: eleves,
+        montantPaye: montant
+      });
+
+    if (!result.ok) {
+
+      afficherMessage(
+        "newCardMessage",
+        result.message ||
+        "Impossible de créer la carte.",
+        true
+      );
+
+      return;
+    }
+
+    let message =
+      "Carte " +
+      result.idCarte +
+      " créée avec succès.";
+
+    if (
+      result.avertissements &&
+      result.avertissements.length
+    ) {
+
+      message +=
+        "<div class='warning'>" +
+        result.avertissements
+          .map(function(w) {
+            return escapeHtml(w);
+          })
+          .join("<br>") +
+        "</div>";
+    }
+
+    afficherMessage(
+      "newCardMessage",
+      message,
+      false,
+      true
+    );
+
+    // On continue directement vers le pointage
+    if (result.carte) {
+
+      setTimeout(function() {
+
+        afficherPointage(
+          result.carte
+        );
+
+      }, 1200);
+
+    } else {
+
+      // Si le serveur ne retourne pas
+      // immédiatement la carte, on la recherche
+      setTimeout(async function() {
+
+        const recherche =
+          await apiGet({
+            action: "carte",
+            token: eleve1.token
+          });
+
+        if (
+          recherche.ok &&
+          recherche.cartes
+        ) {
+
+          const carte =
+            recherche.cartes.find(
+              function(c) {
+                return (
+                  c.idCarte ===
+                  result.idCarte
+                );
+              }
+            );
+
+          if (carte) {
+            afficherPointage(carte);
+          }
+        }
+
+      }, 1000);
+    }
+
+  } catch (error) {
+
+    afficherMessage(
+      "newCardMessage",
+      error.message,
+      true
+    );
+
+  } finally {
+
+    button.disabled = false;
+    button.textContent =
+      "Créer la carte";
+  }
+}
+
+
+/***************************************
+ * POINTAGE
+ ***************************************/
+
+function afficherPointage(carte) {
+
+  fermerScanner();
+
+  cacherToutesLesVues();
+
+  carteCourante = carte;
+
+  document
+    .getElementById("pointageView")
+    .classList.remove("hidden");
+
+  document
+    .getElementById("pointageMessage")
+    .innerHTML = "";
+
+  const noms =
+    (carte.eleves || [])
+      .map(function(eleve) {
+
+        return (
+          escapeHtml(eleve.prenom) +
+          " " +
+          escapeHtml(eleve.nom)
+        );
+
+      })
+      .join(" + ");
+
+  document
+    .getElementById("pointageInfo")
+    .innerHTML =
+
+      "<div class='student-box'>" +
+
+      "<div>" +
+      "<strong>Carte :</strong> " +
+      escapeHtml(carte.idCarte) +
+      "</div>" +
+
+      "<div>" +
+      "<strong>Élève(s) :</strong> " +
+      noms +
+      "</div>" +
+
+      "<div class='credits'>" +
+      carte.creditsRestants +
+      "<br><span>crédit(s) restant(s)</span>" +
+      "</div>" +
+
+      "</div>";
+
+  afficherElevesPointage(
+    carte.eleves || []
+  );
+}
+
+
+/***************************************
+ * ELEVE + COURS
+ ***************************************/
+
+function afficherElevesPointage(
+  eleves
+) {
+
+  const container =
+    document.getElementById(
+      "pointageStudents"
+    );
+
+  container.innerHTML = "";
+
+  eleves.forEach(function(eleve, index) {
+
+    const studentBox =
+      document.createElement("div");
+
+    studentBox.className =
+      "student-box";
+
+    let html =
+      "<div class='student-name'>" +
+      escapeHtml(eleve.prenom) +
+      " " +
+      escapeHtml(eleve.nom) +
+      "</div>";
+
+    if (!coursDisponibles.length) {
+
+      html +=
+        "<div class='message error'>" +
+        "Aucun cours disponible." +
+        "</div>";
+
+    } else {
+
+      coursDisponibles.forEach(
+        function(cours) {
+
+          const checkboxId =
+            "course_" +
+            index +
+            "_" +
+            sanitizeId(cours.id);
+
+          html +=
+
+            "<div class='course'>" +
+
+            "<input " +
+            "type='checkbox' " +
+            "class='course-checkbox' " +
+            "data-eleve='" +
+            escapeHtml(eleve.idEleve) +
+            "' " +
+            "data-cours='" +
+            escapeHtml(cours.id) +
+            "' " +
+            "id='" +
+            checkboxId +
+            "'>" +
+
+            "<label for='" +
+            checkboxId +
+            "' style='margin:0; font-weight:normal;'>" +
+
+            "<div class='course-info'>" +
+
+            "<div class='course-name'>" +
+            escapeHtml(cours.nom) +
+            "</div>" +
+
+            (
+              cours.horaire
+                ? "<div class='course-time'>" +
+                  escapeHtml(cours.horaire) +
+                  "</div>"
+                : ""
+            ) +
+
+            "</div>" +
+
+            "</label>" +
+
+            "</div>";
+        }
+      );
+    }
+
+    studentBox.innerHTML = html;
+
+    container.appendChild(
+      studentBox
+    );
+  });
+}
+
+
+/***************************************
+ * VALIDER POINTAGE
+ ***************************************/
+
+async function validerPointage() {
+
+  if (!carteCourante) {
+
+    afficherMessage(
+      "pointageMessage",
+      "Aucune carte sélectionnée.",
+      true
+    );
+
+    return;
+  }
+
+  const checkboxes =
+    document.querySelectorAll(
+      ".course-checkbox:checked"
+    );
+
+  if (!checkboxes.length) {
+
+    afficherMessage(
+      "pointageMessage",
+      "Sélectionne au moins un cours.",
+      true
+    );
+
+    return;
+  }
+
+  const selectionsMap = {};
+
+  checkboxes.forEach(function(cb) {
+
+    const idEleve =
+      cb.dataset.eleve;
+
+    const idCours =
+      cb.dataset.cours;
+
+    if (!selectionsMap[idEleve]) {
+      selectionsMap[idEleve] = [];
+    }
+
+    selectionsMap[idEleve].push(
+      idCours
+    );
+  });
+
+  const selections =
+    Object.keys(selectionsMap)
+      .map(function(idEleve) {
+
+        return {
+          idEleve: idEleve,
+          cours: selectionsMap[idEleve]
+        };
+
+      });
+
+  const total =
+    checkboxes.length;
+
+  if (
+    total >
+    Number(carteCourante.creditsRestants)
+  ) {
+
+    afficherMessage(
+      "pointageMessage",
+      "Il n'y a pas assez de crédits pour ce pointage.",
+      true
+    );
+
+    return;
+  }
+
+  const button =
+    document.querySelector(
+      "#pointageView .btn-success"
+    );
+
+  button.disabled = true;
+  button.textContent =
+    "Enregistrement...";
+
+  try {
+
+    const result =
+      await apiPost({
+        action: "pointerAbonnement",
+        idCarte: carteCourante.idCarte,
+        selections: selections
+      });
+
+    if (!result.ok) {
+
+      afficherMessage(
+        "pointageMessage",
+        result.message ||
+        "Le pointage n'a pas pu être enregistré.",
+        true
+      );
+
+      return;
+    }
+
+    afficherMessage(
+      "pointageMessage",
+      result.message +
+      "<br><br>" +
+      "<strong>Crédits restants : " +
+      result.creditsApres +
+      "</strong>",
+      false,
+      true
+    );
+
+    // Mettre à jour l'affichage
+    carteCourante.creditsRestants =
+      result.creditsApres;
+
+    carteCourante.statut =
+      result.statut;
+
+    setTimeout(function() {
+
+      if (
+        result.statut ===
+        "Épuisée"
+      ) {
+
+        afficherMessage(
+          "pointageMessage",
+          "La carte est maintenant épuisée.",
+          false,
+          true
+        );
+
+        button.disabled = true;
+
+      } else {
+
+        // Réinitialiser les cases
+        document
+          .querySelectorAll(
+            ".course-checkbox"
+          )
+          .forEach(function(cb) {
+            cb.checked = false;
+          });
+
+        document
+          .getElementById(
+            "pointageInfo"
+          )
+          .querySelector(
+            ".credits"
+          ).innerHTML =
+            result.creditsApres +
+            "<br><span>crédit(s) restant(s)</span>";
+      }
+
+    }, 800);
+
+  } catch (error) {
+
+    afficherMessage(
+      "pointageMessage",
+      error.message,
+      true
+    );
+
+  } finally {
+
+    button.disabled = false;
+    button.textContent =
+      "Valider le pointage";
+  }
+}
+
+
+/***************************************
+ * SCANNER QR
+ ***************************************/
+
+async function lancerScanner(
+  mode
+) {
+
+  await fermerScanner();
+
+  modeScan = mode;
+
+  document
+    .getElementById("scannerCard")
+    .classList.remove("hidden");
+
+  try {
+
+    scanner =
+      new Html5Qrcode("reader");
+
+    scannerActif = true;
+
+    await scanner.start(
+
+      {
+        facingMode: "environment"
+      },
+
+      {
+        fps: 10,
+        qrbox: {
+          width: 250,
+          height: 250
+        }
+      },
+
+      async function(decodedText) {
+
+        const token =
+          String(decodedText || "")
+            .trim();
+
+        if (!token) {
+          return;
+        }
+
+        await fermerScanner();
+
+        if (modeScan === "carte") {
+
+          document
+            .getElementById(
+              "existingToken"
+            )
+            .value = token;
+
+          rechercherCarte(token);
+
+        } else if (
+          modeScan === "eleve1"
+        ) {
+
+          document
+            .getElementById(
+              "tokenEleve1"
+            )
+            .value = token;
+
+          chercherEleveNouvelleCarte(1);
+
+        } else if (
+          modeScan === "eleve2"
+        ) {
+
+          document
+            .getElementById(
+              "tokenEleve2"
+            )
+            .value = token;
+
+          chercherEleveNouvelleCarte(2);
+        }
+
+      },
+
+      function(errorMessage) {
+        // Les erreurs de lecture sont normales
+      }
+    );
+
+  } catch (error) {
+
+    await fermerScanner();
+
+    alert(
+      "Impossible d'ouvrir la caméra.\n\n" +
+      error.message
+    );
+  }
+}
+
+
+/***************************************
+ * FERMER SCANNER
+ ***************************************/
+
+async function fermerScanner() {
+
+  if (scanner) {
+
+    try {
+
+      if (scannerActif) {
+        await scanner.stop();
+      }
+
+    } catch (error) {
+
+      console.log(error);
+
+    }
+
+    try {
+
+      await scanner.clear();
+
+    } catch (error) {
+
+      console.log(error);
+
+    }
+  }
+
+  scanner = null;
+  scannerActif = false;
+  modeScan = null;
+
+  const reader =
+    document.getElementById(
+      "reader"
+    );
+
+  if (reader) {
+    reader.innerHTML = "";
+  }
+
+  document
+    .getElementById(
+      "scannerCard"
+    )
+    .classList.add("hidden");
+}
+
+
+/***************************************
+ * MESSAGES
+ ***************************************/
+
+function afficherMessage(
+  elementId,
+  message,
+  erreur = false,
+  succes = false
+) {
+
+  const element =
+    document.getElementById(
+      elementId
+    );
+
+  if (!element) {
+    return;
+  }
+
+  let classe = "message";
+
+  if (erreur) {
+    classe += " error";
+  }
+
+  if (succes) {
+    classe += " success";
+  }
+
+  element.innerHTML =
+    "<div class='" +
+    classe +
+    "'>" +
+    message +
+    "</div>";
+}
+
+
+/***************************************
+ * VALIDATION EMAIL
+ ***************************************/
+
+function validerEmail(email) {
+
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+    .test(
+      String(email || "").trim()
+    );
+}
+
+
+/***************************************
+ * SECURITE HTML
+ ***************************************/
+
+function escapeHtml(text) {
+
+  return String(text || "")
     .replace(/&/g, "&amp;")
     .replace(/</g, "&lt;")
     .replace(/>/g, "&gt;")
     .replace(/"/g, "&quot;")
     .replace(/'/g, "&#039;");
+}
+
+
+/***************************************
+ * ID HTML
+ ***************************************/
+
+function sanitizeId(text) {
+
+  return String(text || "")
+    .replace(/[^a-zA-Z0-9_-]/g, "_");
 }
 
 </script>
