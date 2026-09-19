@@ -1314,25 +1314,17 @@ async function validerPointage() {
       true
     );
 
-    /*
-     * Les cours qui viennent d'être débités
-     * disparaissent de l'écran pour l'élève
-     * concerné.
-     *
-     * Cela évite de pouvoir sélectionner
-     * par mégarde deux fois le même cours.
-     */
-    checkboxes.forEach(
-      function(cb) {
-
-        const courseElement =
-          cb.closest(".course");
-
-        if (courseElement) {
-          courseElement.remove();
+      /*
+       * Après validation, on efface simplement
+       * la sélection des cours.
+       * Les cours restent visibles et peuvent
+       * être sélectionnés pour un prochain pointage.
+       */
+      checkboxes.forEach(
+        function(cb) {
+          cb.checked = false;
         }
-      }
-    );
+      );
 
     const creditsElement =
       document
