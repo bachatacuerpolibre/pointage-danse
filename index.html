@@ -236,6 +236,32 @@
       padding: 15px;
     }
 
+    .payment-options {
+      display: flex;
+      gap: 10px;
+      margin-top: 8px;
+    }
+
+    .payment-option {
+      flex: 1;
+      background: white;
+      color: #222;
+      border: 2px solid #ccc;
+      border-radius: 12px;
+      padding: 16px 10px;
+      font-size: 17px;
+      font-weight: bold;
+      margin: 0;
+      min-height: 58px;
+      touch-action: manipulation;
+    }
+
+    .payment-option.selected {
+      background: #222;
+      color: white;
+      border-color: #222;
+    }
+
   </style>
 
 </head>
@@ -525,15 +551,31 @@
 
     <div class="student-box">
 
-      <label for="modePaiement">
+      <label>
         Mode de paiement
       </label>
 
-      <select id="modePaiement">
-        <option value="">Choisir le mode de paiement</option>
-        <option value="Cash">Cash</option>
-        <option value="Virement">Virement</option>
-      </select>
+      <div class="payment-options">
+
+        <button
+          type="button"
+          id="paymentCash"
+          class="payment-option"
+          onclick="selectionnerModePaiement('Cash')"
+        >
+          💵 Cash
+        </button>
+
+        <button
+          type="button"
+          id="paymentVirement"
+          class="payment-option"
+          onclick="selectionnerModePaiement('Virement')"
+        >
+          🏦 Virement
+        </button>
+
+      </div>
 
     </div>
 
@@ -622,6 +664,7 @@ let carteCourante = null;
 let coursDisponibles = [];
 let eleve1 = null;
 let eleve2 = null;
+let modePaiementSelectionne = "";
 
 document.addEventListener("DOMContentLoaded", function() { chargerCours(); });
 
@@ -736,15 +779,41 @@ function ouvrirNouvelleCarte() {
   document.getElementById("newCardView").classList.remove("hidden");
   eleve1 = null;
   eleve2 = null;
+  modePaiementSelectionne = "";
   document.getElementById("tokenEleve1").value = "";
   document.getElementById("tokenEleve2").value = "";
   document.getElementById("montantPaye").value = "";
-  document.getElementById("modePaiement").value = "";
   document.getElementById("eleve1Result").innerHTML = "";
   document.getElementById("eleve2Result").innerHTML = "";
   document.getElementById("activerEleve2").checked = false;
   document.getElementById("eleve2Container").classList.add("hidden");
   document.getElementById("newCardMessage").innerHTML = "";
+
+  document
+    .getElementById("paymentCash")
+    .classList.remove("selected");
+
+  document
+    .getElementById("paymentVirement")
+    .classList.remove("selected");
+}
+
+function selectionnerModePaiement(mode) {
+  modePaiementSelectionne = mode;
+
+  document
+    .getElementById("paymentCash")
+    .classList.toggle(
+      "selected",
+      mode === "Cash"
+    );
+
+  document
+    .getElementById("paymentVirement")
+    .classList.toggle(
+      "selected",
+      mode === "Virement"
+    );
 }
 
 function toggleEleve2() {
@@ -911,10 +980,7 @@ async function creerNouvelleCarte() {
     return;
   }
 
-  const modePaiement =
-    document.getElementById("modePaiement").value;
-
-  if (!modePaiement) {
+  if (!modePaiementSelectionne) {
     afficherMessage("newCardMessage", "Choisis le mode de paiement : Cash ou Virement.", true);
     return;
   }
@@ -932,7 +998,7 @@ async function creerNouvelleCarte() {
         action: "creerCarte",
         eleves: eleves,
         montantPaye: montant,
-        modePaiement: modePaiement
+        modePaiement: modePaiementSelectionne
       });
 
     if (!result.ok) {
@@ -1231,7 +1297,7 @@ async function validerPointage() {
     }
 
     carteCourante.creditsRestants =
-      result.creditsApres;
+      result.creditsRestants;
 
     carteCourante.statut =
       result.statut;
@@ -1241,22 +1307,32 @@ async function validerPointage() {
 
       result.message +
       "<br><br><strong>Crédits restants : " +
-      result.creditsApres +
+      result.creditsRestants +
       "</strong>",
 
       false,
       true
     );
 
-    document
-      .querySelectorAll(
-        ".course-checkbox"
-      )
-      .forEach(
-        function(cb) {
-          cb.checked = false;
+    /*
+     * Les cours qui viennent d'être débités
+     * disparaissent de l'écran pour l'élève
+     * concerné.
+     *
+     * Cela évite de pouvoir sélectionner
+     * par mégarde deux fois le même cours.
+     */
+    checkboxes.forEach(
+      function(cb) {
+
+        const courseElement =
+          cb.closest(".course");
+
+        if (courseElement) {
+          courseElement.remove();
         }
-      );
+      }
+    );
 
     const creditsElement =
       document
@@ -1270,7 +1346,7 @@ async function validerPointage() {
     if (creditsElement) {
 
       creditsElement.innerHTML =
-        result.creditsApres +
+        result.creditsRestants +
         "<br><span>crédit(s) restant(s)</span>";
     }
 
