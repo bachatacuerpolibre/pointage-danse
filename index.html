@@ -95,7 +95,8 @@
       width: 100%;
     }
 
-    input {
+    input,
+    select {
       width: 100%;
       padding: 13px;
       border: 1px solid #ccc;
@@ -103,6 +104,7 @@
       font-size: 16px;
       margin-top: 6px;
       margin-bottom: 12px;
+      background: white;
     }
 
     label {
@@ -519,6 +521,23 @@
     </div>
 
 
+    <!-- MODE DE PAIEMENT -->
+
+    <div class="student-box">
+
+      <label for="modePaiement">
+        Mode de paiement
+      </label>
+
+      <select id="modePaiement">
+        <option value="">Choisir le mode de paiement</option>
+        <option value="Cash">Cash</option>
+        <option value="Virement">Virement</option>
+      </select>
+
+    </div>
+
+
     <button
       id="createCardButton"
       class="btn-success"
@@ -720,6 +739,7 @@ function ouvrirNouvelleCarte() {
   document.getElementById("tokenEleve1").value = "";
   document.getElementById("tokenEleve2").value = "";
   document.getElementById("montantPaye").value = "";
+  document.getElementById("modePaiement").value = "";
   document.getElementById("eleve1Result").innerHTML = "";
   document.getElementById("eleve2Result").innerHTML = "";
   document.getElementById("activerEleve2").checked = false;
@@ -891,6 +911,14 @@ async function creerNouvelleCarte() {
     return;
   }
 
+  const modePaiement =
+    document.getElementById("modePaiement").value;
+
+  if (!modePaiement) {
+    afficherMessage("newCardMessage", "Choisis le mode de paiement : Cash ou Virement.", true);
+    return;
+  }
+
   const button =
     document.getElementById("createCardButton");
 
@@ -903,7 +931,8 @@ async function creerNouvelleCarte() {
       await apiPost({
         action: "creerCarte",
         eleves: eleves,
-        montantPaye: montant
+        montantPaye: montant,
+        modePaiement: modePaiement
       });
 
     if (!result.ok) {
